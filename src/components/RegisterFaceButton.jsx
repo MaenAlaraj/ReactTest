@@ -3,7 +3,7 @@ import { setMessage } from "../utils"; // Adjust the path to where `utils.js` is
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 
 const RegisterFaceButton = () => {
-  const { sbuser } = useGlobalContext(); // Access sbuser from context
+  const { errorsSubstring, sbuser, extractedUserID, prefix } = useGlobalContext(); // Access errorsSubstring and other variables
 
   const handleRegisterFace = async () => {
     try {
@@ -26,12 +26,30 @@ const RegisterFaceButton = () => {
           const base64String = facesArray[0].image64;
           setMessage("顔が正常にキャプチャされました。", "show_message");
           console.log("Captured Face Base64 String:", base64String);
-          
-          
-          
-          console.log("sbuser value is :", sbuser);
-          const info = await window.CCWalletInterface.DelFaces(sbuser, "9392909000000154"); // Use sbuser here
-          window.ToastInterface.showToast(info);
+                 
+          //console.log("sbuser value is :", sbuser);
+          //const info = await window.CCWalletInterface.DelFaces(sbuser, "9392909000000154"); // Use sbuser here
+          //window.ToastInterface.showToast(info);
+
+          const qrString = await window.QRInterface.get_QRInfo();
+          if (qrString !== "Scanner stopped") {
+            const qrstrList = qrString.split(",");
+            extractedUserID = qrstrList[1]; // Example extraction
+            const userID = `${prefix}${extractedUserID}`;
+            const addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+            if (addFaceInfo.includes(errorsSubstring)) {
+              setMessage("既に登録済みのユーザーのため、登録できませんでした。");
+            } else {
+              setMessage("顔が登録されました。");
+            }
+          } else {
+            setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
+          }
+
+
+
+
+
         }
       }
     } catch (error) {
