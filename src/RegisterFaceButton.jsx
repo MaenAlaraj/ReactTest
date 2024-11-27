@@ -2,7 +2,13 @@ import React from "react";
 
 const RegisterFaceButton = () => {
   const handleRegisterFace = () => {
-    console.log("Register Face button clicked!");
+    try {
+      // Call the method exposed by your Android WebView
+      const resultJsonString = window.FaceCaptureInterface.getCapturedFace();
+      console.log("Captured Face Data:", resultJsonString);
+    } catch (error) {
+      console.error("Error calling FaceCaptureInterface.getCapturedFace:", error);
+    }
   };
 
   return (
