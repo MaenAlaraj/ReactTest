@@ -32,7 +32,7 @@ const RegisterFaceButton = () => {
           //window.ToastInterface.showToast(info);
 
           const qrString = await window.QRInterface.get_QRInfo();
-          if (qrString !== "Scanner stopped") {
+          /*if (qrString !== "Scanner stopped") {
             const qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
             let  userID = `${prefix}${extractedUserID}`;
@@ -44,7 +44,7 @@ const RegisterFaceButton = () => {
             }
           } else {
             setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
-          }
+          }*/
 
 
 
