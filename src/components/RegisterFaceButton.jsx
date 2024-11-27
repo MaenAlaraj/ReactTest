@@ -13,7 +13,7 @@ const RegisterFaceButton = () => {
 
   return (
     <button id="registerFaceButton" onClick={handleRegisterFace}>
-      Register Face
+       顔認証登録
     </button>
   );
 };

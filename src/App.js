@@ -1,14 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 import React from "react";
-import RegisterFaceButton from "./RegisterFaceButton";
+import './style.css';  // Import the CSS file
 
+import RegisterFaceButton from './components/RegisterFaceButton';
+import FaceButton from './components/FaceButton';
+import QRButton from './components/QrButton';
+import LoadProduct from './components/LoadProductButton';
+import Payment from './components/PaymentButton';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Face Registration</h1>
-      <RegisterFaceButton />
+    <div className="App">
+      <div className="auth-container">
+        <p>GC Mall アプリ</p>
+        <p>GCのQRか顔を読み込ませてください</p>
+        <div className="button-container">
+          <QRButton />
+          <FaceButton />
+        </div>
+      </div>
+      <div className="scroll-container" id="productList">
+        <LoadProduct />
+      </div>
+      <Payment />
     </div>
   );
 }
