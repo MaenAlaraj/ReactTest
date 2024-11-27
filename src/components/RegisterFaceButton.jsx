@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { setMessage } from "../utils"; // Adjust the path to where `utils.js` is located
 
 const RegisterFaceButton = () => {
-  const [message, setMessage] = useState("");
-
   const handleRegisterFace = async () => {
     try {
       // Call the method exposed by your Android WebView
@@ -17,12 +16,12 @@ const RegisterFaceButton = () => {
           setMessage("顔を認証できませんでした。もう一度やり直してください。");
         } else {
           const base64String = facesArray[0].image64;
-          setMessage("顔が正常にキャプチャされました。");
+          setMessage("顔が正常にキャプチャされました。", "show_message");
           console.log("Captured Face Base64 String:", base64String);
         }
       }
     } catch (error) {
-      setMessage(`エラーが発生しました: ${error.message}`);
+      setMessage(`エラーが発生しました: ${error.message}`, "show_message");
       console.error("Error processing face detection:", error);
     }
   };
@@ -32,7 +31,7 @@ const RegisterFaceButton = () => {
       <button id="registerFaceButton" onClick={handleRegisterFace}>
         顔認証登録
       </button>
-      <div>{message}</div>
+      <div id="message"></div>
     </div>
   );
 };
