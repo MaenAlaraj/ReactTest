@@ -14,9 +14,10 @@ const App = () => {
         <p>GC Mall アプリ</p>
         <p>GCのQRか顔を読み込ませてください</p>
         <div className="button-container">
-          <QRButton />
           <FaceButton />
+          <QRButton />
         </div>
+        <RegisterFaceButton />
       </div>
       <div className="scroll-container" id="productList">
         <LoadProduct />
@@ -24,6 +25,6 @@ const App = () => {
       <Payment />
     </div>
   );
-}
+};
 
 export default App;
