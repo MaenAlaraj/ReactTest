@@ -35,7 +35,7 @@ const RegisterFaceButton = () => {
           if (qrString !== "Scanner stopped") {
             const qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
-            const userID = `${prefix}${extractedUserID}`;
+            let  userID = `${prefix}${extractedUserID}`;
             const addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
             if (addFaceInfo.includes(errorsSubstring)) {
               setMessage("既に登録済みのユーザーのため、登録できませんでした。");
