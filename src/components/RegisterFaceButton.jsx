@@ -23,7 +23,7 @@ const RegisterFaceButton = () => {
           console.log("Captured Nr. of Faces:", numberOfFaces);
           setMessage("顔を認証できませんでした。もう一度やり直してください。");
         } else {
-          const base64String = facesArray[0].image64;
+          let base64String = facesArray[0].image64;
           setMessage("顔が正常にキャプチャされました。", "show_message");
           console.log("Captured Face Base64 String:", base64String);
                  
@@ -36,7 +36,7 @@ const RegisterFaceButton = () => {
             const qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
             let  userID = `${prefix}${extractedUserID}`;
-            const addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+            let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
             if (addFaceInfo.includes(errorsSubstring)) {
               setMessage("既に登録済みのユーザーのため、登録できませんでした。");
             } else {
@@ -54,7 +54,6 @@ const RegisterFaceButton = () => {
       }
     } catch (error) {
       setMessage(`エラーが発生しました: ${error.message}`, "show_message");
-      console.error("Error processing face detection:", error);
     }
   };
 
