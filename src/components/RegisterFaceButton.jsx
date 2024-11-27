@@ -36,6 +36,7 @@ const RegisterFaceButton = () => {
             const qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
             console.log("extractedUserID:", extractedUserID);
+            setMessage(extractedUserID, "show_message");
             /*let  userID = `${prefix}${extractedUserID}`;
             let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
             if (addFaceInfo.includes(errorsSubstring)) {
