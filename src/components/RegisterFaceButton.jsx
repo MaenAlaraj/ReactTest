@@ -32,11 +32,13 @@ const RegisterFaceButton = () => {
           //window.ToastInterface.showToast(info);
 
           let qrString = await window.QRInterface.get_QRInfo();
-          /*if (qrString !== "Scanner stopped") {
-            const qrstrList = qrString.split(",");
+          console.log("qrString value is [REACT] :", qrString);
+          if (qrString !== "Scanner stopped") {
+            let qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
-            console.log("extractedUserID[REACT] :", extractedUserID);
+            console.log("extractedUserID value is [REACT] :", extractedUserID);
             let  userID = `${prefix}${extractedUserID}`;
+            console.log("userID value is [REACT] :", userID);
             let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
             if (addFaceInfo.includes(errorsSubstring)) {
               setMessage("既に登録済みのユーザーのため、登録できませんでした。");
@@ -48,7 +50,7 @@ const RegisterFaceButton = () => {
           } 
           else {
             setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
-          }*/
+          }
 
 
 
