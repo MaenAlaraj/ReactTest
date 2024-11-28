@@ -31,7 +31,7 @@ const RegisterFaceButton = () => {
           //const info = await window.CCWalletInterface.DelFaces(sbuser, "9392909000000154"); // Use sbuser here
           //window.ToastInterface.showToast(info);
 
-          const qrString = await window.QRInterface.get_QRInfo();
+          let qrString = await window.QRInterface.get_QRInfo();
           /*if (qrString !== "Scanner stopped") {
             const qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
