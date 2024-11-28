@@ -40,14 +40,14 @@ const RegisterFaceButton = () => {
             console.log("extractedUserID value is [REACT] :", extractedUserID);
              let  userID = `${prefix}${extractedUserID}`;
             console.log("userID value is [REACT] :", userID);
-            /*let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+            let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
             if (addFaceInfo.includes(errorsSubstring)) {
               setMessage("既に登録済みのユーザーのため、登録できませんでした。");
             } 
             else 
             {
               setMessage("顔が登録されました。");
-            }*/
+            }
           } 
           else {
             setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
