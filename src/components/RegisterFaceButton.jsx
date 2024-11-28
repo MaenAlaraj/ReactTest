@@ -27,17 +27,16 @@ const RegisterFaceButton = () => {
           setMessage("顔が正常にキャプチャされました。", "show_message");
           console.log("Captured Face Base64 String:", base64String);
                  
-          //console.log("sbuser value is :", sbuser);
+          console.log("sbuser value is :", sbuser);
           //const info = await window.CCWalletInterface.DelFaces(sbuser, "9392909000000154"); // Use sbuser here
           //window.ToastInterface.showToast(info);
 
-          const qrString = await window.QRInterface.get_QRInfo();
+          /*const qrString = await window.QRInterface.get_QRInfo();
           if (qrString !== "Scanner stopped") {
             const qrstrList = qrString.split(",");
             extractedUserID = qrstrList[1]; // Example extraction
             console.log("extractedUserID:", extractedUserID);
-            setMessage(extractedUserID, "show_message");
-            /*let  userID = `${prefix}${extractedUserID}`;
+            let  userID = `${prefix}${extractedUserID}`;
             let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
             if (addFaceInfo.includes(errorsSubstring)) {
               setMessage("既に登録済みのユーザーのため、登録できませんでした。");
@@ -45,11 +44,11 @@ const RegisterFaceButton = () => {
             else 
             {
               setMessage("顔が登録されました。");
-            }*/
+            }
           } 
           else {
             setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
-          }
+          }*/
 
 
 
