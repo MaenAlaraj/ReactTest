@@ -7,7 +7,7 @@ const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   const [showSecondScreenFlg, setShowSecondScreenFlg] = useState(true);
   const [gckid, setGckid] = useState("");
-  const [prefix, setPrefix] = useState("");
+  const [prefix, setPrefix] = useState("93929");
   const [sbuser, setSbuser] = useState("93929" + "09000000013");
   const [extractedUserID, setExtractedUserID] = useState("");
   const [userBeforePrefix, setUserBeforePrefix] = useState("");
