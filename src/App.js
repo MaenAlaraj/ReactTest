@@ -1,12 +1,15 @@
+// src/App.js
+
 import React from "react";
-import './style.css'; // Import the CSS file
+import './style.css';
 
 import RegisterFaceButton from './components/RegisterFaceButton';
 import FaceButton from './components/FaceButton';
 import QRButton from './components/QrButton';
 import LoadProduct from './components/LoadProductButton';
 import Payment from './components/PaymentButton';
-import LogoutButton from './components/LogoutButton'; // Import the LogoutButton component
+import LogoutButton from './components/LogoutButton';
+import WiFiStatus from './components/WiFiStatus';
 
 const App = () => {
   return (
@@ -22,7 +25,7 @@ const App = () => {
         <div id="bottomLeftText">
           <span className="text-content"></span>
         </div>
-        <RegisterFaceButton /> {/* Register Face Button */}
+        <RegisterFaceButton />
       </div>
 
       {/* Transit Container */}
@@ -34,8 +37,8 @@ const App = () => {
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
           <p id="user"></p>
-          <p id="wifiStatus">Wi-Fiの状態: 確認中...</p> {/* Wi-Fi Status */}
-          <LogoutButton /> {/* Use the LogoutButton component here */}
+          <WiFiStatus /> {/* Dynamically display WiFi status */}
+          <LogoutButton />
         </div>
         <p id="message"></p>
         <button id="loadProduct">商品の読み込み</button>
