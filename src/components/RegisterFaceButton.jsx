@@ -15,7 +15,7 @@ const RegisterFaceButton = () => {
       // Call the method exposed by your Android WebView
       const resultJsonString = await window.FaceCaptureInterface.getCapturedFace();
       console.log("[REACT Console]:Captured Face Data:", resultJsonString);
-      setIsButtonDisabled(false); // Enable the button here
+      
 
       if (!resultJsonString) {
         document.getElementById("authContainer").style.display = "block";
@@ -26,6 +26,7 @@ const RegisterFaceButton = () => {
         const numberOfFaces = facesArray.length;
 
         if (numberOfFaces === 0) {     
+          setIsButtonDisabled(false); // Enable the button here
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("顔を認証できませんでした。もう一度やり直してください。");
         } else if (numberOfFaces === 1) {
@@ -65,6 +66,7 @@ const RegisterFaceButton = () => {
             document.getElementById("authContainer").style.display = "block";
           }
         } else if (numberOfFaces > 1) {
+          setIsButtonDisabled(false); // Enable the button here
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("複数の顔が検出されたため、顔を認証できませんでした。もう一度やり直してください。", "show_message");
           document.getElementById("transitContainer").style.display = "none";
