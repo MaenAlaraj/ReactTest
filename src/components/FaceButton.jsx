@@ -1,7 +1,11 @@
 import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
+import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
+import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
 
 const FaceButton = () => {
+  const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
+
   const handleFace = async () => {
     console.log("[REACT Console]:「顔認証」ボタンがクリックされました。");
 
@@ -27,12 +31,16 @@ const FaceButton = () => {
 
       if (numberOfFaces === 0) {
         setMessage("顔を認証できませんでした。もう一度試してください。", "show_message");
-        document.getElementById("transitContainer").style.display = "none";
-        document.getElementById("authContainer").style.display = "block";
+        document.getElementById('authContainer').style.display = 'block';
+        document.getElementById('transitContainer').style.display = 'none';
       } else if (numberOfFaces === 1) {
-        console.log("[REACT Console]: One face detected.");
+        console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
         const base64String = facesArray[0].image64;
 
+
+        console.log("[REACT Console]:sbuser value is:", sbuser);
+        console.log("[REACT Console]:gckid value is:", gckid);
+        console.log("[REACT Console]:base64String value is:", base64String);
         // Simulate SearchFaces operation
         const info = await window.CCWalletInterface.SearchFaces("sbuser", "gckid", base64String);
         console.log("[REACT Console]: SearchFaces info:", info);
