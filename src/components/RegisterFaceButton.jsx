@@ -31,6 +31,8 @@ const RegisterFaceButton = () => {
         if (numberOfFaces === 0) {     
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("顔を認証できませんでした。もう一度やり直してください。");
+          document.getElementById('authContainer').style.display = 'block';
+          document.getElementById('transitContainer').style.display = 'none';
         } else if (numberOfFaces === 1) {
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
           document.getElementById("authContainer").style.display = "none";
@@ -54,6 +56,8 @@ const RegisterFaceButton = () => {
 
               if (addFaceInfo.includes(errorsSubstring)) {
                 setMessage("既に登録済みのユーザーのため、登録できませんでした。");
+                document.getElementById('transitContainer').style.display = 'none';
+                document.getElementById('authContainer').style.display = 'block';
               } else {
                 setMessage("顔が登録されました。");
                 setIsButtonDisabled(true); // Disable the button here
@@ -76,6 +80,8 @@ const RegisterFaceButton = () => {
       }
     } catch (error) {
       setMessage(`エラーが発生しました: ${error.message}`, "show_message");
+      document.getElementById('transitContainer').style.display = 'none';
+      document.getElementById('authContainer').style.display = 'block';
     }
   };
 
