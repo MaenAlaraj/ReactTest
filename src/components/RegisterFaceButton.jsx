@@ -7,7 +7,7 @@ import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrLi
 
 const RegisterFaceButton = () => {
   const { errorsSubstring, sbuser, prefix } = useGlobalContext(); // Access necessary variables
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleRegisterFace = async () => {
     console.log("[REACT Console]:「顔認証登録」ボタンがクリックされました。");
@@ -15,6 +15,7 @@ const RegisterFaceButton = () => {
       // Call the method exposed by your Android WebView
       const resultJsonString = await window.FaceCaptureInterface.getCapturedFace();
       console.log("[REACT Console]:Captured Face Data:", resultJsonString);
+      setIsButtonDisabled(false); // Enable the button here
 
       if (!resultJsonString) {
         document.getElementById("authContainer").style.display = "block";
@@ -24,7 +25,7 @@ const RegisterFaceButton = () => {
         const facesArray = resultJsonObject.Faces;
         const numberOfFaces = facesArray.length;
 
-        if (numberOfFaces === 0) {
+        if (numberOfFaces === 0) {     
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("顔を認証できませんでした。もう一度やり直してください。");
         } else if (numberOfFaces === 1) {
@@ -52,7 +53,7 @@ const RegisterFaceButton = () => {
                 setMessage("既に登録済みのユーザーのため、登録できませんでした。");
               } else {
                 setMessage("顔が登録されました。");
-                setIsButtonDisabled(false); // Disable the button here
+                setIsButtonDisabled(true); // Disable the button here
               }
             } else {
               setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
