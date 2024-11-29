@@ -7,7 +7,7 @@ import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrLi
 
 const RegisterFaceButton = () => {
   const { errorsSubstring, sbuser, prefix } = useGlobalContext(); // Access necessary variables
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleRegisterFace = async () => {
     console.log("[REACT Console]:「顔認証登録」ボタンがクリックされました。");
@@ -52,7 +52,7 @@ const RegisterFaceButton = () => {
                 setMessage("既に登録済みのユーザーのため、登録できませんでした。");
               } else {
                 setMessage("顔が登録されました。");
-                setIsButtonDisabled(true); // Disable the button here
+                setIsButtonDisabled(false); // Disable the button here
               }
             } else {
               setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
