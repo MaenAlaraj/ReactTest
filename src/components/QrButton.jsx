@@ -13,12 +13,13 @@ const QrButton = () => {
 
     try {
       // Show transitContainer and hide authContainer
-      document.getElementById("authContainer").style.display = "none";
-      document.getElementById("transitContainer").style.display = "block";
+      //document.getElementById("authContainer").style.display = "none";
+      //document.getElementById("transitContainer").style.display = "block";
 
       // Simulate getting QR code data
       const qrString = await window.CCWalletInterface.QRInterface.get_QRInfo();
       console.log("[REACT Console]:QR Code Data:", qrString);
+      setMessage(" ");
 
       if (qrString !== "Scanner stopped") {
         const match = qrString.match(/,(.*?),/);
