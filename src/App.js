@@ -1,11 +1,12 @@
 import React from "react";
-import './style.css';  // Import the CSS file
+import './style.css'; // Import the CSS file
 
 import RegisterFaceButton from './components/RegisterFaceButton';
 import FaceButton from './components/FaceButton';
 import QRButton from './components/QrButton';
 import LoadProduct from './components/LoadProductButton';
 import Payment from './components/PaymentButton';
+import LogoutButton from './components/LogoutButton'; // Import the LogoutButton component
 
 const App = () => {
   return (
@@ -34,7 +35,7 @@ const App = () => {
         <div id="user-container">
           <p id="user"></p>
           <p id="wifiStatus">Wi-Fiの状態: 確認中...</p> {/* Wi-Fi Status */}
-          <button id="logoutButton">ログアウト</button>
+          <LogoutButton /> {/* Use the LogoutButton component here */}
         </div>
         <p id="message"></p>
         <button id="loadProduct">商品の読み込み</button>
