@@ -15,7 +15,7 @@ const RegisterFaceButton = () => {
       // Call the method exposed by your Android WebView
       const resultJsonString = await window.FaceCaptureInterface.getCapturedFace();
       console.log("[REACT Console]:Captured Face Data:", resultJsonString);
-      setMessage("");
+      setMessage(" ");
       
 
       if (!resultJsonString) {
@@ -30,7 +30,7 @@ const RegisterFaceButton = () => {
 
         if (numberOfFaces === 0) {     
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
-          setMessage("顔を認証できませんでした。もう一度やり直してください。");
+          setMessage("顔を認証できませんでした。もう一度試してください。", "show_message");
           document.getElementById('authContainer').style.display = 'block';
           document.getElementById('transitContainer').style.display = 'none';
         } else if (numberOfFaces === 1) {
@@ -61,6 +61,8 @@ const RegisterFaceButton = () => {
               } else {
                 setMessage("顔が登録されました。");
                 setIsButtonDisabled(true); // Disable the button here
+                document.getElementById("transitContainer").style.display = "none";
+                document.getElementById("authContainer").style.display = "block";
               }
             } else {
               setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
