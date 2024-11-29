@@ -29,8 +29,8 @@ const RegisterFaceButton = () => {
           setMessage("顔を認証できませんでした。もう一度やり直してください。");
         } else if (numberOfFaces === 1) {
           console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
-          document.getElementById("authContainer").style.display = "none";
-          document.getElementById("transitContainer").style.display = "block";
+          //document.getElementById("authContainer").style.display = "none";
+          //document.getElementById("transitContainer").style.display = "block";
 
           let base64String = facesArray[0].image64;
           setMessage("顔が正常にキャプチャされました。", "show_message");
