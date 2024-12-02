@@ -45,7 +45,7 @@ const FaceButton = () => {
         console.log("[REACT Console]:gckid value is:", gckid);
         console.log("[REACT Console]:base64String value is:", base64String);
         // Simulate SearchFaces operation
-        const info = await window.CCWalletInterface.SearchFaces("sbuser", "gckid", base64String);
+        const info = await window.CCWalletInterface.SearchFaces(sbuser, gckid, base64String);
         console.log("[REACT Console]: SearchFaces info:", info);
 
         if (info.includes("errorsSubstring")) {
