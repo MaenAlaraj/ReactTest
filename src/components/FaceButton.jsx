@@ -2,6 +2,9 @@ import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
+import { setBalance } from "../UtilitiesFunctions/setBalance";
+
+
 
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
@@ -60,6 +63,11 @@ const FaceButton = () => {
           // Transition to mainContainer
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
+
+
+          setBalance(userID); // Call the imported function
+
+
         }
       } else if (numberOfFaces > 1) {
         setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");
