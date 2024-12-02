@@ -2,12 +2,13 @@ import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
-import { setBalance } from "../UtilitiesFunctions/setBalance";
-
-
+import { useSetBalance } from '../useSetBalance'; // Correct the import path
 
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
+  
+  // Call the hook inside the component
+  const setBalance = useSetBalance();  
 
   const handleFace = async () => {
     console.log("[REACT Console]:「顔認証」ボタンがクリックされました。");
@@ -43,15 +44,15 @@ const FaceButton = () => {
         console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
         const base64String = facesArray[0].image64;
 
-
         console.log("[REACT Console]:sbuser value is:", sbuser);
         console.log("[REACT Console]:gckid value is:", gckid);
         console.log("[REACT Console]:base64String value is:", base64String);
+
         // Simulate SearchFaces operation
         const info = await window.CCWalletInterface.SearchFaces(sbuser, gckid, base64String);
         console.log("[REACT Console]: SearchFaces info:", info);
 
-        if (info.includes("errorsSubstring")) {
+        if (info.includes(errorsSubstring)) {
           setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "show_message");
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("authContainer").style.display = "block";
@@ -64,9 +65,8 @@ const FaceButton = () => {
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
 
-
-          setBalance(userID); // Call the imported function
-
+          // Here, call the setBalance function
+          setBalance(userID); // This will call the setBalance function from the custom hook
 
         }
       } else if (numberOfFaces > 1) {
