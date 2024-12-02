@@ -9,11 +9,11 @@ const FaceButton = () => {
   const handleFace = async () => {
     console.log("[REACT Console]:「顔認証」ボタンがクリックされました。");
 
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ 
-    //await window.ToastInterface.showToast(info);
+    var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ 
+    await window.ToastInterface.showToast(info);
 
     // Show the transitContainer and hide authContainer
-    document.getElementById("authContainer").style.display = "none";
+    /*document.getElementById("authContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
 
     try {
@@ -70,7 +70,11 @@ const FaceButton = () => {
       setMessage(`エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
-    }
+    }*/
+
+
+
+
   };
 
   return (
