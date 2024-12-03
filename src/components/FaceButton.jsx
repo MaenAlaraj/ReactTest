@@ -1,29 +1,20 @@
 import React from "react";
-import { setMessage } from "../utils"; // Import setMessage from utils.js
-import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
-import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
-import { useSetBalance } from '../useSetBalance'; // Correct the import path
+import { setMessage } from "../utils";
+import { useGlobalContext } from "../GlobalContext";
+import { useSetBalance } from "../useSetBalance";
 
 const FaceButton = () => {
-  const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
-  
-  // Call the hook inside the component
-  const setBalance = useSetBalance();  
+  const { errorsSubstring, sbuser, gckid } = useGlobalContext();
+  const { balanceMessage, setBalance } = useSetBalance();
 
   const handleFace = async () => {
     console.log("[REACT Console]:「顔認証」ボタンがクリックされました。");
 
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ 
-    //await window.ToastInterface.showToast(info);
-
-    // Show the transitContainer and hide authContainer
     document.getElementById("authContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
 
     try {
-      // Call the method exposed by your Android WebView to get face data
       const resultJsonString = await window.FaceCaptureInterface.getFace();
-      console.log("[REACT Console]: Face data received:", resultJsonString);
 
       if (!resultJsonString) {
         setMessage("顔が検出されませんでした。もう一度試してください。", "show_message");
@@ -34,26 +25,16 @@ const FaceButton = () => {
 
       const resultJsonObject = JSON.parse(resultJsonString);
       const facesArray = resultJsonObject.Faces;
-      const numberOfFaces = facesArray.length;
 
-      if (numberOfFaces === 0) {
-        setMessage("顔を認証できませんでした。もう一度試してください。", "show_message");
-        document.getElementById('authContainer').style.display = 'block';
-        document.getElementById('transitContainer').style.display = 'none';
-      } else if (numberOfFaces === 1) {
-        console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
+      if (facesArray.length === 1) {
         const base64String = facesArray[0].image64;
-
-        console.log("[REACT Console]:sbuser value is:", sbuser);
-        console.log("[REACT Console]:gckid value is:", gckid);
-        console.log("[REACT Console]:base64String value is:", base64String);
-
-        // Simulate SearchFaces operation
         const info = await window.CCWalletInterface.SearchFaces(sbuser, gckid, base64String);
-        console.log("[REACT Console]: SearchFaces info:", info);
 
         if (info.includes(errorsSubstring)) {
-          setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "show_message");
+          setMessage(
+            "顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。",
+            "show_message"
+          );
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("authContainer").style.display = "block";
         } else {
@@ -61,16 +42,25 @@ const FaceButton = () => {
           const userID = CCW_FaceResponse_LIST[1].trim();
           setMessage(`GCユーザー: ${userID}`, "user");
 
+          // Set the balance
+          setBalance(userID);
+
           // Transition to mainContainer
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
 
-          // Here, call the setBalance function
-          setBalance(userID); // This will call the setBalance function from the custom hook
-
+          // Update the message element in mainContainer
+          const messageElement = document.getElementById("message");
+          if (messageElement) {
+            messageElement.innerHTML = balanceMessage;
+            console.log("[REACT Console]: Updated message:", balanceMessage);
+          }
         }
-      } else if (numberOfFaces > 1) {
-        setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");
+      } else {
+        setMessage(
+          "複数の顔が検出されました。もう一度試してください。",
+          "show_message"
+        );
         document.getElementById("transitContainer").style.display = "none";
         document.getElementById("authContainer").style.display = "block";
       }
