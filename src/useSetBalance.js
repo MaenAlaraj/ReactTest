@@ -17,13 +17,20 @@ export const useSetBalance = () => {
     
     const Balance_LIST = Balance_STR.split(" ");
     console.log("[setBalance] Split Balance String:", Balance_LIST);
+
+
+
+      // Transition to mainContainer
+      document.getElementById("transitContainer").style.display = "none";
+      document.getElementById("mainContainer").style.display = "block";
+      
     
     // Format the message
     const balanceMessage = `pt残高:${Balance_LIST[0].split(":")[1]}pt(残高の下限:${Balance_LIST[1].split(":")[1]}pt)`;
     
     // Update the <p id="message"> element
     document.getElementById("message").innerHTML = balanceMessage;  
-      
+
     const Balance = parseInt(Balance_LIST[0].split(":")[1]) - parseInt(Balance_LIST[1].split(":")[1]);
     console.log("[setBalance] Calculated Balance:", Balance);
     
