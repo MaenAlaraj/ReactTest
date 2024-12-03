@@ -39,8 +39,9 @@ const App = () => {
           <p id="user"></p>
           <WiFiStatus /> {/* Dynamically display WiFi status */}
           <LogoutButton />
+          <p id="message"></p>
         </div>
-        <p id="message"></p>
+        
         <button id="loadProduct">商品の読み込み</button>
 
         <div className="scroll-container">
