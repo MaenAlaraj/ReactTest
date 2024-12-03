@@ -18,8 +18,12 @@ export const useSetBalance = () => {
     const Balance_LIST = Balance_STR.split(" ");
     console.log("[setBalance] Split Balance String:", Balance_LIST);
     
-    document.getElementById('message').innerText = `pt残高:${Balance_LIST[0].split(":")[1]}pt(残高の下限:${Balance_LIST[1].split(":")[1]}pt)`;
+    // Format the message
+    const balanceMessage = `pt残高:${Balance_LIST[0].split(":")[1]}pt(残高の下限:${Balance_LIST[1].split(":")[1]}pt)`;
     
+    // Update the <p id="message"> element
+    document.getElementById("message").innerHTML = balanceMessage;  
+      
     const Balance = parseInt(Balance_LIST[0].split(":")[1]) - parseInt(Balance_LIST[1].split(":")[1]);
     console.log("[setBalance] Calculated Balance:", Balance);
     
@@ -28,6 +32,5 @@ export const useSetBalance = () => {
     
     return Balance;
   };
-
   return setBalance;
 };
