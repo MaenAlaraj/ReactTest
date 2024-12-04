@@ -46,10 +46,9 @@ const App = () => {
             <WiFiStatus /> {/* WiFi status aligned with user */}
             <LogoutButton /> {/* LogoutButton under WiFiStatus */}
           </div>
-          
-          <p id="message">{balanceMessage}</p> {/* Display the balance message */}
         </div>
         
+        <p id="message">{balanceMessage}</p>
         <button id="loadProduct">商品の読み込み</button>
 
         <div className="scroll-container">
