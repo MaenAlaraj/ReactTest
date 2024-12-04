@@ -37,18 +37,28 @@ const App = () => {
         <p>処理中...</p>
       </div>
 
+
+
+
+
+
+  
+
+
+
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <div className="left-section">
-            <p id="user"></p>
+          <p id="user"></p> {/* User information */}
+          <div className="user-details-container">
+            <WiFiStatus /> {/* WiFi status aligned with user */}
+            <LogoutButton id="logoutButton" /> {/* Logout button below WiFi status */}
           </div>
-          <div className="right-section">
-            <WiFiStatus />
-            <LogoutButton id="logoutButton" />
-          </div>
+          <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
         </div>
-        <p id="message">{balanceMessage}</p>
+
+
+
         
         <button id="loadProduct">商品の読み込み</button>
 
