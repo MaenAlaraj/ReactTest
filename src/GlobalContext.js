@@ -15,7 +15,6 @@ export const GlobalProvider = ({ children }) => {
   const [AccountNo, setAccountNo] = useState("");
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
-  const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
 
   const errorsSubstring = "エラー";
   const items = [];
@@ -61,8 +60,6 @@ export const GlobalProvider = ({ children }) => {
         payment_terminalID,
         Balance,
         setBalance,
-        balanceMessage, // Expose balanceMessage
-        setBalanceMessage, // Expose setBalanceMessage
         Cat_List,
       }}
     >
