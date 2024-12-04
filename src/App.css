@@ -37,34 +37,35 @@
   }
 }
 
-/* Flexbox layout for #user-container */
+/* Align #user-container using flexbox */
 #user-container {
   display: flex;
-  justify-content: flex-start; /* Align items on the left */
+  justify-content: flex-start; /* Align elements to the left */
   align-items: center;
   width: 100%;
-  margin-bottom: 10px; /* Add some space below the container */
+  margin-bottom: 10px; /* Space between the user and the buttons */
 }
 
-/* #user remains on the left */
+/* Align the #user text */
 #user {
-  flex: 1; /* Ensures it takes up remaining space */
+  flex: 1; /* Allow #user to take up available space */
+  margin-right: 10px; /* Space between #user and the right elements */
 }
 
-/* Container for WiFiStatus and LogoutButton */
+/* Right-aligned container for WiFiStatus and LogoutButton */
 .right-container {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: flex-end; /* Align elements to the far right */
-  margin-left: 20px; /* Adds space between the left and right sections */
+  flex-direction: column; /* Stack WiFiStatus and LogoutButton vertically */
+  align-items: flex-end; /* Align to the far right */
+  margin-left: auto; /* Ensure it moves to the far right */
 }
 
-/* Optional: Add space between WiFiStatus and LogoutButton */
+/* Optional: Space between WiFiStatus and LogoutButton */
 .right-container > * {
-  margin-bottom: 10px; /* Adds space between the elements */
+  margin-bottom: 10px; /* Adds space between elements */
 }
 
-/* To ensure the logout button is properly displayed */
+/* Optional: Styling for the LogoutButton if needed */
 .logout-button {
-  margin-top: 10px; /* Adjust spacing */
+  margin-top: 10px;
 }

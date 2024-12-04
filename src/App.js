@@ -41,7 +41,7 @@ const App = () => {
         <div id="user-container">
           <p id="user"></p>
           
-          {/* WiFiStatus and LogoutButton Container */}
+          {/* Right-aligned section containing WiFiStatus and LogoutButton */}
           <div className="right-container">
             <WiFiStatus /> {/* Dynamically display WiFi status */}
             <LogoutButton />
