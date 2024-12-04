@@ -40,13 +40,15 @@ const App = () => {
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <p id="user"></p>
+          <div className="left-section">
+            <p id="user"></p>
+          </div>
           <div className="right-section">
             <WiFiStatus />
             <LogoutButton id="logoutButton" />
           </div>
-          <p id="message">{balanceMessage}</p>
         </div>
+        <p id="message">{balanceMessage}</p>
         
         <button id="loadProduct">商品の読み込み</button>
 

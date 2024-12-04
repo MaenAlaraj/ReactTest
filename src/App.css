@@ -37,17 +37,25 @@
   }
 }
 
-/* Align user information and move WiFiStatus to the far right */
+/* Align user-container with left and right sections */
 #user-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 20px;
 }
 
+/* Left section styling for user information */
+.left-section {
+  text-align: left;
+}
+
+/* Right section styling for WiFiStatus and LogoutButton */
 .right-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* Align items to the far right */
-  margin-right: 20px; /* Add spacing from the screen edge */
+  align-items: flex-end; /* Align to the far right */
+  gap: 10px; /* Add spacing between items */
 }
 
 #logoutButton {
