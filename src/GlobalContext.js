@@ -15,9 +15,10 @@ export const GlobalProvider = ({ children }) => {
   const [AccountNo, setAccountNo] = useState("");
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
+  const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
 
   const errorsSubstring = "エラー";
-  const items = [];
+  const [items, setItems] = useState([]); // Change items to state variable
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
   const payment_terminalID = "";
@@ -60,6 +61,8 @@ export const GlobalProvider = ({ children }) => {
         payment_terminalID,
         Balance,
         setBalance,
+        balanceMessage, // Expose balanceMessage
+        setBalanceMessage, // Expose setBalanceMessage
         Cat_List,
       }}
     >
