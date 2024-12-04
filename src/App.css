@@ -71,8 +71,9 @@
 }
 
 #loadProduct {
-  margin-top: 20px;
-  text-align: left;
+  display: block; /* Ensures it's treated as a block-level element */
+  margin-left: 0; /* Pushes the button to the far left */
+  text-align: left; /* Aligns the button text to the left */
 }
 
 .scroll-container {
