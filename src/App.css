@@ -70,16 +70,12 @@
   text-align: left;
 }
 
-#loadProduct {
-  align-self: flex-start; /* Ensures the button aligns to the left regardless of parent alignment */
-  margin-left: 0; /* Removes any margin that may push it to the right */
-}
 
 .scroll-container {
   max-height: 300px;
   overflow-y: auto;
   margin-top: 20px;
-  width: 90%;
+  width:110%;
   border: 1px solid #ccc;
 }
 
