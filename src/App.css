@@ -37,39 +37,21 @@
   }
 }
 
-.auth-container {
-  padding: 20px;
-}
-
-#user-container {
+/* Align user information and WiFiStatus in a single row */
+.user-details-row {
   display: flex;
-  justify-content: flex-start; /* Ensure the children elements are aligned from left to right */
+  justify-content: space-between; /* Push WiFiStatus to the right */
   align-items: center;
-  width: 100%; /* Full width */
+  width: 100%;
 }
 
+/* Add spacing between WiFiStatus, LogoutButton, and message */
 #logoutButton {
-  margin-left: auto; /* This pushes the logout button to the far right */
-  display: flex;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
   margin-top: 10px;
+  text-align: right;
 }
 
-.scroll-container {
-  margin-top: 20px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-#productList {
-  list-style-type: none;
-  padding: 0;
-}
-
-#productList .header-item {
-  font-weight: bold;
+#message {
+  margin-top: 15px;
+  text-align: left;
 }
