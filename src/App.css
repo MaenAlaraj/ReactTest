@@ -59,6 +59,7 @@
   align-items: flex-end;   /* Align items to the far right */
   justify-content: flex-start;
   margin-left: auto; /* Push the container to the far right */
+  width: auto;  /* Ensure container does not take up full width */
 }
 
 /* Add spacing between WiFiStatus and LogoutButton */
