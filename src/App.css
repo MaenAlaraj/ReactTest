@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.auth-container {
+  padding: 20px;
+}
+
+#user-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#user-container #logoutButton {
+  margin-left: auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.scroll-container {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#productList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#productList .header-item {
+  font-weight: bold;
+}

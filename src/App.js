@@ -41,7 +41,7 @@ const App = () => {
         <div id="user-container">
           <p id="user"></p>
           <WiFiStatus /> {/* Dynamically display WiFi status */}
-          <LogoutButton />
+          <LogoutButton id="logoutButton" /> {/* Move LogoutButton to the far right */}
           <p id="message">{balanceMessage}</p> {/* Display the balance message */}
         </div>
         
