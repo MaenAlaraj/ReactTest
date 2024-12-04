@@ -8,7 +8,7 @@ const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
   
   // Call the hook inside the component
-  const { updateBalance } = useSetBalance();  
+  const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleFace = async () => {
     console.log("[REACT Console]:「顔認証」ボタンがクリックされました。");
@@ -61,7 +61,7 @@ const FaceButton = () => {
           document.getElementById("mainContainer").style.display = "block";
 
           // Here, call the updateBalance function
-          updateBalance(userID); // Corrected function call
+          setBalance(userID);  // Call setBalance with the userID
         }
       } else if (numberOfFaces > 1) {
         setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");
