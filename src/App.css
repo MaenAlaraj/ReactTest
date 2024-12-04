@@ -40,7 +40,7 @@
 /* Container for user info and right-aligned elements */
 #user-container {
   display: flex;
-  justify-content: space-between; /* Spread user info and right-side elements */
+  justify-content: space-between; /* Spread out user info and right-side elements */
   align-items: center;
   width: 100%;
   padding: 10px;
@@ -58,6 +58,7 @@
   flex-direction: column;  /* Stack items vertically */
   align-items: flex-end;   /* Align items to the far right */
   justify-content: flex-start;
+  margin-left: auto; /* Push the container to the far right */
 }
 
 /* Add spacing between WiFiStatus and LogoutButton */
@@ -65,17 +66,7 @@
   margin-bottom: 10px;
 }
 
-/* Add some space for the buttons under right container */
-#right-container {
-  margin-left: auto;  /* Push the container to the right */
-}
-
-/* Styling for LogoutButton if needed */
-.logout-button {
-  margin-top: 10px;
-}
-
-/* Align remaining content under user section */
+/* Ensure elements like message, buttons, etc., are properly spaced */
 #message {
   margin-top: 20px;
   font-size: 16px;
@@ -93,7 +84,6 @@
   margin-top: 10px;
 }
 
-/* Ensure payment button has space too */
 .vertical {
   margin-top: 20px;
 }

@@ -39,12 +39,12 @@ const App = () => {
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <p id="user"></p>
+          <p id="user">User Information</p>
 
-          {/* Container for WiFiStatus and LogoutButton */}
+          {/* Right-aligned container for WiFiStatus and LogoutButton */}
           <div id="right-container">
             <WiFiStatus /> {/* WiFi status aligned with user */}
-            <LogoutButton /> {/* LogoutButton under WiFiStatus */}
+            <LogoutButton /> {/* LogoutButton below WiFiStatus */}
           </div>
         </div>
         
