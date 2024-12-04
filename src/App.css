@@ -69,3 +69,22 @@
   margin-top: 15px;
   text-align: left;
 }
+
+#loadProduct {
+  margin-top: 20px;
+}
+
+.scroll-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 20px;
+  width: 90%;
+  border: 1px solid #ccc;
+}
+
+.header-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f4f4f4;
+}

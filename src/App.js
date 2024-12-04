@@ -40,12 +40,6 @@ const App = () => {
 
 
 
-
-
-  
-
-
-
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
@@ -54,8 +48,8 @@ const App = () => {
             <WiFiStatus /> {/* WiFi status aligned with user */}
             <LogoutButton id="logoutButton" /> {/* Logout button below WiFi status */}
           </div>
-          <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
         </div>
+        <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
 
 
 
