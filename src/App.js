@@ -1,19 +1,24 @@
-// src/App.js
+import React, { useEffect } from "react";
+import "./style.css";
+import { useSetBalance } from "./useSetBalance";
 
-import React from "react";
-import './style.css';
-import { useBalance } from "./useSetBalance";
-
-
-import RegisterFaceButton from './components/RegisterFaceButton';
-import FaceButton from './components/FaceButton';
-import QRButton from './components/QrButton';
-import LoadProduct from './components/LoadProductButton';
-import Payment from './components/PaymentButton';
-import LogoutButton from './components/LogoutButton';
-import WiFiStatus from './components/WiFiStatus';
+import RegisterFaceButton from "./components/RegisterFaceButton";
+import FaceButton from "./components/FaceButton";
+import QRButton from "./components/QrButton";
+import LoadProduct from "./components/LoadProductButton";
+import Payment from "./components/PaymentButton";
+import LogoutButton from "./components/LogoutButton";
+import WiFiStatus from "./components/WiFiStatus";
 
 const App = () => {
+  const { balanceMessage, userID, setBalance } = useSetBalance(); // Destructure values from the hook
+
+  useEffect(() => {
+    // Example: Simulate calling setBalance in useSetBalance.js
+    const exampleUserID = userID;
+    setBalance(exampleUserID); // Call the function with a userID
+  }, [setBalance]);
+
   return (
     <div className="App">
       {/* Authentication Container */}
@@ -38,12 +43,12 @@ const App = () => {
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <p id="user"></p>
-          <WiFiStatus /> {/* Dynamically display WiFi status */}
+          <p id="user">UserID: {userID}</p> {/* Display userID */}
+          <WiFiStatus />
           <LogoutButton />
-          <p id="message"></p> 
+          <p id="message">{balanceMessage}</p> {/* Display balanceMessage */}
         </div>
-        
+
         <button id="loadProduct">商品の読み込み</button>
 
         <div className="scroll-container">
