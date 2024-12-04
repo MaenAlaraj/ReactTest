@@ -18,7 +18,7 @@ export const GlobalProvider = ({ children }) => {
   const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
 
   const errorsSubstring = "エラー";
-  const [items, setItems] = useState([]); // Change items to state variable
+  const items = [];
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
   const payment_terminalID = "";
