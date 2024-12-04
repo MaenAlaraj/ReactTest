@@ -40,28 +40,27 @@
 /* Align #user-container using flexbox */
 #user-container {
   display: flex;
-  justify-content: flex-start; /* Align elements to the left */
+  justify-content: space-between; /* Space out user info and right-aligned section */
   align-items: center;
   width: 100%;
-  margin-bottom: 10px; /* Space between the user and the buttons */
+  margin-bottom: 10px;
 }
 
 /* Align the #user text */
 #user {
   flex: 1; /* Allow #user to take up available space */
-  margin-right: 10px; /* Space between #user and the right elements */
+  margin-right: 10px;
 }
 
 /* Right-aligned container for WiFiStatus and LogoutButton */
-.right-container {
+#right-container {
   display: flex;
   flex-direction: column; /* Stack WiFiStatus and LogoutButton vertically */
-  align-items: flex-end; /* Align to the far right */
-  margin-left: auto; /* Ensure it moves to the far right */
+  align-items: flex-end; /* Align items to the far right */
 }
 
 /* Optional: Space between WiFiStatus and LogoutButton */
-.right-container > * {
+#right-container > * {
   margin-bottom: 10px; /* Adds space between elements */
 }
 
