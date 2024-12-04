@@ -40,8 +40,13 @@ const App = () => {
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
           <p id="user"></p>
-          <WiFiStatus /> {/* Dynamically display WiFi status */}
-          <LogoutButton />
+          
+          {/* WiFiStatus and LogoutButton Container */}
+          <div className="right-container">
+            <WiFiStatus /> {/* Dynamically display WiFi status */}
+            <LogoutButton />
+          </div>
+          
           <p id="message">{balanceMessage}</p> {/* Display the balance message */}
         </div>
         
