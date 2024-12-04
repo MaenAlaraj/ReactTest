@@ -2,6 +2,7 @@
 
 import React from "react";
 import './style.css';
+import './App.css'; // Import the CSS file here
 import { useBalance } from "./useSetBalance";
 import { useGlobalContext } from "./GlobalContext";
 

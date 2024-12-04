@@ -43,14 +43,14 @@
 
 #user-container {
   display: flex;
-  justify-content: space-between;  /* Ensures space between elements */
+  justify-content: flex-start; /* Ensure the children elements are aligned from left to right */
   align-items: center;
-  width: 100%; /* Ensures the container takes full width */
+  width: 100%; /* Full width */
 }
 
 #logoutButton {
-  margin-left: auto; /* This will push the button to the far right */
-  display: flex; /* Ensure the button behaves as flex */
+  margin-left: auto; /* This pushes the logout button to the far right */
+  display: flex;
 }
 
 .button-container {
