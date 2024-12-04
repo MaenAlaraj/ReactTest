@@ -71,9 +71,8 @@
 }
 
 #loadProduct {
-  display: block; /* Ensures it's treated as a block-level element */
-  margin-left: 0; /* Pushes the button to the far left */
-  text-align: left; /* Aligns the button text to the left */
+  align-self: flex-start; /* Ensures the button aligns to the left regardless of parent alignment */
+  margin-left: 0; /* Removes any margin that may push it to the right */
 }
 
 .scroll-container {
