@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* Flexbox container for aligning the elements in #user-container */
+#user-container {
+  display: flex;
+  justify-content: space-between; /* Align user info and WiFi status */
+  align-items: center; /* Vertically center-align the items */
+  width: 100%; /* Ensure it takes up the full width */
+}
+
+/* Align user info to the left */
+#user {
+  margin-right: auto; /* Pushes the user info to the left */
+}
+
+/* Container for WiFiStatus and LogoutButton, aligned to the right */
+.WiFiLogoutContainer {
+  display: flex;
+  flex-direction: column; /* Arrange WiFiStatus and LogoutButton vertically */
+  align-items: flex-end; /* Align both elements to the far right */
+}
+
+/* Optional: Add space between WiFiStatus and LogoutButton */
+.WiFiLogoutContainer > * {
+  margin-bottom: 10px;
+}
