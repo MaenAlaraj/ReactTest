@@ -3,7 +3,7 @@
 import React from "react";
 import './style.css';
 import { useBalance } from "./useSetBalance";
-
+import { useGlobalContext } from "./GlobalContext";
 
 import RegisterFaceButton from './components/RegisterFaceButton';
 import FaceButton from './components/FaceButton';
@@ -14,6 +14,7 @@ import LogoutButton from './components/LogoutButton';
 import WiFiStatus from './components/WiFiStatus';
 
 const App = () => {
+  const { balanceMessage } = useGlobalContext();
   return (
     <div className="App">
       {/* Authentication Container */}
@@ -41,7 +42,7 @@ const App = () => {
           <p id="user"></p>
           <WiFiStatus /> {/* Dynamically display WiFi status */}
           <LogoutButton />
-          <p id="message"></p> 
+          <p id="message">{balanceMessage}</p> {/* Display the balance message */}
         </div>
         
         <button id="loadProduct">商品の読み込み</button>
