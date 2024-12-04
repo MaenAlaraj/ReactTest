@@ -45,10 +45,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%; /* Ensures the container takes full width */
 }
 
 #user-container #logoutButton {
-  margin-left: auto;
+  margin-left: auto;  /* This will move the button to the far right */
 }
 
 .button-container {
