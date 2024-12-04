@@ -1,9 +1,5 @@
-// src/App.js
-
 import React from "react";
-import './style.css';
-import './App.css'; // Import the CSS file here
-import { useBalance } from "./useSetBalance";
+import './App.css'; // Import the CSS file
 import { useGlobalContext } from "./GlobalContext";
 
 import RegisterFaceButton from './components/RegisterFaceButton';
@@ -40,10 +36,12 @@ const App = () => {
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <p id="user"></p>
-          <WiFiStatus /> {/* Dynamically display WiFi status */}
-          <LogoutButton id="logoutButton" /> {/* Move LogoutButton to the far right */}
-          <p id="message">{balanceMessage}</p> {/* Display the balance message */}
+          <p id="user"></p> {/* User information */}
+          <div className="user-details-container">
+            <WiFiStatus /> {/* WiFi status aligned with user */}
+            <LogoutButton id="logoutButton" /> {/* Logout button below WiFi status */}
+          </div>
+          <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
         </div>
         
         <button id="loadProduct">商品の読み込み</button>
