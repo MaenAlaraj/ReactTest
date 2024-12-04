@@ -4,7 +4,6 @@ import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your 
 import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
 import useSetBalance from '../useSetBalance'; // Correct the import path
 
-
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
   
@@ -60,10 +59,6 @@ const FaceButton = () => {
           // Transition to mainContainer
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
-
-
-           // Call removeItemsFromList after successful authentication
-           //removeItemsFromList();
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID
