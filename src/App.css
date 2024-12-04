@@ -40,14 +40,15 @@
 /* Flexbox layout for #user-container */
 #user-container {
   display: flex;
-  justify-content: space-between; /* Pushes items to the left and right */
-  align-items: center; /* Align items vertically */
-  width: 100%; /* Takes full width of the parent container */
+  justify-content: flex-start; /* Align items on the left */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px; /* Add some space below the container */
 }
 
 /* #user remains on the left */
 #user {
-  margin-right: auto; /* Ensures #user stays to the left */
+  flex: 1; /* Ensures it takes up remaining space */
 }
 
 /* Container for WiFiStatus and LogoutButton */
@@ -55,9 +56,15 @@
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   align-items: flex-end; /* Align elements to the far right */
+  margin-left: 20px; /* Adds space between the left and right sections */
 }
 
 /* Optional: Add space between WiFiStatus and LogoutButton */
 .right-container > * {
   margin-bottom: 10px; /* Adds space between the elements */
+}
+
+/* To ensure the logout button is properly displayed */
+.logout-button {
+  margin-top: 10px; /* Adjust spacing */
 }
