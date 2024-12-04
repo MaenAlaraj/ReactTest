@@ -40,11 +40,11 @@ const App = () => {
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
           <p id="user"></p>
-          
-          {/* Right-aligned container for WiFiStatus and LogoutButton */}
+
+          {/* Container for WiFiStatus and LogoutButton */}
           <div id="right-container">
-            <WiFiStatus /> {/* Dynamically display WiFi status */}
-            <LogoutButton />
+            <WiFiStatus /> {/* WiFi status aligned with user */}
+            <LogoutButton /> {/* LogoutButton under WiFiStatus */}
           </div>
           
           <p id="message">{balanceMessage}</p> {/* Display the balance message */}
