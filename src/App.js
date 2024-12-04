@@ -39,16 +39,12 @@ const App = () => {
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <p id="user">User Information</p>
-
-          {/* Right-aligned container for WiFiStatus and LogoutButton */}
-          <div id="right-container">
-            <WiFiStatus /> {/* WiFi status aligned with user */}
-            <LogoutButton /> {/* LogoutButton below WiFiStatus */}
-          </div>
+          <p id="user"></p>
+          <WiFiStatus /> {/* Dynamically display WiFi status */}
+          <LogoutButton />
+          <p id="message">{balanceMessage}</p> {/* Display the balance message */}
         </div>
         
-        <p id="message">{balanceMessage}</p>
         <button id="loadProduct">商品の読み込み</button>
 
         <div className="scroll-container">
