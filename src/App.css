@@ -37,18 +37,21 @@
   }
 }
 
-/* Align user information and WiFiStatus in a single row */
-.user-details-row {
+/* Align user information and move WiFiStatus to the far right */
+#user-container {
   display: flex;
-  justify-content: space-between; /* Push WiFiStatus to the right */
-  align-items: center;
-  width: 100%;
+  flex-direction: column;
 }
 
-/* Add spacing between WiFiStatus, LogoutButton, and message */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align items to the far right */
+  margin-right: 20px; /* Add spacing from the screen edge */
+}
+
 #logoutButton {
   margin-top: 10px;
-  text-align: right;
 }
 
 #message {

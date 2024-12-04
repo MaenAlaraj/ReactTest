@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from "react";
 import './style.css';
 import './App.css'; // Import the CSS file here
@@ -13,6 +15,7 @@ import WiFiStatus from './components/WiFiStatus';
 
 const App = () => {
   const { balanceMessage } = useGlobalContext();
+
   return (
     <div className="App">
       {/* Authentication Container */}
@@ -37,12 +40,12 @@ const App = () => {
       {/* Main Content After Successful Authentication */}
       <div id="mainContainer" style={{ display: "none" }}>
         <div id="user-container">
-          <div className="user-details-row">
-            <p id="user"></p>
-            <WiFiStatus /> {/* Align WiFiStatus to the right, next to the user */}
+          <p id="user"></p>
+          <div className="right-section">
+            <WiFiStatus />
+            <LogoutButton id="logoutButton" />
           </div>
-          <LogoutButton id="logoutButton" /> {/* Place LogoutButton below WiFiStatus */}
-          <p id="message">{balanceMessage}</p> {/* Place message below LogoutButton */}
+          <p id="message">{balanceMessage}</p>
         </div>
         
         <button id="loadProduct">商品の読み込み</button>
