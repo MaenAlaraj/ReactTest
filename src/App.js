@@ -13,6 +13,7 @@ import Payment from './components/PaymentButton';
 import LogoutButton from './components/LogoutButton';
 import WiFiStatus from './components/WiFiStatus';
 
+
 const App = () => {
   const { balanceMessage } = useGlobalContext();
 
@@ -23,7 +24,9 @@ const App = () => {
         <p>GC Mall</p>
         <p>顔またはGCのQRを読み込ませてください</p>
         <div className="button-container">
+        <useGlobalContext>
           <FaceButton />
+        </useGlobalContext>
           <QRButton />
         </div>
         <div id="bottomLeftText">

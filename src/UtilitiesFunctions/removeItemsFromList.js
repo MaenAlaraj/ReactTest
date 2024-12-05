@@ -2,25 +2,30 @@
 import { useGlobalContext } from "../GlobalContext";
 
 const useRemoveItemsFromList = () => {
-  const { items, setItems, setTotal } = useGlobalContext(); // Access context values
+  const { setItems, setTotal } = useGlobalContext(); // Access context values
 
   const removeItemsFromList = () => {
-    const productList = document.getElementById('productList');
-    const listItems = productList.querySelectorAll('li');
+    const productList = document.getElementById("productList");
+
+    if (!productList) {
+      console.error("Element with ID 'productList' not found.");
+      return;
+    }
+
+    const listItems = productList.querySelectorAll("li");
 
     listItems.forEach(listItem => {
-      // Skip if the list item is a header
-      if (listItem.classList.contains('header-item')) {
+      if (listItem.classList.contains("header-item")) {
+        // Skip header items
         return;
       }
-      productList.removeChild(listItem); // Remove the list item from the DOM
+      productList.removeChild(listItem);
     });
-    console.log("useRemoveItemsFromList[Before setItems]");
-    // Clear the items array
-    //setItems([]); // Update the global items array to be empty
-    console.log("useRemoveItemsFromList[After setItems]");
-    // Reset the total amount displayed
-    setTotal(0); // Reset the total
+
+    setItems([]); // Clear the global items array
+    console.log("Items removed and global items array cleared.");
+
+    setTotal(0)
   };
 
   return removeItemsFromList;
