@@ -22,7 +22,7 @@ const useRemoveItemsFromList = () => {
       productList.removeChild(listItem);
     });
 
-    setItems([]); // Clear the global items array
+    //setItems([]); // Clear the global items array
     console.log("Items removed and global items array cleared.");
 
     setTotal(0)
