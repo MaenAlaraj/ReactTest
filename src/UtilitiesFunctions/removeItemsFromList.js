@@ -17,10 +17,10 @@ const useRemoveItemsFromList = () => {
     });
     console.log("useRemoveItemsFromList[Before setItems]");
     // Clear the items array
-    setItems([]); // Update the global items array to be empty
+    //setItems([]); // Update the global items array to be empty
     console.log("useRemoveItemsFromList[After setItems]");
     // Reset the total amount displayed
-    setTotal(0); // Reset the total
+    //setTotal(0); // Reset the total
   };
 
   return removeItemsFromList;
