@@ -14,6 +14,7 @@ import LogoutButton from './components/LogoutButton';
 import WiFiStatus from './components/WiFiStatus';
 
 
+
 const App = () => {
   const { balanceMessage } = useGlobalContext();
 
