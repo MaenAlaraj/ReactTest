@@ -3,13 +3,13 @@ import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
 import useSetBalance from '../useSetBalance'; // Correct the import path
-import removeItemsFromList from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
+import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
 
 
 
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
-  const removeItemsFromList = removeItemsFromList(); // Call the custom hook
+  const removeItemsFromList = useRemoveItemsFromList (); // Call the custom hook
   
   // Call the hook inside the component
   const setBalance = useSetBalance(); // Ensure it's a function
