@@ -11,14 +11,21 @@ export const GlobalProvider = ({ children }) => {
   const [sbuser, setSbuser] = useState("93929" + "09000000013");
   const [extractedUserID, setExtractedUserID] = useState("");
   const [userBeforePrefix, setUserBeforePrefix] = useState("");
-  const [total, setTotal] = useState(0);
+  
+  const [total, setTotal] = useState(0); // Total amount state
+  const [items, setItems] = useState([]); // Items array state
+
+
+
+
+
   const [AccountNo, setAccountNo] = useState("");
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
   const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
 
   const errorsSubstring = "エラー";
-  const items = [];
+  
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
   const payment_terminalID = "";

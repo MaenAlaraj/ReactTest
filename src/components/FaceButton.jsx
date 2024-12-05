@@ -3,10 +3,13 @@ import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
 import useSetBalance from '../useSetBalance'; // Correct the import path
+import removeItemsFromList from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
+
 
 
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
+  const removeItemsFromList = removeItemsFromList(); // Call the custom hook
   
   // Call the hook inside the component
   const setBalance = useSetBalance(); // Ensure it's a function
@@ -59,12 +62,11 @@ const FaceButton = () => {
 
           // Transition to mainContainer
           document.getElementById("transitContainer").style.display = "none";
-          document.getElementById("authContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
 
 
            // Call removeItemsFromList after successful authentication
-           //removeItemsFromList();
+          removeItemsFromList(); // Call the custom hook to remove items and reset totals
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID

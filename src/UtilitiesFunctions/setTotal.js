@@ -1,22 +1,20 @@
 // src/UtilitiesFunctions/setTotal.js
+import { useGlobalContext } from "../GlobalContext";
 
-let items = []; // Ensure this array is initialized and managed properly in the global scope or context
-let total = 0;
+const useSetTotal = () => {
+  const { items, setTotal } = useGlobalContext(); // Get the context values
 
-export function setTotal() {
-  total = 0;
+  const calculateTotal = () => {
+    let total = 0;
+    for (const item of items) {
+      total += item.price; // Summing up the prices
+    }
 
-  // Calculate the total price
-  for (const item of items) {
-    const price = item.price || 0; // Ensure that price is a number
-    total += price;
-  }
+    setTotal(total); // Update the total in the global context
+    document.getElementById('totalAmount').innerText = `トータル: ${total}pt`; // Display the total
+  };
 
-  // Update the total amount in the DOM
-  const totalAmountElement = document.getElementById('totalAmount');
-  if (totalAmountElement) {
-    totalAmountElement.innerText = `トータル: ${total} pt`;
-  } else {
-    console.warn("Element with ID 'totalAmount' not found!");
-  }
-}
+  return calculateTotal;
+};
+
+export default useSetTotal;
