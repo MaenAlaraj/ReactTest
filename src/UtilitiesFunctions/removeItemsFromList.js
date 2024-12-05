@@ -15,10 +15,10 @@ const useRemoveItemsFromList = () => {
       }
       productList.removeChild(listItem); // Remove the list item from the DOM
     });
-
+    console.log("useRemoveItemsFromList[Before setItems]");
     // Clear the items array
     setItems([]); // Update the global items array to be empty
-
+    console.log("useRemoveItemsFromList[After setItems]");
     // Reset the total amount displayed
     setTotal(0); // Reset the total
   };
