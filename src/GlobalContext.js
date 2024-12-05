@@ -57,6 +57,7 @@ export const GlobalProvider = ({ children }) => {
         userBeforePrefix,
         setUserBeforePrefix,
         items,
+        setItems,
         gcMall_code,
         header_prefix,
         total,

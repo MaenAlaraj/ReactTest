@@ -3,6 +3,8 @@ import { useGlobalContext } from "../GlobalContext";
 
 const useRemoveItemsFromList = () => {
   const { setItems, setTotal } = useGlobalContext(); // Access context values
+  console.log("setItems:", setItems); // Check if it's defined
+
 
   const removeItemsFromList = () => {
     const productList = document.getElementById("productList");
@@ -22,7 +24,7 @@ const useRemoveItemsFromList = () => {
       productList.removeChild(listItem);
     });
 
-    //setItems([]); // Clear the global items array
+    setItems([]); // Clear the global items array
     console.log("Items removed and global items array cleared.");
 
     setTotal(0)
