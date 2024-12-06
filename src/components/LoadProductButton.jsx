@@ -19,27 +19,27 @@ const LoadProductButton = ({ onAddProduct }) => {
 
   const handleLoadProduct = async () => {
     console.log("Starting product load...");
-
-    let extractedBalance = null; // Declare the variable with a wider scope
+  
+    let extractedBalance = null;
     console.log("Balance message:", balanceMessage);
   
-      // Regular expression to extract the value of ○○
-      const match = balanceMessage.match(/pt残高:(\d+)pt/);
-      if (match && match[1]) {
-        extractedBalance = parseInt(match[1], 10);
-        console.log("Extracted Balance:", extractedBalance);
-      } else {
-        console.log("Failed to extract balance from message.");
-      }
-
-    const qrstring = await window.QRInterface.get_QRInfo();
-    console.log("QR Code string received:", qrstring);
+    const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    if (match && match[1]) {
+      extractedBalance = parseInt(match[1], 10);
+      console.log("Extracted Balance:", extractedBalance);
+    } else {
+      console.log("Failed to extract balance from message.");
+    }
   
-    if (qrstring !== "Scanner stopped") {
-      const qrstr_list = qrstring.split(",");
-      console.log("Parsed QR Code list:", qrstr_list);
+    try {
+      const qrstring = await window.QRInterface.get_QRInfo();
+      console.log("QR Code string received:", qrstring);
   
-      if (qrstr_list.length === 6 && isPositiveInteger(qrstr_list[2])) {
+      if (qrstring !== "Scanner stopped") {
+        const qrstr_list = qrstring.split(",");
+        console.log("Parsed QR Code list:", qrstr_list);
+  
+        if (qrstr_list.length === 6 && isPositiveInteger(qrstr_list[2])) {
           const item = {
             index: items.length,
             seller: qrstr_list[0],
@@ -48,24 +48,32 @@ const LoadProductButton = ({ onAddProduct }) => {
             category: qrstr_list[3],
             date: qrstr_list[4],
           };
-
+  
           if (total + item.price <= extractedBalance) {
-            console.log("item.price:", item.price);
-            console.log("total:", total);
+            console.log("Adding item:", item);
   
             setItems((prevItems) => [...prevItems, item]);
-            const newTotal = total + item.price;
-            console.log("newTotal:", newTotal);
-            setTotal(newTotal);
-            onAddProduct(item, newTotal); // Pass the new item and updated total
+  
+            setTotal((prevTotal) => {
+              const newTotal = prevTotal + item.price;
+              console.log("Updated total:", newTotal);
+              return newTotal;
+            });
+  
+            onAddProduct(item, total + item.price);
           } else {
-            setMessage('残高が足りません。');
+            setMessage("残高が足りません。");
           }
         } else {
-          setMessage('商品QRではないものが読み込まれました。');
+          setMessage("商品QRではないものが読み込まれました。");
         }
+      }
+    } catch (error) {
+      console.error("Error loading product:", error);
+      setMessage("QRコードの読み取り中にエラーが発生しました。");
     }
   };
+  
   
 
   return (
