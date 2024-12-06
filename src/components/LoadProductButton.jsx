@@ -23,14 +23,14 @@ const LoadProductButton = () => {
   
     // Extract balance from <p id="message">
     //const messageElement = document.getElementById('message');
-    const messageElement = balanceMessage
-    console.log("Message Element:", messageElement);
-    if (messageElement) {
-      const balanceMessageD = messageElement.textContent;
-      console.log("Balance message:", balanceMessageD);
+    //const messageElement = balanceMessage
+   // console.log("Message Element:", messageElement);
+   // if (messageElement) {
+      //const balanceMessageD = messageElement.textContent;
+      console.log("Balance message:", balanceMessage);
   
       // Regular expression to extract the value of ○○
-      const match = balanceMessageD.match(/pt残高:(\d+)pt/);
+      const match = balanceMessage.match(/pt残高:(\d+)pt/);
       if (match && match[1]) {
         const extractedBalance = parseInt(match[1], 10);
         console.log("Extracted Balance:", extractedBalance);
@@ -38,9 +38,9 @@ const LoadProductButton = () => {
       } else {
         console.log("Failed to extract balance from message.");
       }
-    } else {
-      console.log("Message element not found.");
-    }
+   // } else {
+     // console.log("Message element not found.");
+    //}
   
     const qrstring = await window.QRInterface.get_QRInfo();
     console.log("QR Code string received:", qrstring);
