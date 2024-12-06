@@ -67,7 +67,8 @@ const App = () => {
           </button>
         )}
 
-
+        {/* Render the LoadProductButton component */}
+        {showLoadProductButton && <LoadProductButton />}
 
         
 
