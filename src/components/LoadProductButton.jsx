@@ -9,6 +9,7 @@ const LoadProductButton = () => {
     total,
     setTotal,
     Balance,
+    balanceMessage,
     setBalance,
     setMessage, // Assuming setMessage is also part of the context
   } = useGlobalContext();
@@ -21,14 +22,15 @@ const LoadProductButton = () => {
     console.log("Starting product load...");
   
     // Extract balance from <p id="message">
-    const messageElement = document.getElementById('message');
+    //const messageElement = document.getElementById('message');
+    const messageElement = balanceMessage
     console.log("Message Element:", messageElement);
     if (messageElement) {
-      const balanceMessage = messageElement.textContent;
-      console.log("Balance message:", balanceMessage);
+      const balanceMessageD = messageElement.textContent;
+      console.log("Balance message:", balanceMessageD);
   
       // Regular expression to extract the value of ○○
-      const match = balanceMessage.match(/pt残高:(\d+)pt/);
+      const match = balanceMessageD.match(/pt残高:(\d+)pt/);
       if (match && match[1]) {
         const extractedBalance = parseInt(match[1], 10);
         console.log("Extracted Balance:", extractedBalance);
