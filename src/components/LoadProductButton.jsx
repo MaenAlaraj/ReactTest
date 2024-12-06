@@ -1,45 +1,33 @@
+// src/components/LoadProductButton.jsx
 import React, { useState, useContext } from 'react';
 import { useGlobalContext } from '../GlobalContext'; // Import the context
 
-const LoadProductButton = () => {
-  // Access the global context values
-  const {
-    items,
-    setItems,
-    total,
-    setTotal,
-    Balance,
-    balanceMessage,
-    setBalance,
-    setMessage, // Assuming setMessage is also part of the context
-  } = useGlobalContext();
-
+const LoadProductButton = ({ setProductList, setTotalAmount }) => {
+  const { items, setItems, total, setTotal, balanceMessage, setMessage } = useGlobalContext();
   const [message, setLocalMessage] = useState('');
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
 
   const handleLoadProduct = async () => {
     console.log("Starting product load...");
-
-    let extractedBalance = null; // Declare the variable with a wider scope
+    let extractedBalance = null;
     console.log("Balance message:", balanceMessage);
-  
-      // Regular expression to extract the value of ○○
-      const match = balanceMessage.match(/pt残高:(\d+)pt/);
-      if (match && match[1]) {
-        extractedBalance = parseInt(match[1], 10);
-        console.log("Extracted Balance:", extractedBalance);
-      } else {
-        console.log("Failed to extract balance from message.");
-      }
+
+    const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    if (match && match[1]) {
+      extractedBalance = parseInt(match[1], 10);
+      console.log("Extracted Balance:", extractedBalance);
+    } else {
+      console.log("Failed to extract balance from message.");
+    }
 
     const qrstring = await window.QRInterface.get_QRInfo();
     console.log("QR Code string received:", qrstring);
-  
+
     if (qrstring !== "Scanner stopped") {
       const qrstr_list = qrstring.split(",");
       console.log("Parsed QR Code list:", qrstr_list);
-  
+
       if (qrstr_list.length === 6) {
         if (!isPositiveInteger(qrstr_list[2])) {
           console.log("Invalid QR Code detected, not a positive integer.");
@@ -54,45 +42,24 @@ const LoadProductButton = () => {
             date: qrstr_list[4],
           };
           console.log("Item object created:", item);
-  
+
           const price = item.price;
           console.log("Current total:", total, "Price of new item:", price, "Balance:", extractedBalance);
-  
+
           if (total + price < extractedBalance) {
             setItems((prevItems) => {
               const newItems = [...prevItems, item];
-              console.log("Items updated:", newItems);
+              setProductList(newItems);  // Update product list in App.js
               return newItems;
             });
-  
+
             setTotal((prevTotal) => {
               const newTotal = prevTotal + price;
-              console.log("Total updated:", newTotal);
+              setTotalAmount(newTotal);  // Update total amount in App.js
               return newTotal;
             });
-  
-            document.getElementById('totalAmount').innerText = `トータル: ${total + price} pt`;
-  
-            const listItem = (
-              <li key={item.index}>
-                <span>{item.seller}</span>
-                <span>{item.product}</span>
-                <span>{item.price} pt</span>
-                <span>{item.category}</span>
-                <span>{item.date}</span>
-                <div
-                  className="remove-item"
-                  onClick={() => removeItem(item, price)}
-                >
-                  ❌
-                </div>
-              </li>
-            );
-  
-            const list = document.getElementById('productList');
-            list.appendChild(listItem);
-            document.getElementById('loadProduct').disabled = true;
-            console.log("Product added to list and button disabled.");
+
+            console.log("Product added to list.");
           } else {
             console.log("Insufficient balance.");
             setMessage("残高が足りません。");
@@ -104,26 +71,21 @@ const LoadProductButton = () => {
       }
     }
   };
-  
 
   const removeItem = (item, price) => {
     console.log("Removing item:", item);
 
     setItems((prevItems) => {
       const updatedItems = prevItems.filter((i) => i.index !== item.index);
-      console.log("Items after removal:", updatedItems);
+      setProductList(updatedItems);  // Update product list after removal
       return updatedItems;
     });
 
     setTotal((prevTotal) => {
       const newTotal = prevTotal - price;
-      console.log("Total after removal:", newTotal);
+      setTotalAmount(newTotal);  // Update total amount after removal
       return newTotal;
     });
-
-    document.getElementById('totalAmount').innerText = `トータル: ${total - price} pt`;
-    document.getElementById('loadProduct').disabled = false;
-    console.log("Product removed and button re-enabled.");
   };
 
   return (
@@ -131,26 +93,7 @@ const LoadProductButton = () => {
       <button id="loadProduct" onClick={handleLoadProduct}>
         商品読み込み
       </button>
-      
-      <ul id="productList">
-        {items.map((item) => (
-          <li key={item.index}>
-            <span>{item.seller}</span>
-            <span>{item.product}</span>
-            <span>{item.price} pt</span>
-            <span>{item.category}</span>
-            <span>{item.date}</span>
-            <div
-              className="remove-item"
-              onClick={() => removeItem(item, item.price)}
-            >
-              ❌
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div id="totalAmount">トータル: {total} pt</div>
-      {message && <div className="show_message">{message}</div>}
+      <div>{message && <div className="show_message">{message}</div>}</div>
     </div>
   );
 };
