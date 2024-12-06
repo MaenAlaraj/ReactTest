@@ -22,6 +22,7 @@ const LoadProductButton = () => {
   
     // Extract balance from <p id="message">
     const messageElement = document.getElementById('message');
+    console.log("Message Element:", messageElement);
     if (messageElement) {
       const balanceMessage = messageElement.textContent;
       console.log("Balance message:", balanceMessage);
