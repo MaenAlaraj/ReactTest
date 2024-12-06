@@ -108,12 +108,6 @@ const App = () => {
       </div>
       <p id="Balance"></p>
       <div id="totalAmount">トータル: {totalAmount} pt</div>
-      <LoadProductButton
-        onAddProduct={(newItem, newTotal) => {
-          setProductList((prevList) => [...prevList, newItem]);
-          setTotalAmount(newTotal);
-        }}
-      />
     </div>
         <div className=".vertical">
           <Payment />
