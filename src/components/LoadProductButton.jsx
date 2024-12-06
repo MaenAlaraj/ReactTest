@@ -51,6 +51,7 @@ const LoadProductButton = ({ onAddProduct }) => {
 
           if (total + item.price <= extractedBalance) {
             console.log("item.price:", item.price);
+            console.log("total:", total);
   
             setItems((prevItems) => [...prevItems, item]);
             const newTotal = total + item.price;
