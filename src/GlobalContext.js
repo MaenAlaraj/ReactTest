@@ -17,12 +17,14 @@ export const GlobalProvider = ({ children }) => {
   const [productList, setProductList] = useState([]); // State for product list
 
 
-  const [totalAmount, setTotalAmount] = useState(0); // State for total amount
+
+
 
   const [AccountNo, setAccountNo] = useState("");
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
   const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
+  
 
   const errorsSubstring = "エラー";
   
@@ -45,9 +47,6 @@ export const GlobalProvider = ({ children }) => {
       value={{
         showSecondScreenFlg,
         setShowSecondScreenFlg,
-        setProductList,
-        totalAmount,
-        setTotalAmount,
         gckid,
         setGckid,
         prefix,
@@ -61,6 +60,8 @@ export const GlobalProvider = ({ children }) => {
         setUserBeforePrefix,
         items,
         setItems,
+        productList, // Expose productList
+        setProductList, // Expose setter for productList
         gcMall_code,
         header_prefix,
         total,

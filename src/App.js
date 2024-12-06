@@ -18,6 +18,8 @@ import WiFiStatus from './components/WiFiStatus';
 const App = () => {
   const { balanceMessage } = useGlobalContext();
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
+  const [productList, setProductList] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   return (
     <div className="App">
@@ -72,20 +74,47 @@ const App = () => {
 
         
 
-        <div className="scroll-container">
-          <ul id="productList">
-            <li className="header-item">
-              <span>コード</span>
-              <span>商品名</span>
-              <span>ポイント</span>
-              <span>CAT.</span>
-              <span>日付</span>
-              <span>削除</span>
+        <div>
+      <div className="scroll-container">
+        <ul id="productList">
+          <li className="header-item">
+            <span>コード</span>
+            <span>商品名</span>
+            <span>ポイント</span>
+            <span>CAT.</span>
+            <span>日付</span>
+            <span>削除</span>
+          </li>
+          {productList.map((item, index) => (
+            <li key={index}>
+              <span>{item.seller}</span>
+              <span>{item.product}</span>
+              <span>{item.price} pt</span>
+              <span>{item.category}</span>
+              <span>{item.date}</span>
+              <div
+                className="remove-item"
+                onClick={() => {
+                  // Remove item and update total
+                  setProductList((prevList) => prevList.filter((_, i) => i !== index));
+                  setTotalAmount((prevTotal) => prevTotal - item.price);
+                }}
+              >
+                ❌
+              </div>
             </li>
-          </ul>
-        </div>
-        <p id="Balance"></p>
-        <div id="totalAmount">トータル: 0pt</div>
+          ))}
+        </ul>
+      </div>
+      <p id="Balance"></p>
+      <div id="totalAmount">トータル: {totalAmount} pt</div>
+      <LoadProductButton
+        onAddProduct={(newItem, newTotal) => {
+          setProductList((prevList) => [...prevList, newItem]);
+          setTotalAmount(newTotal);
+        }}
+      />
+    </div>
         <div className=".vertical">
           <Payment />
         </div>
