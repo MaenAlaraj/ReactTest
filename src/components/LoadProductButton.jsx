@@ -19,14 +19,33 @@ const LoadProductButton = () => {
 
   const handleLoadProduct = async () => {
     console.log("Starting product load...");
-
+  
+    // Extract balance from <p id="message">
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+      const balanceMessage = messageElement.textContent;
+      console.log("Balance message:", balanceMessage);
+  
+      // Regular expression to extract the value of ○○
+      const match = balanceMessage.match(/pt残高:(\d+)pt/);
+      if (match && match[1]) {
+        const extractedBalance = parseInt(match[1], 10);
+        console.log("Extracted Balance:", extractedBalance);
+        Balance = extractedBalance; // Update the context variable Balance
+      } else {
+        console.log("Failed to extract balance from message.");
+      }
+    } else {
+      console.log("Message element not found.");
+    }
+  
     const qrstring = await window.QRInterface.get_QRInfo();
     console.log("QR Code string received:", qrstring);
-
+  
     if (qrstring !== "Scanner stopped") {
       const qrstr_list = qrstring.split(",");
       console.log("Parsed QR Code list:", qrstr_list);
-
+  
       if (qrstr_list.length === 6) {
         if (!isPositiveInteger(qrstr_list[2])) {
           console.log("Invalid QR Code detected, not a positive integer.");
@@ -41,25 +60,25 @@ const LoadProductButton = () => {
             date: qrstr_list[4],
           };
           console.log("Item object created:", item);
-
+  
           const price = item.price;
           console.log("Current total:", total, "Price of new item:", price, "Balance:", Balance);
-
+  
           if (total + price < Balance) {
             setItems((prevItems) => {
               const newItems = [...prevItems, item];
               console.log("Items updated:", newItems);
               return newItems;
             });
-
+  
             setTotal((prevTotal) => {
               const newTotal = prevTotal + price;
               console.log("Total updated:", newTotal);
               return newTotal;
             });
-
+  
             document.getElementById('totalAmount').innerText = `トータル: ${total + price} pt`;
-
+  
             const listItem = (
               <li key={item.index}>
                 <span>{item.seller}</span>
@@ -75,7 +94,7 @@ const LoadProductButton = () => {
                 </div>
               </li>
             );
-
+  
             const list = document.getElementById('productList');
             list.appendChild(listItem);
             document.getElementById('loadProduct').disabled = true;
@@ -91,6 +110,7 @@ const LoadProductButton = () => {
       }
     }
   };
+  
 
   const removeItem = (item, price) => {
     console.log("Removing item:", item);
