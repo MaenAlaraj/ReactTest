@@ -131,7 +131,7 @@ const LoadProductButton = () => {
       <button id="loadProduct" onClick={handleLoadProduct}>
         商品読み込み
       </button>
-      <div id="totalAmount">トータル: {total} pt</div>
+      
       <ul id="productList">
         {items.map((item) => (
           <li key={item.index}>
@@ -149,6 +149,7 @@ const LoadProductButton = () => {
           </li>
         ))}
       </ul>
+      <div id="totalAmount">トータル: {total} pt</div>
       {message && <div className="show_message">{message}</div>}
     </div>
   );
