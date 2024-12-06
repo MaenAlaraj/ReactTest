@@ -1,6 +1,6 @@
 // src/App.js
 
-import React from "react";
+import React, { useState } from "react";
 import './style.css';
 import './App.css'; // Import the CSS file here
 import { useGlobalContext } from "./GlobalContext";
@@ -8,7 +8,7 @@ import { useGlobalContext } from "./GlobalContext";
 import RegisterFaceButton from './components/RegisterFaceButton';
 import FaceButton from './components/FaceButton';
 import QRButton from './components/QrButton';
-import LoadProduct from './components/LoadProductButton';
+import LoadProductButton  from './components/LoadProductButton';
 import Payment from './components/PaymentButton';
 import LogoutButton from './components/LogoutButton';
 import WiFiStatus from './components/WiFiStatus';
@@ -17,6 +17,7 @@ import WiFiStatus from './components/WiFiStatus';
 
 const App = () => {
   const { balanceMessage } = useGlobalContext();
+  const [showLoadProductButton, setShowLoadProductButton] = useState(false);
 
   return (
     <div className="App">
@@ -59,7 +60,17 @@ const App = () => {
 
 
         
-        <button id="loadProduct">商品の読み込み</button>
+        {/* Button to show LoadProductButton */}
+        {!showLoadProductButton && (
+          <button id="loadProduct" onClick={() => setShowLoadProductButton(true)}>
+            商品の読み込み
+          </button>
+        )}
+
+        {/* Render the LoadProductButton component */}
+        {showLoadProductButton && <LoadProductButton />}
+
+        
 
         <div className="scroll-container">
           <ul id="productList">
