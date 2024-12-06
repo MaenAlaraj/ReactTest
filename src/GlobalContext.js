@@ -14,7 +14,6 @@ export const GlobalProvider = ({ children }) => {
   
   const [total, setTotal] = useState(0); // Total amount state
   const [items, setItems] = useState([]); // Items array state
-  const [productList, setProductList] = useState([]); // State for product list
 
 
 
@@ -24,7 +23,6 @@ export const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
   const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
-  
 
   const errorsSubstring = "エラー";
   
@@ -60,8 +58,6 @@ export const GlobalProvider = ({ children }) => {
         setUserBeforePrefix,
         items,
         setItems,
-        productList, // Expose productList
-        setProductList, // Expose setter for productList
         gcMall_code,
         header_prefix,
         total,

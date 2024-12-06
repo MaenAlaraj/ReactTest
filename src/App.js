@@ -74,41 +74,20 @@ const App = () => {
 
         
 
-        <div>
-      <div className="scroll-container">
-        <ul id="productList">
-          <li className="header-item">
-            <span>コード</span>
-            <span>商品名</span>
-            <span>ポイント</span>
-            <span>CAT.</span>
-            <span>日付</span>
-            <span>削除</span>
-          </li>
-          {productList.map((item, index) => (
-            <li key={index}>
-              <span>{item.seller}</span>
-              <span>{item.product}</span>
-              <span>{item.price} pt</span>
-              <span>{item.category}</span>
-              <span>{item.date}</span>
-              <div
-                className="remove-item"
-                onClick={() => {
-                  // Remove item and update total
-                  setProductList((prevList) => prevList.filter((_, i) => i !== index));
-                  setTotalAmount((prevTotal) => prevTotal - item.price);
-                }}
-              >
-                ❌
-              </div>
+        <div className="scroll-container">
+          <ul id="productList">
+            <li className="header-item">
+              <span>コード</span>
+              <span>商品名</span>
+              <span>ポイント</span>
+              <span>CAT.</span>
+              <span>日付</span>
+              <span>削除</span>
             </li>
-          ))}
-        </ul>
-      </div>
-      <p id="Balance"></p>
-      <div id="totalAmount">トータル: {totalAmount} pt</div>
-    </div>
+          </ul>
+        </div>
+        <p id="Balance"></p>
+        <div id="totalAmount">トータル: 0pt</div>
         <div className=".vertical">
           <Payment />
         </div>
