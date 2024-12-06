@@ -20,28 +20,19 @@ const LoadProductButton = () => {
 
   const handleLoadProduct = async () => {
     console.log("Starting product load...");
-  
-    // Extract balance from <p id="message">
-    //const messageElement = document.getElementById('message');
-    //const messageElement = balanceMessage
-   // console.log("Message Element:", messageElement);
-   // if (messageElement) {
-      //const balanceMessageD = messageElement.textContent;
-      console.log("Balance message:", balanceMessage);
+
+    let extractedBalance = null; // Declare the variable with a wider scope
+    console.log("Balance message:", balanceMessage);
   
       // Regular expression to extract the value of ○○
       const match = balanceMessage.match(/pt残高:(\d+)pt/);
       if (match && match[1]) {
-        const extractedBalance = parseInt(match[1], 10);
+        extractedBalance = parseInt(match[1], 10);
         console.log("Extracted Balance:", extractedBalance);
-        Balance = extractedBalance; // Update the context variable Balance
       } else {
         console.log("Failed to extract balance from message.");
       }
-   // } else {
-     // console.log("Message element not found.");
-    //}
-  
+
     const qrstring = await window.QRInterface.get_QRInfo();
     console.log("QR Code string received:", qrstring);
   
@@ -65,9 +56,9 @@ const LoadProductButton = () => {
           console.log("Item object created:", item);
   
           const price = item.price;
-          console.log("Current total:", total, "Price of new item:", price, "Balance:", Balance);
+          console.log("Current total:", total, "Price of new item:", price, "Balance:", extractedBalance);
   
-          if (total + price < Balance) {
+          if (total + price < extractedBalance) {
             setItems((prevItems) => {
               const newItems = [...prevItems, item];
               console.log("Items updated:", newItems);
