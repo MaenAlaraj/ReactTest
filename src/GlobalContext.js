@@ -14,10 +14,10 @@ export const GlobalProvider = ({ children }) => {
   
   const [total, setTotal] = useState(0); // Total amount state
   const [items, setItems] = useState([]); // Items array state
+  const [productList, setProductList] = useState([]); // State for product list
 
 
-
-
+  const [totalAmount, setTotalAmount] = useState(0); // State for total amount
 
   const [AccountNo, setAccountNo] = useState("");
   const [user, setUser] = useState("");
@@ -45,6 +45,9 @@ export const GlobalProvider = ({ children }) => {
       value={{
         showSecondScreenFlg,
         setShowSecondScreenFlg,
+        setProductList,
+        totalAmount,
+        setTotalAmount,
         gckid,
         setGckid,
         prefix,
