@@ -16,10 +16,12 @@ const App = () => {
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
   const [productList, setProductList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [isLoadButtonDisabled, setIsLoadButtonDisabled] = useState(false); // State to disable button
 
-  // Function to handle showing the LoadProductButton and trigger its functionality
   const handleLoadProductButtonClick = () => {
-    setShowLoadProductButton(true);
+    // Disable the button and show LoadProductButton
+    setIsLoadButtonDisabled(true); // Disable the button
+    setShowLoadProductButton(true); // Show the LoadProductButton
   };
 
   return (
@@ -54,14 +56,16 @@ const App = () => {
         </div>
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
 
-        {/* Button to show LoadProductButton, triggered on first click */}
-        {!showLoadProductButton && (
-          <button id="loadProduct" onClick={handleLoadProductButtonClick}>
-            商品の読み込み
-          </button>
-        )}
+        {/* Button to show LoadProductButton */}
+        <button
+          id="loadProduct"
+          onClick={handleLoadProductButtonClick}
+          disabled={isLoadButtonDisabled} // Disable button after it's clicked
+        >
+          商品の読み込み
+        </button>
 
-        {/* Render the LoadProductButton component once button is clicked */}
+        {/* Render the LoadProductButton component once the button is clicked */}
         {showLoadProductButton && (
           <LoadProductButton
             productList={productList}
