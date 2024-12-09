@@ -71,17 +71,28 @@
 }
 
 
-.scroll-container {
-  max-height: 300px;
-  overflow-y: auto;
-  margin-top: 20px;
-  width:100%;
-  border: 1px solid #ccc;
+.scroll-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header-item,
+.product-item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Adjust the number based on columns */
+  gap: 10px;
+  padding: 5px 0;
 }
 
 .header-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 30px;
-  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.product-item span {
+  text-align: center;
+}
+
+.remove-item {
+  cursor: pointer;
+  color: red;
 }
