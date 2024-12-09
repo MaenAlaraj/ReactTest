@@ -9,9 +9,6 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
   const handleLoadProduct = async () => {
     console.log("Starting product load...");
 
-    // Ensure you use the passed prop to trigger loading
-    await handleLoadProduct();
-
     const match = balanceMessage.match(/pt残高:(\d+)pt/);
     const extractedBalance = match ? parseInt(match[1], 10) : null;
 
@@ -57,7 +54,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
   return (
     <div>
       <button id="loadProduct" onClick={handleLoadProduct}>
-         商品の読み込み
+      商品の読み込み
       </button>
     </div>
   );
