@@ -53,7 +53,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
 
   return (
       <button id="loadProduct" onClick={handleLoadProduct}>
-      商品のNNNNNNNN読み込み
+      商品の読み込み
       </button>
   );
 };

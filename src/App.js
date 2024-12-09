@@ -55,10 +55,25 @@ const App = () => {
           </div>
         </div>
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
-        <div className="button-container">
-          <LoadProductButton />
-        </div>
-        
+
+        {/* Button to show LoadProductButton */}
+        <button
+          id="loadProduct"
+          onClick={handleLoadProductButtonClick}
+          disabled={isLoadButtonDisabled} // Disable button after it's clicked
+        >
+          商品の読み込み
+        </button>
+
+        {/* Render the LoadProductButton component once the button is clicked */}
+        {showLoadProductButton && (
+          <LoadProductButton
+            productList={productList}
+            setProductList={setProductList}
+            totalAmount={totalAmount}
+            setTotalAmount={setTotalAmount}
+          />
+        )}
 
         <div className="scroll-container">
           <table className="product-table">
