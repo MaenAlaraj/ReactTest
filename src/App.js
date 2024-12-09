@@ -17,6 +17,11 @@ const App = () => {
   const [productList, setProductList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
+  // Function to handle showing the LoadProductButton and trigger its functionality
+  const handleLoadProductButtonClick = () => {
+    setShowLoadProductButton(true);
+  };
+
   return (
     <div className="App">
       {/* Authentication Container */}
@@ -49,14 +54,14 @@ const App = () => {
         </div>
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
 
-        {/* Button to show LoadProductButton */}
+        {/* Button to show LoadProductButton, triggered on first click */}
         {!showLoadProductButton && (
-          <button id="loadProduct" onClick={() => setShowLoadProductButton(true)}>
+          <button id="loadProduct" onClick={handleLoadProductButtonClick}>
             商品の読み込み
           </button>
         )}
 
-        {/* Render the LoadProductButton component */}
+        {/* Render the LoadProductButton component once button is clicked */}
         {showLoadProductButton && (
           <LoadProductButton
             productList={productList}
@@ -66,50 +71,43 @@ const App = () => {
           />
         )}
 
-<div className="scroll-container">
-  <table className="product-table">
-    <thead>
-      <tr>
-        <th>コード</th>
-        <th>商品名</th>
-        <th>ポイント</th>
-        <th>CAT.</th>
-        <th>日付</th>
-        <th>削除</th>
-      </tr>
-    </thead>
-    <tbody>
-      {productList.map((item) => (
-        <tr key={item.index}>
-          <td>{item.seller}</td> {/* Seller under "コード" */}
-          <td>{item.product}</td> {/* Product under "商品名" */}
-          <td>{item.price} pt</td> {/* Price under "ポイント" */}
-          <td>{item.category}</td> {/* Category under "CAT." */}
-          <td>{item.date}</td> {/* Date under "日付" */}
-          <td>
-            <div
-              className="remove-item"
-              onClick={() => {
-                const updatedList = productList.filter((i) => i.index !== item.index);
-                setProductList(updatedList);
-                setTotalAmount((prevTotal) => prevTotal - item.price);
-              }}
-            >
-              ❌
-            </div>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
-
-
-
-
-
-
+        <div className="scroll-container">
+          <table className="product-table">
+            <thead>
+              <tr>
+                <th>コード</th>
+                <th>商品名</th>
+                <th>ポイント</th>
+                <th>CAT.</th>
+                <th>日付</th>
+                <th>削除</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productList.map((item) => (
+                <tr key={item.index}>
+                  <td>{item.seller}</td> {/* Seller under "コード" */}
+                  <td>{item.product}</td> {/* Product under "商品名" */}
+                  <td>{item.price} pt</td> {/* Price under "ポイント" */}
+                  <td>{item.category}</td> {/* Category under "CAT." */}
+                  <td>{item.date}</td> {/* Date under "日付" */}
+                  <td>
+                    <div
+                      className="remove-item"
+                      onClick={() => {
+                        const updatedList = productList.filter((i) => i.index !== item.index);
+                        setProductList(updatedList);
+                        setTotalAmount((prevTotal) => prevTotal - item.price);
+                      }}
+                    >
+                      ❌
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <p id="Balance"></p>
         <div id="totalAmount">トータル: {totalAmount} pt</div>
