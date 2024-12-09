@@ -66,37 +66,51 @@ const App = () => {
           />
         )}
 
-        <div className="scroll-container">
-          <ul id="productList">
-            <li className="header-item">
-              <span>コード</span>
-              <span>商品名</span>
-              <span>ポイント</span>
-              <span>CAT.</span>
-              <span>日付</span>
-              <span>削除</span>
-            </li>
-            {productList.map((item) => (
-              <li key={item.index}>
-                <span>{item.seller}</span>
-                <span>{item.product}</span>
-                <span>{item.price} pt</span>
-                <span>{item.category}</span>
-                <span>{item.date}</span>
-                <div
-                  className="remove-item"
-                  onClick={() => {
-                    const updatedList = productList.filter((i) => i.index !== item.index);
-                    setProductList(updatedList);
-                    setTotalAmount((prevTotal) => prevTotal - item.price);
-                  }}
-                >
-                  ❌
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+<div className="scroll-container">
+  <table className="product-table">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>商品名</th>
+        <th>ポイント</th>
+        <th>CAT.</th>
+        <th>日付</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      {productList.map((item) => (
+        <tr key={item.index}>
+          <td>{item.seller}</td> {/* Seller under "コード" */}
+          <td>{item.product}</td> {/* Product under "商品名" */}
+          <td>{item.price} pt</td> {/* Price under "ポイント" */}
+          <td>{item.category}</td> {/* Category under "CAT." */}
+          <td>{item.date}</td> {/* Date under "日付" */}
+          <td>
+            <div
+              className="remove-item"
+              onClick={() => {
+                const updatedList = productList.filter((i) => i.index !== item.index);
+                setProductList(updatedList);
+                setTotalAmount((prevTotal) => prevTotal - item.price);
+              }}
+            >
+              ❌
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
         <p id="Balance"></p>
         <div id="totalAmount">トータル: {totalAmount} pt</div>
         <div className=".vertical">
