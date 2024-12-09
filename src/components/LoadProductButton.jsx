@@ -36,7 +36,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           };
 
           if (totalAmount + item.price <= extractedBalance) {
-            setProductList((prevItems) => [...prevItems, item]);
+            setProductList((prevItems) => [...prevItems, item.seller]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
             console.log("Product successfully added.");
           } else {
