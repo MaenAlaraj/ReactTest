@@ -19,18 +19,6 @@ const App = () => {
 
   const handleLoadProduct = async () => {
     console.log("Triggering load product...");
-    
-    // You can put any logic you need to trigger here
-    const loadProductButton = <LoadProductButton 
-      productList={productList}
-      setProductList={setProductList}
-      totalAmount={totalAmount}
-      setTotalAmount={setTotalAmount}
-    />;
-    
-    // Manually trigger the handleLoadProduct in LoadProductButton
-    loadProductButton.props.handleLoadProduct();  // This is incorrect, just demonstrating the logic
-    // The correct method is to refactor the logic to be triggered on a button click.
   };
 
 
@@ -67,6 +55,18 @@ const App = () => {
           </div>
         </div>
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
+
+
+       {/* Pass handleLoadProduct as prop */}
+       <LoadProductButton
+          productList={productList}
+          setProductList={setProductList}
+          totalAmount={totalAmount}
+          setTotalAmount={setTotalAmount}
+          handleLoadProduct={handleLoadProduct}  
+        />
+
+
 
           {/* Button to trigger product load */}
          <button id="loadProduct" onClick={handleLoadProduct}>
