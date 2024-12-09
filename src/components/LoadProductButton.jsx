@@ -51,13 +51,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
     }
   };
 
-  return (
-    <div>
-      <button id="loadProduct" onClick={handleLoadProduct}>
-        商品読み込み
-      </button>
-    </div>
-  );
+ 
 };
 
 export default LoadProductButton;

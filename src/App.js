@@ -51,7 +51,7 @@ const App = () => {
 
         {/* Button to show LoadProductButton */}
         {!showLoadProductButton && (
-          <button id="loadProduct" onClick={() => setShowLoadProductButton(false)}>
+          <button id="loadProduct" onClick={() => setShowLoadProductButton(true)}>
             商品の読み込み
           </button>
         )}
