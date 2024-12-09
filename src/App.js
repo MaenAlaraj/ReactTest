@@ -13,10 +13,22 @@ import WiFiStatus from "./components/WiFiStatus";
 
 const App = () => {
   const { balanceMessage } = useGlobalContext();
-  const [showLoadProductButton, setShowLoadProductButton] = useState(false);
+  //const [showLoadProductButton, setShowLoadProductButton] = useState(false);
   const [productList, setProductList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
+  const handleSingleClickLoadProduct = async () => {
+    // Logic to directly load products
+    const loadProductButton = new LoadProductButton({
+      productList,
+      setProductList,
+      totalAmount,
+      setTotalAmount,
+    });
+
+// Trigger the product load functionality
+await loadProductButton.props.handleLoadProduct();
+};
   return (
     <div className="App">
       {/* Authentication Container */}
@@ -49,22 +61,12 @@ const App = () => {
         </div>
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
 
-        {/* Button to show LoadProductButton */}
-        {!showLoadProductButton && (
-          <button id="loadProduct" onClick={() => setShowLoadProductButton(true)}>
-            商品の読み込み
-          </button>
-        )}
+         {/* Button to directly load products */}
+         <button id="loadProduct" onClick={handleSingleClickLoadProduct}>
+          商品の読み込み
+        </button>
 
-        {/* Render the LoadProductButton component */}
-        {showLoadProductButton && (
-          <LoadProductButton
-            productList={productList}
-            setProductList={setProductList}
-            totalAmount={totalAmount}
-            setTotalAmount={setTotalAmount}
-          />
-        )}
+       
 
 <div className="scroll-container">
   <table className="product-table">
