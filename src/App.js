@@ -16,13 +16,6 @@ const App = () => {
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
   const [productList, setProductList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [isLoadButtonDisabled, setIsLoadButtonDisabled] = useState(false); // State to disable button
-
-  const handleLoadProductButtonClick = () => {
-    // Disable the button and show LoadProductButton
-    setIsLoadButtonDisabled(true); // Disable the button
-    setShowLoadProductButton(true); // Show the LoadProductButton
-  };
 
   return (
     <div className="App">
@@ -57,15 +50,13 @@ const App = () => {
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
 
         {/* Button to show LoadProductButton */}
-        <button
-          id="loadProduct"
-          onClick={handleLoadProductButtonClick}
-          disabled={isLoadButtonDisabled} // Disable button after it's clicked
-        >
-          商品の読み込み
-        </button>
+        {!showLoadProductButton && (
+          <button id="loadProduct" onClick={() => setShowLoadProductButton(true)}>
+            商品の読み込み
+          </button>
+        )}
 
-        {/* Render the LoadProductButton component once the button is clicked */}
+        {/* Render the LoadProductButton component */}
         {showLoadProductButton && (
           <LoadProductButton
             productList={productList}
@@ -75,43 +66,50 @@ const App = () => {
           />
         )}
 
-        <div className="scroll-container">
-          <table className="product-table">
-            <thead>
-              <tr>
-                <th>コード</th>
-                <th>商品名</th>
-                <th>ポイント</th>
-                <th>CAT.</th>
-                <th>日付</th>
-                <th>削除</th>
-              </tr>
-            </thead>
-            <tbody>
-              {productList.map((item) => (
-                <tr key={item.index}>
-                  <td>{item.seller}</td> {/* Seller under "コード" */}
-                  <td>{item.product}</td> {/* Product under "商品名" */}
-                  <td>{item.price} pt</td> {/* Price under "ポイント" */}
-                  <td>{item.category}</td> {/* Category under "CAT." */}
-                  <td>{item.date}</td> {/* Date under "日付" */}
-                  <td>
-                    <div
-                      className="remove-item"
-                      onClick={() => {
-                        const updatedList = productList.filter((i) => i.index !== item.index);
-                        setProductList(updatedList);
-                        setTotalAmount((prevTotal) => prevTotal - item.price);
-                      }}
-                    >
-                      ❌
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+<div className="scroll-container">
+  <table className="product-table">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>商品名</th>
+        <th>ポイント</th>
+        <th>CAT.</th>
+        <th>日付</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      {productList.map((item) => (
+        <tr key={item.index}>
+          <td>{item.seller}</td> {/* Seller under "コード" */}
+          <td>{item.product}</td> {/* Product under "商品名" */}
+          <td>{item.price} pt</td> {/* Price under "ポイント" */}
+          <td>{item.category}</td> {/* Category under "CAT." */}
+          <td>{item.date}</td> {/* Date under "日付" */}
+          <td>
+            <div
+              className="remove-item"
+              onClick={() => {
+                const updatedList = productList.filter((i) => i.index !== item.index);
+                setProductList(updatedList);
+                setTotalAmount((prevTotal) => prevTotal - item.price);
+              }}
+            >
+              ❌
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
 
         <p id="Balance"></p>
         <div id="totalAmount">トータル: {totalAmount} pt</div>
