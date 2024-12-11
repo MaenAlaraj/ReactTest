@@ -28,7 +28,7 @@ const PaymentButton = ({ totalAmount, productList  }) => {
           setMessage("商品が読み込まれていません。商品を読み込んでください。", "show_message");
         } else {
           let isFirstIteration = true;
-          const rows = productList
+          const rows = productList.length;
           console.log("The value of rows:", rows);
           const user1 = `${prefix}${userBeforePrefix}`;
           console.log("user1:", user1);
@@ -41,10 +41,9 @@ const PaymentButton = ({ totalAmount, productList  }) => {
             if (isFirstIteration) {
               console.log("The value of isFirstIteration:", isFirstIteration);
               isFirstIteration = false;
-              continue;
+              continue; // Skip the first iteration
             }
 
-            console.log("Analyzing the table.");
             const spans = row.querySelectorAll("td");
             console.log("spans:", spans);
             const sellerCode = spans[0].textContent.trim();
