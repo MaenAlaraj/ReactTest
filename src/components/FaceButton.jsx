@@ -1,7 +1,7 @@
 import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
-import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
+
 import useSetBalance from '../useSetBalance'; // Correct the import path
 import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
 

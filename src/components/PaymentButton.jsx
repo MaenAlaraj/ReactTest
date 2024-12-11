@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import useSetBalance from '../useSetBalance'; // Correct the import path
 import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
+
 
 const PaymentButton = () => {
   const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, terminalid, header_prefix, setTotal, getValueFromCatList } = useGlobalContext(); // Access necessary variables
@@ -10,16 +11,16 @@ const PaymentButton = () => {
   
   // Call the hook inside the component
   const setBalance = useSetBalance(); // Ensure it's a function
-
+  const [totalAmount, setTotalAmount] = useState(0);
 
 
   const handlePaymentClick = async () => { // Mark the function as async
     console.log("Payment initiated.");
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
-    const totalAmountElement = document.getElementById("totalAmount");
-    console.log("totalAmountElement:", totalAmountElement);
-    const totalAmount = parseInt(totalAmountElement.textContent || totalAmountElement.value, 10);
+    //const totalAmountElement = document.getElementById("totalAmount");
+    //console.log("totalAmountElement:", totalAmountElement);
+    //const totalAmount = parseInt(totalAmountElement.textContent || totalAmountElement.value, 10);
     console.log("totalAmount:", totalAmount);
 
 
