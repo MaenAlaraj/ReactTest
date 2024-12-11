@@ -44,15 +44,15 @@ const PaymentButton = ({ totalAmount }) => {
 
             const spans = row.querySelectorAll("td");
             console.log("spans:", spans);
-            const sellerCode = spans[0].textContent.trim();
+            const sellerCode = spans[0].textContent;
             console.log("sellerCode:", sellerCode);
-            const productName = spans[1].textContent.trim();
+            const productName = spans[1].textContent;
             console.log("productName:", productName);
-            const productPrice = spans[2].textContent.trim();
+            const productPrice = spans[2].textContent;
             console.log("productPrice:", productPrice);
-            const category = spans[3].textContent.trim();
+            const category = spans[3].textContent;
             console.log("category:", category);
-            const date = spans[4].textContent.trim();
+            const date = spans[4].textContent;
             console.log("date:", date);
             const catValue = getValueFromCatList(category);
             console.log("catValue:", catValue);
@@ -83,7 +83,7 @@ const PaymentButton = ({ totalAmount }) => {
 
           document.getElementById("loadProduct").disabled = false;
           // Call removeItemsFromList after successful authentication
-          removeItemsFromList(); // Call the custom hook to remove items and reset totals
+          //removeItemsFromList(); // Call the custom hook to remove items and reset totals
 
           //startTimer();
           document.getElementById("mainContainer").style.display = "block";
