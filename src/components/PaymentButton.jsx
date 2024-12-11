@@ -41,18 +41,18 @@ const PaymentButton = ({ totalAmount }) => {
               isFirstIteration = false;
               continue;
             }
-
+            console.log("Analyzing the table.");
             const spans = row.querySelectorAll("td");
             console.log("spans:", spans);
-            const sellerCode = spans[0].textContent;
+            const sellerCode = spans[0].textContent.trim();
             console.log("sellerCode:", sellerCode);
-            const productName = spans[1].textContent;
+            const productName = spans[1].textContent.trim();
             console.log("productName:", productName);
-            const productPrice = spans[2].textContent;
+            const productPrice = spans[2].textContent.trim();
             console.log("productPrice:", productPrice);
-            const category = spans[3].textContent;
+            const category = spans[3].textContent.trim();
             console.log("category:", category);
-            const date = spans[4].textContent;
+            const date = spans[4].textContent.trim();
             console.log("date:", date);
             const catValue = getValueFromCatList(category);
             console.log("catValue:", catValue);
