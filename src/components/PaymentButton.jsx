@@ -36,6 +36,16 @@ const PaymentButton = ({ totalAmount, productList  }) => {
           console.log("user2:", user2);
           const message2 = "MALL用";
           
+          const firstRow = productList[0]; // Access the first row
+          console.log("First row:", firstRow);
+          // Access specific fields of the row
+          console.log("Seller:", firstRow.seller);
+          console.log("Product Name:", firstRow.product);
+          console.log("Price:", firstRow.price);
+          console.log("Category:", firstRow.category);
+          console.log("Date:", firstRow.date);
+
+
           // Access table rows directly from the DOMconst rows = document.querySelectorAll("#productList tbody tr");
           for (const row of rows) { // Use for...of instead of forEach
             if (isFirstIteration) {
