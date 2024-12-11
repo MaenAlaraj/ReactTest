@@ -114,7 +114,7 @@ const App = () => {
         <p id="Balance"></p>
         <div id="totalAmount">トータル: {totalAmount} pt</div>
         <div className=".vertical">
-          <Payment totalAmount={totalAmount} />
+          <Payment totalAmount={totalAmount} productList={productList} />
         </div>
       </div>
     </div>
