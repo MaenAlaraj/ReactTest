@@ -28,7 +28,7 @@ const PaymentButton = ({ totalAmount }) => {
           setMessage("商品が読み込まれていません。商品を読み込んでください。", "show_message");
         } else {
           let isFirstIteration = true;
-          const listItems = document.querySelectorAll("#productList li");
+          const rows = document.querySelectorAll("#productList tbody tr");
           const user1 = `${prefix}${userBeforePrefix}`;
           console.log("user1:", user1);
           const user2 = `${prefix}${gcMall_code}`;
@@ -36,13 +36,13 @@ const PaymentButton = ({ totalAmount }) => {
           const message2 = "MALL用";
 
 
-          for (const listItem of listItems) { // Use for...of instead of forEach
+          for (const row of rows) { // Use for...of instead of forEach
             if (isFirstIteration) {
               isFirstIteration = false;
               continue;
             }
 
-            const spans = listItem.querySelectorAll("span");
+            const spans = row.querySelectorAll("td");
             console.log("spans:", spans);
             const sellerCode = spans[0].textContent.trim();
             console.log("sellerCode:", sellerCode);
