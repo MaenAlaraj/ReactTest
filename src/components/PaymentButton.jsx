@@ -38,6 +38,7 @@ const PaymentButton = ({ totalAmount }) => {
 
           for (const row of rows) { // Use for...of instead of forEach
             if (isFirstIteration) {
+              console.log("The value of isFirstIteration:", isFirstIteration);
               isFirstIteration = false;
               continue;
             }
