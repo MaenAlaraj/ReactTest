@@ -18,9 +18,6 @@ const PaymentButton = ({ totalAmount }) => {
     console.log("Payment initiated.");
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
-    //const totalAmountElement = document.getElementById("totalAmount");
-    //console.log("totalAmountElement:", totalAmountElement);
-    //const totalAmount = parseInt(totalAmountElement.textContent || totalAmountElement.value, 10);
     console.log("totalAmount:", totalAmount);
 
 

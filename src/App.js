@@ -67,7 +67,7 @@ const App = () => {
         )}
 
 <div className="scroll-container">
-  <table className="product-table">
+  <ul className="product-table">
     <thead>
       <tr>
         <th>コード</th>
@@ -101,7 +101,7 @@ const App = () => {
         </tr>
       ))}
     </tbody>
-  </table>
+  </ul>
 </div>
 
 
