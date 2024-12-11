@@ -40,6 +40,28 @@ export const GlobalProvider = ({ children }) => {
     H: 5000,
   };
 
+
+
+
+
+  const getValueFromCatList = (category) => {
+    const key = category.trim();
+
+    if (Cat_List.hasOwnProperty(key)) {
+      return Cat_List[key];
+    } else {
+      return "商品のカテゴリーが見つかりません。";
+    }
+  };
+
+
+
+
+
+
+
+
+
   return (
     <GlobalContext.Provider
       value={{
@@ -72,6 +94,7 @@ export const GlobalProvider = ({ children }) => {
         balanceMessage, // Expose balanceMessage
         setBalanceMessage, // Expose setBalanceMessage
         Cat_List,
+        getValueFromCatList,
       }}
     >
       {children}
