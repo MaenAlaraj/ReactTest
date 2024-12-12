@@ -44,7 +44,7 @@ const PaymentButton = ({ totalAmount, productList  }) => {
           console.log("Product Name:", firstRow.product);
           const productName = firstRow.product
           console.log("Price:", firstRow.price);
-          const productPrice = firstRow.product
+          const productPrice = firstRow.price
           console.log("Category:", firstRow.category);
           const category = firstRow.category
           console.log("Date:", firstRow.date);
