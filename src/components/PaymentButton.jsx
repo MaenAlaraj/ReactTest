@@ -6,7 +6,7 @@ import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList";
 
 
 const PaymentButton = ({ totalAmount, productList  }) => {
-  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, terminalid, header_prefix, setTotal, getValueFromCatList } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList } = useGlobalContext(); // Access necessary variables
   const removeItemsFromList = useRemoveItemsFromList (); // Call the custom hook
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
@@ -76,7 +76,8 @@ const PaymentButton = ({ totalAmount, productList  }) => {
             console.log("catValue:", catValue);
             const sellerCodeE = `${prefix}${sellerCode}`;
             console.log("sellerCodeE:", sellerCodeE);
-            const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, terminalid);
+            console.log("payment_terminalID:", payment_terminalID);
+            const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
             console.log("sellerNameRet:", sellerNameRet);
             const sellerNameTokens = sellerNameRet.split(":");
             console.log("sellerNameTokens:", sellerNameTokens);
