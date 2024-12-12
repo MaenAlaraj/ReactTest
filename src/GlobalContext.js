@@ -23,6 +23,7 @@ export const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
   const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
+  const [productListTEST, setProductListTEST] = useState([]); // Add productList state
 
   const errorsSubstring = "エラー";
   
@@ -56,7 +57,10 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-
+// Function to remove a row from productListTEST by index
+const removeRowTEST = (index) => {
+  setProductListTEST((prevList) => prevList.filter((_, i) => i !== index));
+};
 
 
 
@@ -95,6 +99,9 @@ export const GlobalProvider = ({ children }) => {
         setBalanceMessage, // Expose setBalanceMessage
         Cat_List,
         getValueFromCatList,
+        productListTEST, // Expose productList
+        setProductListTEST, // Expose setProductList
+        removeRowTEST, // Expose removeRow
       }}
     >
       {children}

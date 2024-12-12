@@ -1,24 +1,29 @@
 import React from "react";
 import { useGlobalContext } from "../GlobalContext"; // Adjust path to your context
 
-const LogoutButton = (productList, removeRow) => {
+const LogoutButton = () => {
   const { setUserBeforePrefix } = useGlobalContext(); // Use context if needed for managing global states
+  const { removeRowTEST } = useGlobalContext();
 
-  const handleRemoveRow = (rowIndex) => {
-    removeRow(rowIndex);
-  };
 
 
   const handleLogout = () => {
     console.log("[REACT Console]: ログアウトしています...");
 
-    if (productList.length > 0) {
+    //const firstRowIndex = productList[0].index; // Get the index of the first row
+    //console.log("The value of index of 1st row:", firstRowIndex);
+
+    removeRowTEST(0); // Remove the first row (index 0) 
+    console.log("[LogoutButton]: The first row has been removed successfully.");
+
+
+    /*if (productList.length > 0) {
       const rows = productList.length;
       console.log("The value of rows:", rows);
       const firstRowIndex = productList[0].index; // Get the index of the first row
       console.log("The value of index of 1st row:", firstRowIndex);
       removeRow(firstRowIndex); // Call removeRow with the index of the first row
-    }
+    }*/
 
     // Show authContainer and hide mainContainer and transitContainer
     document.getElementById("authContainer").style.display = "block";

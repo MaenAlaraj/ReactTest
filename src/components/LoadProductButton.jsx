@@ -3,7 +3,7 @@ import { useGlobalContext } from "../GlobalContext";
 
 const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalAmount }) => {
   const { balanceMessage, setMessage } = useGlobalContext();
-
+  const { setProductListTEST } = useGlobalContext();
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
 
   const handleLoadProduct = async () => {
@@ -38,6 +38,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           if (totalAmount + item.price <= extractedBalance) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
+            setProductListTEST([item]); // Add a new row
             console.log("Product successfully added.");
           } else {
             console.log("Insufficient balance.");
