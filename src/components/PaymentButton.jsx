@@ -27,7 +27,7 @@ const PaymentButton = ({ totalAmount, productList  }) => {
           document.getElementById("transitContainer").style.display = "none";
           setMessage("商品が読み込まれていません。商品を読み込んでください。", "show_message");
         } else {
-          let isFirstIteration = true;
+          //let isFirstIteration = true;
           const rows = productList.length;
           console.log("The value of rows:", rows);
           const user1 = `${prefix}${userBeforePrefix}`;
@@ -40,14 +40,19 @@ const PaymentButton = ({ totalAmount, productList  }) => {
           console.log("First row:", firstRow);
           // Access specific fields of the row
           console.log("Seller:", firstRow.seller);
+          const sellerCode = firstRow.seller
           console.log("Product Name:", firstRow.product);
+          const productName = firstRow.product
           console.log("Price:", firstRow.price);
+          const productPrice = firstRow.product
           console.log("Category:", firstRow.category);
+          const category = firstRow.category
           console.log("Date:", firstRow.date);
+          const date = firstRow.date
 
 
           // Access table rows directly from the DOMconst rows = document.querySelectorAll("#productList tbody tr");
-          for (const row of rows) { // Use for...of instead of forEach
+          /*for (const row of rows) { // Use for...of instead of forEach
             if (isFirstIteration) {
               console.log("The value of isFirstIteration:", isFirstIteration);
               isFirstIteration = false;
@@ -65,7 +70,8 @@ const PaymentButton = ({ totalAmount, productList  }) => {
             const category = spans[3].textContent.trim();
             console.log("category:", category);
             const date = spans[4].textContent.trim();
-            console.log("date:", date);
+            console.log("date:", date);*/
+
             const catValue = getValueFromCatList(category);
             console.log("catValue:", catValue);
             const sellerCodeE = `${prefix}${sellerCode}`;
@@ -91,7 +97,7 @@ const PaymentButton = ({ totalAmount, productList  }) => {
               document.getElementById("transitContainer").style.display = "none";
               setMessage(errorMessage, "show_message");
             }
-          }
+         // }
 
           document.getElementById("loadProduct").disabled = false;
           // Call removeItemsFromList after successful authentication
