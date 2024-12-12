@@ -1,9 +1,9 @@
 import React from "react";
 import { useGlobalContext } from "../GlobalContext";
 
-const LoadProductButton = ({ productListTEST, setProductListTEST, totalAmount, setTotalAmount }) => {
+const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalAmount }) => {
   const { balanceMessage, setMessage } = useGlobalContext();
-  //const { setProductListTEST } = useGlobalContext();
+
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
 
   const handleLoadProduct = async () => {
@@ -27,7 +27,7 @@ const LoadProductButton = ({ productListTEST, setProductListTEST, totalAmount, s
           setMessage("商品QRではないものが読み込まれました。");
         } else {
           const item = {
-            index: productListTEST.length,
+            index: productList.length,
             seller: qrstr_list[0],
             product: qrstr_list[1],
             price: parseInt(qrstr_list[2]),
@@ -36,12 +36,9 @@ const LoadProductButton = ({ productListTEST, setProductListTEST, totalAmount, s
           };
 
           if (totalAmount + item.price <= extractedBalance) {
-            productListTEST((prevItems) => [...prevItems, item]);
-            setTotalAmount((prevTotal) => prevTotal + item.price);           
+            setProductList((prevItems) => [...prevItems, item]);
+            setTotalAmount((prevTotal) => prevTotal + item.price);
             console.log("Product successfully added.");
-
-            setProductListTEST([item]); // Add a new row
-            console.log("Product successfully added to setProductListTEST.");
           } else {
             console.log("Insufficient balance.");
             setMessage("残高が足りません。");
