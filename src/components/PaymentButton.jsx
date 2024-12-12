@@ -102,7 +102,7 @@ const PaymentButton = ({ totalAmount, productList  }) => {
 
           document.getElementById("loadProduct").disabled = false;
           // Call removeItemsFromList after successful authentication
-          //removeItemsFromList(); // Call the custom hook to remove items and reset totals
+          removeItemsFromList(); // Call the custom hook to remove items and reset totals
 
           //startTimer();
           document.getElementById("mainContainer").style.display = "block";
