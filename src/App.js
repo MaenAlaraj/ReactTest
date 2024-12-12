@@ -12,17 +12,17 @@ import LogoutButton from "./components/LogoutButton";
 import WiFiStatus from "./components/WiFiStatus";
 
 const App = () => {
-  const { balanceMessage,productListTEST, setProductListTEST } = useGlobalContext();
+  const { balanceMessage } = useGlobalContext();
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
-  //const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
 
    // Function to remove a row
   const removeRow = (rowIndex) => {
-    const itemToRemove = productListTEST.find((item) => item.index === rowIndex);
+    const itemToRemove = productList.find((item) => item.index === rowIndex);
     if (itemToRemove) {
-      setProductListTEST((prevList) => prevList.filter((item) => item.index !== rowIndex));
+      setProductList((prevList) => prevList.filter((item) => item.index !== rowIndex));
       setTotalAmount((prevTotal) => prevTotal - itemToRemove.price);
     }
   };
@@ -72,8 +72,8 @@ const App = () => {
         {/* Render the LoadProductButton component */}
         {showLoadProductButton && (
           <LoadProductButton
-            productListTEST={productListTEST}
-            setProductListTEST={setProductListTEST}
+            productList={productList}
+            setProductList={setProductList}
             totalAmount={totalAmount}
             setTotalAmount={setTotalAmount}
           />
@@ -92,7 +92,7 @@ const App = () => {
       </tr>
     </thead>
     <tbody>
-      {productListTEST.map((item) => (
+      {productList.map((item) => (
         <tr key={item.index}>
           <td>{item.seller}</td> {/* Seller under "コード" */}
           <td>{item.product}</td> {/* Product under "商品名" */}
@@ -103,8 +103,8 @@ const App = () => {
             <div
               className="remove-item"
               onClick={() => {
-                const updatedList = productListTEST.filter((i) => i.index !== item.index);
-                setProductListTEST(updatedList);
+                const updatedList = productList.filter((i) => i.index !== item.index);
+                setProductList(updatedList);
                 setTotalAmount((prevTotal) => prevTotal - item.price);
               }}
             >
@@ -127,7 +127,7 @@ const App = () => {
         <p id="Balance"></p>
         <div id="totalAmount">トータル: {totalAmount} pt</div>
         <div className=".vertical">
-          <Payment totalAmount={totalAmount} productListTEST={productListTEST} removeRow={removeRow}/>
+          <Payment totalAmount={totalAmount} productList={productList} removeRow={removeRow}/>
         </div>
       </div>
     </div>
