@@ -5,14 +5,16 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
 
 
-const PaymentButton = ({ totalAmount, productList  }) => {
+const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
   const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList } = useGlobalContext(); // Access necessary variables
   const removeItemsFromList = useRemoveItemsFromList (); // Call the custom hook
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
  
 
-
+   const handleRemoveRow = (rowIndex) => {
+    removeRow(rowIndex);
+  };
 
   const handlePaymentClick = async () => { // Mark the function as async
     console.log("Payment initiated.");

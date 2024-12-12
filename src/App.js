@@ -17,6 +17,19 @@ const App = () => {
   const [productList, setProductList] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
+
+   // Function to remove a row
+  const removeRow = (rowIndex) => {
+    const itemToRemove = productList.find((item) => item.index === rowIndex);
+    if (itemToRemove) {
+      setProductList((prevList) => prevList.filter((item) => item.index !== rowIndex));
+      setTotalAmount((prevTotal) => prevTotal - itemToRemove.price);
+    }
+  };
+
+
+
+
   return (
     <div className="App">
       {/* Authentication Container */}
@@ -114,7 +127,7 @@ const App = () => {
         <p id="Balance"></p>
         <div id="totalAmount">トータル: {totalAmount} pt</div>
         <div className=".vertical">
-          <Payment totalAmount={totalAmount} productList={productList} />
+          <Payment totalAmount={totalAmount} productList={productList} removeRow={removeRow}/>
         </div>
       </div>
     </div>
