@@ -66,7 +66,7 @@ const FaceButton = () => {
 
 
            // Call removeItemsFromList after successful authentication
-          removeItemsFromList(); // Call the custom hook to remove items and reset totals
+          //removeItemsFromList(); // Call the custom hook to remove items and reset totals
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID

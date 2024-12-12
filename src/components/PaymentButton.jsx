@@ -2,15 +2,12 @@ import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import useSetBalance from '../useSetBalance'; // Correct the import path
-import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
   const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList } = useGlobalContext(); // Access necessary variables
-  const removeItemsFromList = useRemoveItemsFromList (); // Call the custom hook
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
- 
 
    const handleRemoveRow = (rowIndex) => {
     removeRow(rowIndex);
@@ -70,16 +67,16 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             console.log("message1:", message1);
             const result = await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
             console.log("result:", result);
-             if (result.includes(errorsSubstring)) 
+            if (result.includes(errorsSubstring)) 
               {
                 const errorMessage = `支払いエラー：${result}`;
                 console.log("支払いエラー:", errorMessage);
-              document.getElementById("mainContainer").style.display = "block";
-              document.getElementById("transitContainer").style.display = "none";
-              setMessage(errorMessage, "show_message");
-            }
-            document.getElementById("loadProduct").disabled = false;
-            removeRow(firstRowIndex); // Call removeRow with the index of the first row
+                document.getElementById("mainContainer").style.display = "block";
+                document.getElementById("transitContainer").style.display = "none";
+                setMessage(errorMessage, "show_message");
+              }
+              document.getElementById("loadProduct").disabled = false;
+              removeRow(firstRowIndex); // Call removeRow with the index of the first row
              //startTimer();         
              document.getElementById("mainContainer").style.display = "block";
              document.getElementById("transitContainer").style.display = "none";
@@ -87,9 +84,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
              console.log("userBeforePrefix:", userBeforePrefix);
              setBalance(userBeforePrefix);
              setTotal(0)       
-          } else {
-            alert("No items to remove.");
-          }
+          } 
         }
       };
 

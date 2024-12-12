@@ -57,7 +57,7 @@ const App = () => {
           <p id="user"></p> {/* User information */}
           <div className="user-details-container">
             <WiFiStatus />
-            <LogoutButton id="logoutButton" />
+            <LogoutButton id="logoutButton" productList={productList} removeRow={removeRow} />
           </div>
         </div>
         <p id="message">{balanceMessage}</p> {/* Balance message below LogoutButton */}
