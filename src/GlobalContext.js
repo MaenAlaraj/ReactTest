@@ -11,22 +11,14 @@ export const GlobalProvider = ({ children }) => {
   const [sbuser, setSbuser] = useState("93929" + "09000000013");
   const [extractedUserID, setExtractedUserID] = useState("");
   const [userBeforePrefix, setUserBeforePrefix] = useState("");
-  
-  const [total, setTotal] = useState(0); // Total amount state
   const [items, setItems] = useState([]); // Items array state
-
-
-
-
-
   const [AccountNo, setAccountNo] = useState("");
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
-  const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
-  const [productList, setProductList] = useState([]); // Add productList state
-  const [totalAmount, setTotalAmount] = useState(0); // Moved totalAmount here
+  const [balanceMessage, setBalanceMessage] = useState("");
+  const [productList, setProductList] = useState([]); 
+  const [totalAmount, setTotalAmount] = useState(0); 
   const errorsSubstring = "エラー";
-  
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
   const payment_terminalID = "";
@@ -41,10 +33,6 @@ export const GlobalProvider = ({ children }) => {
     H: 5000,
   };
 
-
-
-
-
   const getValueFromCatList = (category) => {
     const key = category.trim();
 
@@ -56,7 +44,6 @@ export const GlobalProvider = ({ children }) => {
   };
 
 
-
   const removeRow = (rowIndex) => {
     const itemToRemove = productList.find((item) => item.index === rowIndex);
     if (itemToRemove) {
@@ -64,9 +51,6 @@ export const GlobalProvider = ({ children }) => {
       setTotalAmount((prevTotal) => prevTotal - itemToRemove.price);
     }
   };
-
-
-
 
   return (
     <GlobalContext.Provider
@@ -88,8 +72,6 @@ export const GlobalProvider = ({ children }) => {
         setItems,
         gcMall_code,
         header_prefix,
-        total,
-        setTotal,
         AccountNo,
         setAccountNo,
         user,
@@ -97,15 +79,15 @@ export const GlobalProvider = ({ children }) => {
         payment_terminalID,
         Balance,
         setBalance,
-        balanceMessage, // Expose balanceMessage
-        setBalanceMessage, // Expose setBalanceMessage
+        balanceMessage,
+        setBalanceMessage,
         Cat_List,
         getValueFromCatList,
-        productList, // Expose productList
-        setProductList, // Expose setProductList
+        productList,
+        setProductList,
         totalAmount,
         setTotalAmount,
-        removeRow, // Expose removeRow
+        removeRow,
       }}
     >
       {children}
