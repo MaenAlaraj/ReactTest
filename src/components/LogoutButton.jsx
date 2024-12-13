@@ -19,10 +19,10 @@ const LogoutButton = (productList, removeRow) => {
     //console.log("The value of index of 1st row:", firstRowIndex);
 
     //removeRowTEST(0); // Remove the first row (index 0) 
-    console.log("[LogoutButton]: The first row has been removed successfully.");
+    //console.log("[LogoutButton]: The first row has been removed successfully.");
 
 
-    if (productList.length > 0) {
+    //if (productList.length > 0) {
       const rows = productList.length;
       console.log("[Logout Button]: The value of rows:", rows);
       const firstRowIndex = productList[0].index; // Get the index of the first row
@@ -30,7 +30,7 @@ const LogoutButton = (productList, removeRow) => {
       removeRow(firstRowIndex); // Call removeRow with the index of the first row
       console.log("[LogoutButton]: The first row has been removed successfully.");
       setTotal(0) 
-    }
+    //}
     
 
     // Show authContainer and hide mainContainer and transitContainer
