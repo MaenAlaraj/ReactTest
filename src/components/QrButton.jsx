@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { setMessage } from "../utils"; // Adjust the path to utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
 import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
+import useSetBalance from '../useSetBalance'; // Correct the import path
 
 const QrButton = () => {
   const { prefix } = useGlobalContext(); // Access the global context as needed
   //const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleQr = async () => {
     console.log("[QR Auth. Button]:「QR認証」ボタンがクリックされました。");
@@ -33,6 +35,10 @@ const QrButton = () => {
           // Transition to the main container
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
+
+          setBalance(extractedUserID);
+
+          
         } else {
           console.log("[QR Auth. Button]:Invalid QR Code.");
           setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message");
