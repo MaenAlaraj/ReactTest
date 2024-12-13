@@ -5,6 +5,9 @@ const useSetBalance = () => {
   const { prefix, payment_terminalID, setUserBeforePrefix, setBalanceMessage } = useGlobalContext();
 
   const setBalance = (userID) => {
+    setUserBeforePrefix(userID);
+    console.log("[setBalance] Updated userBeforePrefix:", userID);
+    
     const user1 = prefix + userID;
     console.log("[setBalance] Combined userID:", user1);
 
@@ -26,8 +29,8 @@ const useSetBalance = () => {
     const Balance = parseInt(Balance_LIST[0].split(":")[1]) - parseInt(Balance_LIST[1].split(":")[1]);
     console.log("[setBalance] Calculated Balance:", Balance);
 
-    setUserBeforePrefix(userID);
-    console.log("[setBalance] Updated userBeforePrefix:", userID);
+    //setUserBeforePrefix(userID);
+    //console.log("[setBalance] Updated userBeforePrefix:", userID);
 
     return Balance;
   };
