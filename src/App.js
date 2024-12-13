@@ -16,17 +16,17 @@ const App = () => {
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
   //const [productList, setProductList] = useState([]);
   //const [totalAmount, setTotalAmount] = useState(0);
-  const { productList, totalAmount, setProductList, setTotalAmount, removeRow  } = useGlobalContext();
+  const { productList, totalAmount, setProductList, setTotalAmount } = useGlobalContext();
 
 
    // Function to remove a row
-  /*const removeRow = (rowIndex) => {
+  const removeRow = (rowIndex) => {
     const itemToRemove = productList.find((item) => item.index === rowIndex);
     if (itemToRemove) {
       setProductList((prevList) => prevList.filter((item) => item.index !== rowIndex));
       setTotalAmount((prevTotal) => prevTotal - itemToRemove.price);
     }
-  };*/
+  };
 
 
 
