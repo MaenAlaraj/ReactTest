@@ -41,7 +41,6 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             setTotalAmount((prevTotal) => prevTotal + item.price);
             console.log("[Load Product Button]: Product successfully added.");
           } else {
-            setMessage("[Load Product Button]: 残高が足りません。");
             setMessage("残高が足りません。","show_message");
           }
         }
