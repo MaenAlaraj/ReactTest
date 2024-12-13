@@ -26,18 +26,16 @@ const QrButton = () => {
         const extractedUserID = match ? match[1] : null;
 
         if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
-          console.log("[REACT Console]:Valid QR Code UserID:", extractedUserID);
+          console.log("[QR Auth. Button]:Valid QR Code UserID:", extractedUserID);
           const userID = `${prefix}${extractedUserID}`;
-          //setMessage(`GCユーザー: ${userID}`, "user");
+          setMessage(`GCユーザー: ${userID}`, "user");
 
           // Transition to the main container
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
         } else {
           console.log("[QR Auth. Button]:Invalid QR Code.");
-          setMessage(
-            "QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message"
-          );
+          setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message");
 
           // Transition back to the auth container
           document.getElementById("transitContainer").style.display = "none";

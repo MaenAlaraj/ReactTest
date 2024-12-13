@@ -9,14 +9,12 @@ export function checkValueInQrstrList(valueToCheck) {
   let message = ""; // Initialize the message variable
 
   if (containsOnlyNumbers(valueToCheck)) {
-    message = "「ユーザーID」の値は数値です。";
+    message = "[checkValueInQrstrList]: ユーザーIDの値は数値です。";
     console.log(message);
-    setMessage(message, "show_message");
     return true;
   } else {
-    message = "「ユーザーID」の値は数値ではありません。";
+    message = "[checkValueInQrstrList]:ユーザーIDの値は数値ではありません。";
     console.log(message);
-    setMessage(message, "show_message");
     return false;
   }
 }
