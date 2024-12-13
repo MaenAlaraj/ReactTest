@@ -14,8 +14,9 @@ import WiFiStatus from "./components/WiFiStatus";
 const App = () => {
   const { balanceMessage } = useGlobalContext();
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
-  const [productList, setProductList] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0);
+  //const [productList, setProductList] = useState([]);
+  //const [totalAmount, setTotalAmount] = useState(0);
+  const { productList, totalAmount, setProductList, setTotalAmount } = useGlobalContext();
 
 
    // Function to remove a row

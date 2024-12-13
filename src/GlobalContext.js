@@ -23,8 +23,8 @@ export const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [Balance, setBalance] = useState(null);
   const [balanceMessage, setBalanceMessage] = useState(""); // Added state for balanceMessage
-  const [productListTEST, setProductListTEST] = useState([]); // Add productList state
-
+  const [productList, setProductList] = useState([]); // Add productList state
+  const [totalAmount, setTotalAmount] = useState(0); // Moved totalAmount here
   const errorsSubstring = "エラー";
   
   const gcMall_code = "09000000015";
@@ -57,11 +57,13 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-// Function to remove a row from productListTEST by index
-const removeRowTEST = (index) => {
-  setProductListTEST((prevList) => prevList.filter((_, i) => i !== index));
-};
-
+  const removeRow = (rowIndex) => {
+    const itemToRemove = productList.find((item) => item.index === rowIndex);
+    if (itemToRemove) {
+      setProductList((prevList) => prevList.filter((item) => item.index !== rowIndex));
+      setTotalAmount((prevTotal) => prevTotal - itemToRemove.price);
+    }
+  };
 
 
 
@@ -99,9 +101,11 @@ const removeRowTEST = (index) => {
         setBalanceMessage, // Expose setBalanceMessage
         Cat_List,
         getValueFromCatList,
-        productListTEST, // Expose productList
-        setProductListTEST, // Expose setProductList
-        removeRowTEST, // Expose removeRow
+        productList, // Expose productList
+        setProductList, // Expose setProductList
+        totalAmount,
+        setTotalAmount,
+        removeRow, // Expose removeRow
       }}
     >
       {children}
