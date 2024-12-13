@@ -8,7 +8,7 @@ const QrButton = () => {
   //const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleQr = async () => {
-    console.log("[REACT Console]:「QR認証」ボタンがクリックされました。");
+    console.log("[QR Auth. Button]:「QR認証」ボタンがクリックされました。");
     //setIsButtonDisabled(true); // Disable the button while processing
 
     try {
@@ -18,7 +18,7 @@ const QrButton = () => {
 
       // Simulate getting QR code data
       const qrString = await window.QRInterface.get_QRInfo();
-      console.log("[REACT Console]:QR Code Data:", qrString);
+      console.log("[QR Auth. Button]:QR Code Data:", qrString);
       setMessage(" ");
 
       if (qrString !== "Scanner stopped") {
@@ -28,16 +28,15 @@ const QrButton = () => {
         if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
           console.log("[REACT Console]:Valid QR Code UserID:", extractedUserID);
           const userID = `${prefix}${extractedUserID}`;
-          setMessage(`GCユーザー: ${userID}`, "user");
+          //setMessage(`GCユーザー: ${userID}`, "user");
 
           // Transition to the main container
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
         } else {
-          console.log("[REACT Console]:Invalid QR Code.");
+          console.log("[QR Auth. Button]:Invalid QR Code.");
           setMessage(
-            "QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。",
-            "show_message"
+            "QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message"
           );
 
           // Transition back to the auth container
@@ -45,7 +44,7 @@ const QrButton = () => {
           document.getElementById("authContainer").style.display = "block";
         }
       } else {
-        console.log("[REACT Console]:Scanner was stopped.");
+        console.log("[QR Auth. Button]:Scanner was stopped.");
         setMessage("QRコードスキャナーが停止しました。", "show_message");
 
         // Transition back to the auth container
@@ -53,7 +52,7 @@ const QrButton = () => {
         document.getElementById("authContainer").style.display = "block";
       }
     } catch (error) {
-      console.error("[REACT Console]:Error processing QR code:", error.message);
+      console.error("[QR Auth. Button]:Error processing QR code:", error.message);
       setMessage(`エラーが発生しました: ${error.message}`, "show_message");
 
       // Transition back to the auth container

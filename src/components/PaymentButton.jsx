@@ -74,16 +74,18 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
                 document.getElementById("mainContainer").style.display = "block";
                 document.getElementById("transitContainer").style.display = "none";
                 setMessage(errorMessage, "show_message");
+              }else{
+                document.getElementById("loadProduct").disabled = false;            
+               setMessage("ご購入ありがとうございます！", "show_message");            
               }
-              document.getElementById("loadProduct").disabled = false;
+               //startTimer(); 
               removeRow(firstRowIndex); // Call removeRow with the index of the first row
-             //startTimer();         
-             document.getElementById("mainContainer").style.display = "block";
-             document.getElementById("transitContainer").style.display = "none";
-             setMessage("ご購入ありがとうございます！", "show_message");
-             console.log("userBeforePrefix:", userBeforePrefix);
-             setBalance(userBeforePrefix);
-             setTotal(0)       
+              document.getElementById("mainContainer").style.display = "block";
+              document.getElementById("transitContainer").style.display = "none";
+              console.log("userBeforePrefix:", userBeforePrefix);
+              setBalance(userBeforePrefix);
+              setTotal(0)       
+             
           } 
         }
       };
