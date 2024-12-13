@@ -15,7 +15,7 @@ const FaceButton = () => {
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleFace = async () => {
-    console.log("[REACT Console]:「顔認証」ボタンがクリックされました。");
+    console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
 
     // Show the transitContainer and hide authContainer
     document.getElementById("authContainer").style.display = "none";
@@ -23,7 +23,7 @@ const FaceButton = () => {
 
     try {
       const resultJsonString = await window.FaceCaptureInterface.getFace();
-      console.log("[REACT Console]: Face data received:", resultJsonString);
+      console.log("[FaceButton]: Face data received:", resultJsonString);
 
       if (!resultJsonString) {
         setMessage("顔が検出されませんでした。もう一度試してください。", "show_message");
@@ -41,15 +41,15 @@ const FaceButton = () => {
         document.getElementById('authContainer').style.display = 'block';
         document.getElementById('transitContainer').style.display = 'none';
       } else if (numberOfFaces === 1) {
-        console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
+        console.log("[FaceButton]:Captured Nr. of Faces:", numberOfFaces);
         const base64String = facesArray[0].image64;
 
-        console.log("[REACT Console]:sbuser value is:", sbuser);
-        console.log("[REACT Console]:gckid value is:", gckid);
-        console.log("[REACT Console]:base64String value is:", base64String);
+        console.log("[FaceButton]:sbuser value is:", sbuser);
+        console.log("[FaceButton]:gckid value is:", gckid);
+        console.log("[FaceButton]:base64String value is:", base64String);
 
         const info = await window.CCWalletInterface.SearchFaces(sbuser, gckid, base64String);
-        console.log("[REACT Console]: SearchFaces info:", info);
+        console.log("[FaceButton]: SearchFaces info:", info);
 
         if (info.includes(errorsSubstring)) {
           setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "show_message");
@@ -77,7 +77,7 @@ const FaceButton = () => {
         document.getElementById("authContainer").style.display = "block";
       }
     } catch (error) {
-      setMessage(`エラーが発生しました: ${error.message}`, "show_message");
+      setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
     }

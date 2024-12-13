@@ -1,29 +1,30 @@
 import React from "react";
 import { useGlobalContext } from "../GlobalContext";
+import { setMessage } from '../utils'; // Adjust the relative path based on your project structure
 
 const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalAmount }) => {
-  const { balanceMessage, setMessage } = useGlobalContext();
+  const { balanceMessage } = useGlobalContext();
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
 
   const handleLoadProduct = async () => {
-    console.log("Starting product load...");
+    console.log("[Load Product Button]: Starting product load...");
 
     const match = balanceMessage.match(/pt残高:(\d+)pt/);
     const extractedBalance = match ? parseInt(match[1], 10) : null;
 
-    console.log("Extracted Balance:", extractedBalance);
+    console.log("[Load Product Button] Extracted Balance:", extractedBalance);
 
     const qrstring = await window.QRInterface.get_QRInfo();
-    console.log("QR Code string received:", qrstring);
+    console.log("[Load Product Button] QR Code string received:", qrstring);
 
     if (qrstring !== "Scanner stopped") {
       const qrstr_list = qrstring.split(",");
-      console.log("Parsed QR Code list:", qrstr_list);
+      console.log("[Load Product Button] Parsed QR Code list:", qrstr_list);
 
       if (qrstr_list.length === 6) {
         if (!isPositiveInteger(qrstr_list[2])) {
-          console.log("Invalid QR Code detected, not a positive integer.");
+          console.log("[Load Product Button]: Invalid QR Code detected, not a positive integer.");
           setMessage("商品QRではないものが読み込まれました。");
         } else {
           const item = {
@@ -38,14 +39,14 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           if (totalAmount + item.price <= extractedBalance) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
-            console.log("Product successfully added.");
+            console.log("[Load Product Button]: Product successfully added.");
           } else {
-            console.log("Insufficient balance.");
+            console.log("[Load Product Button]: Insufficient balance.");
             setMessage("残高が足りません。");
           }
         }
       } else {
-        console.log("Invalid QR Code format.");
+        console.log("[Load Product Button]: Invalid QR Code format.");
         setMessage("商品QRではないものが読み込まれました。");
       }
     }
