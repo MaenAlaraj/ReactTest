@@ -1,8 +1,8 @@
 import React from "react";
 import { useGlobalContext } from "../GlobalContext"; // Adjust path to your context
 
-const LogoutButton = (productList, removeRow) => {
-  const { setUserBeforePrefix, setTotal } = useGlobalContext(); // Use context if needed for managing global states
+const LogoutButton = () => {
+  const { setUserBeforePrefix, setTotal, productList, removeRow } = useGlobalContext(); // Use context if needed for managing global states
   
 
   const handleRemoveRow = (rowIndex) => {
@@ -29,7 +29,7 @@ const LogoutButton = (productList, removeRow) => {
       console.log("[Logout Button]: The value of index of 1st row:", firstRowIndex);
       removeRow(firstRowIndex); // Call removeRow with the index of the first row
       console.log("[LogoutButton]: The first row has been removed successfully.");
-      setTotal(0) 
+      setTotal(0)
     //}
     
 
