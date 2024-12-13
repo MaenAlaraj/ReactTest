@@ -17,8 +17,8 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
     console.log("Payment initiated.");
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
-    console.log("totalAmount:", totalAmount);
-    console.log("productList:", productList);
+    console.log("[Pay Button]: totalAmount:", totalAmount);
+    console.log("[Pay Button]: productList:", productList);
 
 
         if (totalAmount === 0) {

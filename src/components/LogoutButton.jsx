@@ -1,29 +1,37 @@
 import React from "react";
 import { useGlobalContext } from "../GlobalContext"; // Adjust path to your context
 
-const LogoutButton = () => {
-  const { setUserBeforePrefix } = useGlobalContext(); // Use context if needed for managing global states
-  const { removeRowTEST } = useGlobalContext();
+const LogoutButton = (productList, removeRow) => {
+  const { setUserBeforePrefix, setTotal } = useGlobalContext(); // Use context if needed for managing global states
+  
+
+  const handleRemoveRow = (rowIndex) => {
+    removeRow(rowIndex);
+  };
 
 
 
   const handleLogout = () => {
-    console.log("[REACT Console]: ログアウトしています...");
+    console.log("[Logout Button]: ログアウトしています...");
+    console.log("[Logout Button]: productList:", productList);
 
     //const firstRowIndex = productList[0].index; // Get the index of the first row
     //console.log("The value of index of 1st row:", firstRowIndex);
 
-    removeRowTEST(0); // Remove the first row (index 0) 
+    //removeRowTEST(0); // Remove the first row (index 0) 
     console.log("[LogoutButton]: The first row has been removed successfully.");
 
 
-    /*if (productList.length > 0) {
+    if (productList.length > 0) {
       const rows = productList.length;
-      console.log("The value of rows:", rows);
+      console.log("[Logout Button]: The value of rows:", rows);
       const firstRowIndex = productList[0].index; // Get the index of the first row
-      console.log("The value of index of 1st row:", firstRowIndex);
+      console.log("[Logout Button]: The value of index of 1st row:", firstRowIndex);
       removeRow(firstRowIndex); // Call removeRow with the index of the first row
-    }*/
+      console.log("[LogoutButton]: The first row has been removed successfully.");
+      setTotal(0) 
+    }
+    
 
     // Show authContainer and hide mainContainer and transitContainer
     document.getElementById("authContainer").style.display = "block";
