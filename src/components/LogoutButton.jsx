@@ -29,7 +29,7 @@ const LogoutButton = () => {
       console.log("[Logout Button]: The value of index of 1st row:", firstRowIndex);
       removeRow(firstRowIndex); // Call removeRow with the index of the first row
       console.log("[LogoutButton]: The first row has been removed successfully.");
-      setTotal(0)
+      //setTotal(0)
     }
     
 
