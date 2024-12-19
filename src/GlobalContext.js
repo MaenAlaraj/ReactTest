@@ -99,10 +99,10 @@ export const GlobalProvider = ({ children }) => {
     // Clear any existing timer
     clearTimeout(timerId.current);
 
-    // Set a new timer to execute the function after 5 seconds 
+    // Set a new timer to execute the function after 30 seconds 
     timerId.current = setTimeout(() => {
       executeAfterDelay();
-    }, 5000);
+    }, 30000);
   };
 
 

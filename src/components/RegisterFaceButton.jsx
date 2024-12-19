@@ -20,7 +20,7 @@ const RegisterFaceButton = () => {
 
       if (!resultJsonString) {
         setMessage("「停止」button has been pressed.");
-        console.log("[REACT Console]:「停止」button has been pressed");
+        console.log("[Register Face Button]:「停止」button has been pressed");
         //document.getElementById("authContainer").style.display = "block";
         //document.getElementById("transitContainer").style.display = "none";
       } else {
@@ -29,28 +29,28 @@ const RegisterFaceButton = () => {
         const numberOfFaces = facesArray.length;
 
         if (numberOfFaces === 0) {     
-          console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
+          console.log("[Register Face Button]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("顔を認証できませんでした。もう一度試してください。", "show_message");
           document.getElementById('authContainer').style.display = 'block';
           document.getElementById('transitContainer').style.display = 'none';
         } else if (numberOfFaces === 1) {
-          console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
+          console.log("[Register Face Button]:Captured Nr. of Faces:", numberOfFaces);
           document.getElementById("authContainer").style.display = "none";
           document.getElementById("transitContainer").style.display = "block";
 
           let base64String = facesArray[0].image64;
           setMessage("顔が正常にキャプチャされました。", "show_message");
-          console.log("[REACT Console]:Captured Face Base64 String:", base64String);
+          console.log("[Register Face Button]:Captured Face Base64 String:", base64String);
 
           let qrString = await window.QRInterface.get_QRInfo();
-          console.log("[REACT Console]:qrString value is:", qrString);
+          console.log("[Register Face Button]:qrString value is:", qrString);
 
           if (qrString !== "Scanner stopped") {
             const match = qrString.match(/,(.*?),/);
             const extractedUserID = match ? match[1] : null;
-
+            console.log("[Register Face Button]:extractedUserID value is:", extractedUserID);
             if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
-              console.log("[REACT Console]:Condition satisfied");
+              console.log("[Register Face Button]:Condition satisfied");
               let userID = `${prefix}${extractedUserID}`;
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
 

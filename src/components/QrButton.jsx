@@ -6,7 +6,6 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 const QrButton = () => {
   const { prefix } = useGlobalContext(); // Access the global context as needed
-  //const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleQr = async () => {
