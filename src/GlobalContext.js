@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useRef } from "react";
 
 // Create Context
 const GlobalContext = createContext();
@@ -18,7 +18,7 @@ export const GlobalProvider = ({ children }) => {
   const [balanceMessage, setBalanceMessage] = useState("");
   const [productList, setProductList] = useState([]); 
   const [totalAmount, setTotalAmount] = useState(0);
-
+  const timerId = useRef(null);
 
 
 
@@ -76,6 +76,43 @@ export const GlobalProvider = ({ children }) => {
       console.warn(`[GlobalContext]: Button with ID '${buttonId}' not found.`);
     }
   };
+
+
+
+  const executeAfterDelay = () => {
+    // Code to execute after 5 seconds
+    document.getElementById("authContainer").style.display = "block";
+    document.getElementById("mainContainer").style.display = "none";
+    document.getElementById("transitContainer").style.display = "none";
+
+    // Reset user-specific variables if needed
+    setUserBeforePrefix(""); 
+    console.log("executeAfterDelay: userBeforePrefix reset and UI updated.");
+  };
+
+
+
+  const startTimer = () => {
+    // Clear any existing timer
+    clearTimeout(timerId.current);
+
+    // Set a new timer to execute the function after 5 seconds 
+    timerId.current = setTimeout(() => {
+      executeAfterDelay();
+    }, 5000);
+
+    console.log("Timer started.");
+  };
+
+
+
+  const stopTimer = () => {
+    // Clear the timer
+    clearTimeout(timerId.current);
+    console.log("Timer stopped.");
+  };
+
+
 
 
 
