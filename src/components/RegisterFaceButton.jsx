@@ -6,7 +6,7 @@ import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrLi
 
 
 const RegisterFaceButton = () => {
-  const { errorsSubstring, sbuser, prefix } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, sbuser, prefix,  extractValue, } = useGlobalContext(); // Access necessary variables
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleRegisterFace = async () => {
@@ -46,11 +46,20 @@ const RegisterFaceButton = () => {
           console.log("[Register Face Button]:qrString value is:", qrString);
 
           if (qrString !== "Scanner stopped") {
-            const match = qrString.match(/,(.*?),/);
-            const extractedUserID = match ? match[1] : null;
+            //const match = qrString.match(/,(.*?),/);
+            //const extractedUserID = match ? match[1] : null;
+            const extractedUserID = extractValue(qrString);
+
+
+
+
+
+
+
             console.log("[Register Face Button]:extractedUserID value is:", extractedUserID);
-            if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
-              console.log("[Register Face Button]:Condition satisfied");
+            //if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
+            if (extractedUserID !== null) {
+              console.log("[Register Face Button]:Condition satisfied which is extractedUserID is NOT Null");
               let userID = `${prefix}${extractedUserID}`;
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
 

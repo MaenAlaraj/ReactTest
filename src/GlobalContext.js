@@ -116,8 +116,28 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-
-
+  const extractValue = (input) => {
+    try {
+      if (typeof input !== "string") {
+        throw new Error("Input must be a string.");
+      }
+  
+      const patterns = [/,([^,]*?),/, /USER::(.*)/]; // List of patterns to check
+  
+      for (const pattern of patterns) {
+        const match = input.match(pattern);
+        if (match) {
+          return match[1]; // Return the first match found
+        }
+      }
+  
+      return null; // Return null if no patterns match
+    } catch (error) {
+      console.error(`[extractValue Error]: ${error.message}`);
+      return null; // Return null if an error occurs
+    }
+  };
+  
 
 
 
@@ -160,6 +180,7 @@ export const GlobalProvider = ({ children }) => {
         enableButtonById,
         stopTimer,
         startTimer,
+        extractValue,
         removeRow,
       }}
     >
