@@ -93,6 +93,9 @@ export const GlobalProvider = ({ children }) => {
 
 
   const startTimer = () => {
+
+    console.log("Timer started.");
+
     // Clear any existing timer
     clearTimeout(timerId.current);
 
@@ -100,16 +103,15 @@ export const GlobalProvider = ({ children }) => {
     timerId.current = setTimeout(() => {
       executeAfterDelay();
     }, 5000);
-
-    console.log("Timer started.");
   };
 
 
 
   const stopTimer = () => {
+    console.log("Timer stopped.");
     // Clear the timer
     clearTimeout(timerId.current);
-    console.log("Timer stopped.");
+
   };
 
 
