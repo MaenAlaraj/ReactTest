@@ -40,7 +40,17 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
             console.log("[Load Product Button]: Product successfully added.");
-            disableLoadProduct();
+            //disableLoadProduct();
+            const loadProductButton = document.getElementById("loadProduct");
+            if (loadProductButton) {
+              loadProductButton.disabled = true;
+              console.log("[Load Product Button]: Load Product Button is disabled.");
+            }
+
+
+
+
+
           } else {
             setMessage("残高が足りません。","show_message");
           }
