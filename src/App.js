@@ -16,7 +16,7 @@ const App = () => {
   const [showLoadProductButton, setShowLoadProductButton] = useState(false);
   //const [productList, setProductList] = useState([]);
   //const [totalAmount, setTotalAmount] = useState(0);
-  const { productList, totalAmount, setProductList, setTotalAmount } = useGlobalContext();
+  const { productList, totalAmount, setProductList, setTotalAmount, enableButtonById  } = useGlobalContext();
 
 
    // Function to remove a row
@@ -107,6 +107,7 @@ const App = () => {
                 const updatedList = productList.filter((i) => i.index !== item.index);
                 setProductList(updatedList);
                 setTotalAmount((prevTotal) => prevTotal - item.price);
+                enableButtonById("loadProduct");
               }}
             >
               ❌

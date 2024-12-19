@@ -39,12 +39,6 @@ const LogoutButton = () => {
     document.getElementById("transitContainer").style.display = "none";
     //enableLoadProduct();
     enableButtonById("loadProduct");
-    // Enable the loadProduct button
-    /*const loadProductButton = document.getElementById("loadProduct");
-    if (loadProductButton) {
-      loadProductButton.disabled = false;
-      console.log("[Load Product Button]: Load Product Button is enabled.");
-    }*/
 
     // Reset userBeforePrefix
     setUserBeforePrefix(""); // Assuming you're managing it in the context
