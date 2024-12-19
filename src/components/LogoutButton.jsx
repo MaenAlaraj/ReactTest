@@ -37,13 +37,14 @@ const LogoutButton = () => {
     document.getElementById("authContainer").style.display = "block";
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "none";
-    enableLoadProduct();
+    //enableLoadProduct();
 
     // Enable the loadProduct button
-    /*const loadProductButton = document.getElementById("loadProduct");
+    const loadProductButton = document.getElementById("loadProduct");
     if (loadProductButton) {
       loadProductButton.disabled = false;
-    }*/
+      console.log("[Load Product Button]: Load Product Button is enabled.");
+    }
 
     // Reset userBeforePrefix
     setUserBeforePrefix(""); // Assuming you're managing it in the context

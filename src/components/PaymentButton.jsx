@@ -76,8 +76,13 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
                 setMessage(errorMessage, "show_message");
               }else{
                 document.getElementById("loadProduct").disabled = false;            
-               setMessage("ご購入ありがとうございます！", "show_message");            
+               setMessage("ご購入ありがとうございます！", "show_message");
+               const loadProductButton = document.getElementById("loadProduct");
+               if (loadProductButton) {
+                loadProductButton.disabled = false;
+                console.log("[Load Product Button]: Load Product Button is enabled.");
               }
+            }
                //startTimer(); 
               removeRow(firstRowIndex); // Call removeRow with the index of the first row
               document.getElementById("mainContainer").style.display = "block";
