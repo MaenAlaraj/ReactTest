@@ -63,7 +63,7 @@ const RegisterFaceButton = () => {
               //let userID = `${prefix}${extractedUserID}`;
               let userID = extractedUserID;
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
-
+              console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
               if (addFaceInfo.includes(errorsSubstring)) {
                 setMessage("既に登録済みのユーザーのため、登録できませんでした。");
                 document.getElementById('transitContainer').style.display = 'none';
