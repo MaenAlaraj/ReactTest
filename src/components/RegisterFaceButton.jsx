@@ -10,11 +10,11 @@ const RegisterFaceButton = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleRegisterFace = async () => {
-    console.log("[REACT Console]:「顔認証登録」ボタンがクリックされました。");
+    console.log("[Register Face Button]:「顔認証登録」ボタンがクリックされました。");
     try {
       // Call the method exposed by your Android WebView
       const resultJsonString = await window.FaceCaptureInterface.getCapturedFace();
-      console.log("[REACT Console]:Captured Face Data:", resultJsonString);
+      console.log("[Register Face Button]:Captured Face Data:", resultJsonString);
       setMessage(" ");
       
 
