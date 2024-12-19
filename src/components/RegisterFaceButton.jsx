@@ -13,7 +13,7 @@ const RegisterFaceButton = () => {
     console.log("[Register Face Button]:「顔認証登録」ボタンがクリックされました。");
     try {
       let userID = "";
-      const extractedUserID = "";
+      let extractedUserID = "";
       const resultJsonString = await window.FaceCaptureInterface.getCapturedFace();
       console.log("[Register Face Button]:Captured Face Data:", resultJsonString);
       setMessage(" ");
@@ -62,6 +62,7 @@ const RegisterFaceButton = () => {
             //if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
             if (extractedRawUserID.value !== null) {
               console.log("[Register Face Button]: Extracted Value:", extractedRawUserID.value);
+              console.log("[Register Face Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
               if (extractedRawUserID.patternMatched === "pattern1") {
                 extractedUserID = extractedRawUserID.value;
                 userID = `${prefix}${extractedUserID}`;
