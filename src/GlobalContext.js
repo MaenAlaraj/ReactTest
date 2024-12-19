@@ -157,7 +157,9 @@ export const GlobalProvider = ({ children }) => {
         totalAmount,
         setTotalAmount,
         disableButtonById,
-        enableButtonById ,
+        enableButtonById,
+        stopTimer,
+        startTimer,
         removeRow,
       }}
     >
