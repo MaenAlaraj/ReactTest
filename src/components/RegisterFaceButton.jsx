@@ -60,7 +60,8 @@ const RegisterFaceButton = () => {
             //if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
             if (extractedUserID !== null) {
               console.log("[Register Face Button]:Condition satisfied which is extractedUserID is NOT Null");
-              let userID = `${prefix}${extractedUserID}`;
+              //let userID = `${prefix}${extractedUserID}`;
+              let userID = extractedUserID;
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
 
               if (addFaceInfo.includes(errorsSubstring)) {
