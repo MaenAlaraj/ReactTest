@@ -122,21 +122,25 @@ export const GlobalProvider = ({ children }) => {
         throw new Error("Input must be a string.");
       }
   
-      const patterns = [/,([^,]*?),/, /USER::(.*)/]; // List of patterns to check
+      const patterns = [
+        { regex: /,([^,]*?),/, name: "pattern1" }, // Match pattern for IDs
+        { regex: /USER::(.*)/, name: "pattern2" }, // Match pattern for usernames
+      ];
   
-      for (const pattern of patterns) {
-        const match = input.match(pattern);
+      for (const { regex, name } of patterns) {
+        const match = input.match(regex);
         if (match) {
-          return match[1]; // Return the first match found
+          return { value: match[1], patternMatched: name };
         }
       }
   
-      return null; // Return null if no patterns match
+      return { value: null, patternMatched: null }; // No match
     } catch (error) {
       console.error(`[extractValue Error]: ${error.message}`);
-      return null; // Return null if an error occurs
+      return { value: null, patternMatched: null }; // Return null values on error
     }
   };
+  
   
 
 

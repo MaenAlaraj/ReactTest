@@ -12,7 +12,8 @@ const RegisterFaceButton = () => {
   const handleRegisterFace = async () => {
     console.log("[Register Face Button]:「顔認証登録」ボタンがクリックされました。");
     try {
-      // Call the method exposed by your Android WebView
+      let userID = "";
+      const extractedUserID = "";
       const resultJsonString = await window.FaceCaptureInterface.getCapturedFace();
       console.log("[Register Face Button]:Captured Face Data:", resultJsonString);
       setMessage(" ");
@@ -46,23 +47,28 @@ const RegisterFaceButton = () => {
           console.log("[Register Face Button]:qrString value is:", qrString);
 
           if (qrString !== "Scanner stopped") {
-            //const match = qrString.match(/,(.*?),/);
-            //const extractedUserID = match ? match[1] : null;
             const extractedRawUserID = extractValue(qrString);
-
-
-
-
-
-
-
             console.log("[Register Face Button]:extractedUserID value is:", extractedRawUserID);
+            // Return  { value: "09000000154", patternMatched: "pattern1" } OR { value: "maen.alaraj", patternMatched: "pattern2" }
+
+
+
+
+
+
+
+
+
             //if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
-            if (extractedRawUserID !== null) {
-              console.log("[Register Face Button]:Condition satisfied which is extractedUserID is NOT Null");
-              const extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID);
-              let userID = `${prefix}${extractedUserID}`;
-              
+            if (extractedRawUserID.value !== null) {
+              console.log("[Register Face Button]: Extracted Value:", extractedRawUserID.value);
+              if (extractedRawUserID.patternMatched === "pattern1") {
+                extractedUserID = extractedRawUserID.value;
+                userID = `${prefix}${extractedUserID}`;
+              }else if (extractedRawUserID.patternMatched === "pattern2"){
+                extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID);
+                userID = extractedUserID
+              } 
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
               console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
               if (addFaceInfo.includes(errorsSubstring)) {
