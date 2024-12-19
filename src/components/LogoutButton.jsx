@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../GlobalContext"; // Adjust path to your context
 
 const LogoutButton = () => {
-  const { setUserBeforePrefix, setTotal, productList, removeRow, enableLoadProduct  } = useGlobalContext(); // Use context if needed for managing global states
+  const { setUserBeforePrefix, setTotal, productList, removeRow, enableButtonById  } = useGlobalContext(); // Use context if needed for managing global states
   
 
   const handleRemoveRow = (rowIndex) => {
@@ -38,13 +38,13 @@ const LogoutButton = () => {
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "none";
     //enableLoadProduct();
-
+    enableButtonById("loadProduct");
     // Enable the loadProduct button
-    const loadProductButton = document.getElementById("loadProduct");
+    /*const loadProductButton = document.getElementById("loadProduct");
     if (loadProductButton) {
       loadProductButton.disabled = false;
       console.log("[Load Product Button]: Load Product Button is enabled.");
-    }
+    }*/
 
     // Reset userBeforePrefix
     setUserBeforePrefix(""); // Assuming you're managing it in the context

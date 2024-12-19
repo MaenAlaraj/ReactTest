@@ -18,10 +18,8 @@ export const GlobalProvider = ({ children }) => {
   const [balanceMessage, setBalanceMessage] = useState("");
   const [productList, setProductList] = useState([]); 
   const [totalAmount, setTotalAmount] = useState(0);
-  const [loadProductDisabled, setLoadProductDisabled] = useState(false);
 
-  const disableLoadProduct = () => setLoadProductDisabled(true);
-  const enableLoadProduct = () => setLoadProductDisabled(false);
+
 
 
 
@@ -59,6 +57,31 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const disableButtonById = (buttonId) => {
+    const button = document.getElementById(buttonId);
+    if (button) {
+      button.disabled = true;
+      console.log(`[GlobalContext]: Button with ID '${buttonId}' is disabled.`);
+    } else {
+      console.warn(`[GlobalContext]: Button with ID '${buttonId}' not found.`);
+    }
+  };
+
+  const enableButtonById = (buttonId) => {
+    const button = document.getElementById(buttonId);
+    if (button) {
+      button.disabled = false;
+      console.log(`[GlobalContext]: Button with ID '${buttonId}' is enabled.`);
+    } else {
+      console.warn(`[GlobalContext]: Button with ID '${buttonId}' not found.`);
+    }
+  };
+
+
+
+
+
+
   return (
     <GlobalContext.Provider
       value={{
@@ -94,9 +117,8 @@ export const GlobalProvider = ({ children }) => {
         setProductList,
         totalAmount,
         setTotalAmount,
-        loadProductDisabled,
-        disableLoadProduct,
-        enableLoadProduct,
+        disableButtonById,
+        enableButtonById ,
         removeRow,
       }}
     >

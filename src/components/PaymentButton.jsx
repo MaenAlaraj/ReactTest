@@ -5,7 +5,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableLoadProduct   } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById    } = useGlobalContext(); // Access necessary variables
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 
@@ -77,11 +77,12 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
               }else{
                 document.getElementById("loadProduct").disabled = false;            
                setMessage("ご購入ありがとうございます！", "show_message");
-               const loadProductButton = document.getElementById("loadProduct");
+               enableButtonById("loadProduct");
+               /*const loadProductButton = document.getElementById("loadProduct");
                if (loadProductButton) {
                 loadProductButton.disabled = false;
                 console.log("[Load Product Button]: Load Product Button is enabled.");
-              }
+              }*/
             }
                //startTimer(); 
               removeRow(firstRowIndex); // Call removeRow with the index of the first row
