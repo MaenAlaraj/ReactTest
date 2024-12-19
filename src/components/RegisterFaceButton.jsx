@@ -48,7 +48,7 @@ const RegisterFaceButton = () => {
           if (qrString !== "Scanner stopped") {
             //const match = qrString.match(/,(.*?),/);
             //const extractedUserID = match ? match[1] : null;
-            const extractedUserID = extractValue(qrString);
+            const extractedRawUserID = extractValue(qrString);
 
 
 
@@ -56,12 +56,13 @@ const RegisterFaceButton = () => {
 
 
 
-            console.log("[Register Face Button]:extractedUserID value is:", extractedUserID);
+            console.log("[Register Face Button]:extractedUserID value is:", extractedRawUserID);
             //if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
-            if (extractedUserID !== null) {
+            if (extractedRawUserID !== null) {
               console.log("[Register Face Button]:Condition satisfied which is extractedUserID is NOT Null");
-              //let userID = `${prefix}${extractedUserID}`;
-              let userID = extractedUserID;
+              const extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID);
+              let userID = `${prefix}${extractedUserID}`;
+              
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
               console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
               if (addFaceInfo.includes(errorsSubstring)) {
@@ -84,7 +85,7 @@ const RegisterFaceButton = () => {
             document.getElementById("authContainer").style.display = "block";
           }
         } else if (numberOfFaces > 1) {
-          console.log("[REACT Console]:Captured Nr. of Faces:", numberOfFaces);
+          console.log("[Register Face Button]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("複数の顔が検出されたため、顔を認証できませんでした。もう一度やり直してください。", "show_message");
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("authContainer").style.display = "block";
