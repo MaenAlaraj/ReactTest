@@ -5,7 +5,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableLoadProduct   } = useGlobalContext(); // Access necessary variables
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 

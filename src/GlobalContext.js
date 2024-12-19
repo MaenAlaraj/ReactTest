@@ -17,7 +17,14 @@ export const GlobalProvider = ({ children }) => {
   const [Balance, setBalance] = useState(null);
   const [balanceMessage, setBalanceMessage] = useState("");
   const [productList, setProductList] = useState([]); 
-  const [totalAmount, setTotalAmount] = useState(0); 
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [loadProductDisabled, setLoadProductDisabled] = useState(false);
+
+  const disableLoadProduct = () => setLoadProductDisabled(true);
+  const enableLoadProduct = () => setLoadProductDisabled(false);
+
+
+
   const errorsSubstring = "エラー";
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
@@ -87,6 +94,9 @@ export const GlobalProvider = ({ children }) => {
         setProductList,
         totalAmount,
         setTotalAmount,
+        loadProductDisabled,
+        disableLoadProduct,
+        enableLoadProduct,
         removeRow,
       }}
     >

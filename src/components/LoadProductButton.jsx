@@ -3,7 +3,7 @@ import { useGlobalContext } from "../GlobalContext";
 import { setMessage } from '../utils'; // Adjust the relative path based on your project structure
 
 const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalAmount }) => {
-  const { balanceMessage } = useGlobalContext();
+  const { balanceMessage, loadProductDisabled, disableLoadProduct} = useGlobalContext();
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
 
@@ -40,6 +40,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
             console.log("[Load Product Button]: Product successfully added.");
+            disableLoadProduct();
           } else {
             setMessage("残高が足りません。","show_message");
           }
