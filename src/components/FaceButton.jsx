@@ -16,7 +16,7 @@ const FaceButton = () => {
 
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
-    setMessage("[FaceButton]:「顔認証」ボタンがクリックされました。", "show_message");
+    await window.ToastInterface.showToast("[FaceButton]:「顔認証」ボタンがクリックされました。");
     
     //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
