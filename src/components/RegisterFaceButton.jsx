@@ -64,11 +64,16 @@ const RegisterFaceButton = () => {
               console.log("[Register Face Button]: Extracted Value:", extractedRawUserID.value);
               console.log("[Register Face Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
               if (extractedRawUserID.patternMatched === "pattern1") {
+                console.log("[Register Face Button]:pattern1 has been detected");
                 extractedUserID = extractedRawUserID.value;
                 userID = `${prefix}${extractedUserID}`;
+                console.log("[Register Face Button]: The value of userID [pattern1]:", userID);
               }else if (extractedRawUserID.patternMatched === "pattern2"){
-                extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID);
+                console.log("[Register Face Button]:pattern2 has been detected");
+                extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
+                console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
                 userID = extractedUserID
+                console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
               } 
               let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
               console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
