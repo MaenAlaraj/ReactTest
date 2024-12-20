@@ -1,7 +1,7 @@
-import React from "react";
+//import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
-
+import React, { useState } from "react";
 import useSetBalance from '../useSetBalance'; // Correct the import path
 //import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
 
@@ -9,15 +9,16 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
-  //const removeItemsFromList = useRemoveItemsFromList (); // Call the custom hook
+  const [showPopup, setShowPopup] = useState(false);
   
   // Call the hook inside the component
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
-    await window.ToastInterface.showToast("[FaceButton]:「顔認証」ボタンがクリックされました。");
-    
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 3000);
+
     //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
@@ -84,10 +85,28 @@ const FaceButton = () => {
   };
 
   return (
-    <button id="faceButton" onClick={handleFace}>
-      顔認証
-    </button>
+     <div>
+     <button onClick={handleFace}>顔認証</button>
+
+     {showPopup && (
+       <div style={popupStyle}>
+         [FaceButton]:「顔認証」ボタンがクリックされました。
+       </div>
+     )}
+   </div>
   );
+};
+
+const popupStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  padding: "20px",
+  backgroundColor: "#000",
+  color: "#fff",
+  borderRadius: "5px",
+  zIndex: 1000,
 };
 
 export default FaceButton;
