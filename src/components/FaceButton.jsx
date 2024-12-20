@@ -16,8 +16,7 @@ const FaceButton = () => {
 
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
-    setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 30000);
+    
 
     //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
@@ -71,6 +70,12 @@ const FaceButton = () => {
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID
+
+          setShowPopup(true);
+          setTimeout(() => setShowPopup(false), 30000);
+
+
+
         }
       } else if (numberOfFaces > 1) {
         setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");
