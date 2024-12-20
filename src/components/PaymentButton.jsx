@@ -88,9 +88,11 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             }
             else
             {
+              const errorMessage = `[Pay Button] 支払いエラー：${result}`;
+              console.log(errorMessage);
               document.getElementById("mainContainer").style.display = "block";
               document.getElementById("transitContainer").style.display = "none";
-              setMessage("[Pay Button] 支払いエラー", "show_message");
+              setMessage(errorMessage, "show_message");
             }            
           }
           enableButtonById("loadProduct");
