@@ -68,7 +68,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         if (result.includes(errorsSubstring)) 
           {
             const errorMessage = `[Pay Button] 支払いエラー：${result}`;
-            console.log("[Pay Button] 支払いエラー:", errorMessage);
+            console.log("[Pay Button]支払いエラー:", errorMessage);
             document.getElementById("mainContainer").style.display = "block";
             document.getElementById("transitContainer").style.display = "none";
             setMessage(errorMessage, "show_message");

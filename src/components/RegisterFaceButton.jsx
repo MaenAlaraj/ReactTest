@@ -37,7 +37,6 @@ const RegisterFaceButton = () => {
           document.getElementById("transitContainer").style.display = "block";
 
           let base64String = facesArray[0].image64;
-          setMessage("顔が正常にキャプチャされました。", "show_message");
           console.log("[Register Face Button]:Captured Face Base64 String:", base64String);
 
           let qrString = await window.QRInterface.get_QRInfo();
@@ -54,14 +53,14 @@ const RegisterFaceButton = () => {
                   console.log("[Register Face Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
                   if (extractedRawUserID.patternMatched === "pattern1")
                     {
-                      console.log("[Register Face Button]:pattern1-based block has been excuted.");
+                      console.log("[Register Face Button]:pattern1-based block has been executed.");
                       extractedUserID = extractedRawUserID.value;
                       userID = `${prefix}${extractedUserID}`;
                       console.log("[Register Face Button]: The value of userID [pattern1]:", userID);
                     }
                     else if (extractedRawUserID.patternMatched === "pattern2")
                     {
-                      console.log("[Register Face Button]:pattern2-based block has been excuted.");
+                      console.log("[Register Face Button]:pattern2-based block has been executed.");
                       extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
                       console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
                       userID = extractedUserID
@@ -103,7 +102,7 @@ const RegisterFaceButton = () => {
         }
       }
     } catch (error) {
-      setMessage(`エラーが発生しました: ${error.message}`, "show_message");
+      setMessage(`[Register Face Button]エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById('transitContainer').style.display = 'none';
       document.getElementById('authContainer').style.display = 'block';
     }

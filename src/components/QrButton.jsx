@@ -56,7 +56,7 @@ const QrButton = () => {
       }
     } catch (error) {
       console.error("[QR Auth. Button]:Error processing QR code:", error.message);
-      setMessage(`エラーが発生しました: ${error.message}`, "show_message");
+      setMessage(`[QR Auth. Button]エラーが発生しました: ${error.message}`, "show_message");
 
       // Transition back to the auth container
       document.getElementById("transitContainer").style.display = "none";
