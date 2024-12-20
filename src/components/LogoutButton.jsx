@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../GlobalContext"; // Adjust path to your context
 
 const LogoutButton = () => {
-  const { setUserBeforePrefix, setTotal, productList, removeRow, enableButtonById  } = useGlobalContext(); // Use context if needed for managing global states
+  const { setUserBeforePrefix, setTotal, productList, removeRow, enableButtonById, stopTimer  } = useGlobalContext(); // Use context if needed for managing global states
   
 
   const handleRemoveRow = (rowIndex) => {
@@ -14,7 +14,7 @@ const LogoutButton = () => {
   const handleLogout = () => {
     console.log("[Logout Button]: ログアウトしています...");
     console.log("[Logout Button]: productList:", productList);
-
+    stopTimer()
     if (productList.length > 0) {
       const rows = productList.length;
       console.log("[Logout Button]: The value of rows:", rows);
