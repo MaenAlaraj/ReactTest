@@ -98,7 +98,7 @@ const FaceButton = () => {
 };
 
 const popupStyle = {
-  position: "absolute",
+  position: "fixed",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -107,6 +107,7 @@ const popupStyle = {
   color: "#fff",
   borderRadius: "5px",
   zIndex: 1000,
+  textAlign: "center",
 };
 
 export default FaceButton;
