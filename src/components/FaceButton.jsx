@@ -90,7 +90,7 @@ const FaceButton = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div id="mainContainer" style={{ position: "relative" }}>
      <button onClick={handleFace}>顔認証</button>
 
      {showPopup && (
