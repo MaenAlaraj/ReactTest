@@ -68,14 +68,17 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         console.log("[Pay Button] message1:", message1);
         const result = await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
         console.log("[Pay Button] result:", result);
+        console.log("[Pay Button] errorRetSubstring:", errorRetSubstring);
         if (result.includes(errorsSubstring) || result.includes(errorRetSubstring)) 
           {
+            console.log("Substring found!");
             const errorMessage = `[Pay Button] 支払いエラー：${result}`;
             console.log(errorMessage);
             document.getElementById("mainContainer").style.display = "block";
             document.getElementById("transitContainer").style.display = "none";
             setMessage(errorMessage, "show_message");
           }else{
+            console.log("Substring not found!");
             document.getElementById("loadProduct").disabled = false;            
             setMessage("ご購入ありがとうございます！", "show_message");
             enableButtonById("loadProduct");
