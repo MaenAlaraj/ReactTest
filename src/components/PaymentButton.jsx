@@ -5,7 +5,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, errorRetSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 
@@ -68,7 +68,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         console.log("[Pay Button] message1:", message1);
         const result = await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
         console.log("[Pay Button] result:", result);
-        if (result.includes(errorsSubstring)) 
+        if (result.includes(errorsSubstring) || result.includes(errorRetSubstring)) 
           {
             const errorMessage = `[Pay Button] 支払いエラー：${result}`;
             console.log(errorMessage);

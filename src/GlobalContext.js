@@ -24,6 +24,7 @@ export const GlobalProvider = ({ children }) => {
 
 
   const errorsSubstring = "エラー";
+  const errorRetSubstring = "限界値";
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
   const payment_terminalID = "";
@@ -157,6 +158,7 @@ export const GlobalProvider = ({ children }) => {
         sbuser,
         setSbuser,
         errorsSubstring,
+        errorRetSubstring,
         extractedUserID,
         setExtractedUserID,
         userBeforePrefix,
