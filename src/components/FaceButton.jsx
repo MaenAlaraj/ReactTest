@@ -6,7 +6,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const FaceButton = () => {
-  const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, sbuser, gckid, startTimer } = useGlobalContext(); // Access necessary variables
   
   
   // Call the hook inside the component
@@ -67,6 +67,8 @@ const FaceButton = () => {
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID
+
+          startTimer();
         }
       } else if (numberOfFaces > 1) {
         setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");

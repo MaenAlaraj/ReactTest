@@ -5,7 +5,7 @@ import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrLi
 import useSetBalance from '../useSetBalance'; // Correct the import path
 
 const QrButton = () => {
-  const { prefix } = useGlobalContext(); // Access the global context as needed
+  const { prefix, startTimer } = useGlobalContext(); // Access the global context as needed
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleQr = async () => {
@@ -37,7 +37,8 @@ const QrButton = () => {
 
           setBalance(extractedUserID);
 
-          
+          startTimer();
+        
         } else {
           console.log("[QR Auth. Button]:Invalid QR Code.");
           setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message");
