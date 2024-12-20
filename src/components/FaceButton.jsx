@@ -90,15 +90,16 @@ const FaceButton = () => {
   };
 
   return (
-    <div id="mainContainer" style={{ position: "relative" }}>
+    <>
      <button onClick={handleFace}>顔認証</button>
 
-     {showPopup && (
-       <div style={popupStyle}>
-         [FaceButton]:「顔認証」ボタンがクリックされました。
-       </div>
-     )}
-   </div>
+     {showPopup &&
+        document.getElementById("mainContainer") && (
+          <div style={popupStyle}>
+            [FaceButton]:「顔認証」ボタンがクリックされました。
+          </div>
+        )}
+   </>
   );
 };
 
