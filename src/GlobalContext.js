@@ -88,6 +88,7 @@ export const GlobalProvider = ({ children }) => {
 
     // Reset user-specific variables if needed
     setUserBeforePrefix(""); 
+    enableButtonById("loadProduct");
     console.log("executeAfterDelay: userBeforePrefix reset and UI updated.");
   };
 
