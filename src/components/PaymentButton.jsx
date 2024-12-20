@@ -41,10 +41,10 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const sellerCode = firstRow.seller
         console.log("[Pay Button] Product Name:", firstRow.product);
         const productName = firstRow.product
-        //console.log("[Pay Button] Price:", firstRow.price);
-        //const productPrice = firstRow.price
-        console.log("[Pay Button] Price:", 10000);
-        const productPrice = 10000
+        console.log("[Pay Button] Price:", firstRow.price);
+        const productPrice = firstRow.price
+        //console.log("[Pay Button] Price:", 10000);
+        //const productPrice = 10000
 
         console.log("[Pay Button] Category:", firstRow.category);
         const category = firstRow.category
