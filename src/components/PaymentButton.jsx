@@ -5,7 +5,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, errorRetSubstring, prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, errorRetSubstring, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 
@@ -41,10 +41,10 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const sellerCode = firstRow.seller
         console.log("[Pay Button] Product Name:", firstRow.product);
         const productName = firstRow.product
-        console.log("[Pay Button] Price:", firstRow.price);
-        const productPrice = firstRow.price
-        //console.log("[Pay Button] Price:", 10000);
-        //const productPrice = 10000
+        //console.log("[Pay Button] Price:", firstRow.price);
+        //const productPrice = firstRow.price
+        console.log("[Pay Button] Price:", 10000);
+        const productPrice = 10000
 
         console.log("[Pay Button] Category:", firstRow.category);
         const category = firstRow.category
@@ -67,9 +67,8 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const message1 = `${header_prefix}${sellerCode} ${productName} ${catValue} ${category} ${formattedDate} ${sellerName}`;
         console.log("[Pay Button] message1:", message1);
         const result = await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
-        console.log("[Pay Button] result:", result);
-        console.log("[Pay Button] errorRetSubstring:", errorRetSubstring);
-        if (result.includes(errorsSubstring) || result.includes(errorRetSubstring)) 
+        console.log("[Pay Button] result:", result);  
+        if (result.includes(errorsSubstring)) 
           {
             console.log("Substring found!");
             const errorMessage = `[Pay Button] 支払いエラー：${result}`;
@@ -77,10 +76,22 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             document.getElementById("mainContainer").style.display = "block";
             document.getElementById("transitContainer").style.display = "none";
             setMessage(errorMessage, "show_message");
-          }else{
+          }
+          else
+          {
             console.log("Substring not found!");
-            document.getElementById("loadProduct").disabled = false;            
-            setMessage("ご購入ありがとうございます！", "show_message");
+            const isValid = validateBalance(result);
+            console.log(isValid ? "Balance is valid" : "Balance is invalid");
+            if (isValid === true){
+              document.getElementById("loadProduct").disabled = false;            
+              setMessage("ご購入ありがとうございます！", "show_message");
+            }
+            else
+            {
+              document.getElementById("mainContainer").style.display = "block";
+              document.getElementById("transitContainer").style.display = "none";
+              setMessage("[Pay Button] 支払いエラー", "show_message");
+            }            
           }
           enableButtonById("loadProduct");
           startTimer(); 

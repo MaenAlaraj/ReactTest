@@ -24,7 +24,6 @@ export const GlobalProvider = ({ children }) => {
 
 
   const errorsSubstring = "エラー";
-  const errorRetSubstring = "限界値";
   const gcMall_code = "09000000015";
   const header_prefix = "＆％MALL／";
   const payment_terminalID = "";
@@ -95,7 +94,6 @@ export const GlobalProvider = ({ children }) => {
 
 
   const startTimer = () => {
-
     console.log("Timer started.");
 
     // Clear any existing timer
@@ -147,6 +145,33 @@ export const GlobalProvider = ({ children }) => {
 
 
 
+
+
+
+
+  function validateBalance(result, lowerLimit = -1000) {
+    // Use a regular expression to extract the number after "NewBalance:"
+    const match = result.match(/NewBalance:(-?\d+)/);
+    const extractedValue = match ? parseInt(match[1], 10) : null;
+  
+    // Check if the extracted value is a valid number and meets the lower limit condition
+    if (extractedValue !== null && typeof extractedValue === "number" && extractedValue >= lowerLimit) {
+      return true; // Valid balance
+    }
+  
+    return false; // Invalid balance or no match
+  }
+
+
+
+
+
+
+
+
+
+
+
   return (
     <GlobalContext.Provider
       value={{
@@ -159,7 +184,6 @@ export const GlobalProvider = ({ children }) => {
         sbuser,
         setSbuser,
         errorsSubstring,
-        errorRetSubstring,
         extractedUserID,
         setExtractedUserID,
         userBeforePrefix,
@@ -188,6 +212,7 @@ export const GlobalProvider = ({ children }) => {
         stopTimer,
         startTimer,
         extractValue,
+        validateBalance,
         removeRow,
       }}
     >
