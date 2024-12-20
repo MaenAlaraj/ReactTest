@@ -149,7 +149,7 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-  function validateBalance(result, lowerLimit = -1000) {
+  function validateBalance(result, lowerLimit) {
     // Use a regular expression to extract the number after "NewBalance:"
     const match = result.match(/NewBalance:(-?\d+)/);
     const extractedValue = match ? parseInt(match[1], 10) : null;

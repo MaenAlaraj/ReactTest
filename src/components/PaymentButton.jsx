@@ -80,7 +80,13 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
           else
           {
             console.log("Substring not found!");
-            const isValid = validateBalance(result);
+            const Balance_STR = await window.CCWalletInterface.Balance(user1, payment_terminalID);
+            console.log("[setBalance] Raw Balance String:", Balance_STR);
+            const Balance_LIST = Balance_STR.split(" ");
+            console.log("[setBalance] Split Balance String:", Balance_LIST);
+            const lowerLimit = Balance_LIST[1].split(":")[1]
+            console.log("[setBalance] Lower Limit Balance is :", lowerLimit);
+            const isValid = validateBalance(result, lowerLimit);
             console.log(isValid ? "Balance is valid" : "Balance is invalid");
             if (isValid === true){
               document.getElementById("loadProduct").disabled = false;            
