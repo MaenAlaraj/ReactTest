@@ -20,10 +20,7 @@ const RegisterFaceButton = () => {
       
 
       if (!resultJsonString) {
-        setMessage("「停止」button has been pressed.");
         console.log("[Register Face Button]:「停止」button has been pressed");
-        //document.getElementById("authContainer").style.display = "block";
-        //document.getElementById("transitContainer").style.display = "none";
       } else {
         const resultJsonObject = JSON.parse(resultJsonString);
         const facesArray = resultJsonObject.Faces;
