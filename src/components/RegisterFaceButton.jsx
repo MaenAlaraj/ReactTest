@@ -7,7 +7,7 @@ import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrLi
 
 const RegisterFaceButton = () => {
   const { errorsSubstring, sbuser, prefix,  extractValue, } = useGlobalContext(); // Access necessary variables
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  //const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleRegisterFace = async () => {
     console.log("[Register Face Button]:「顔認証登録」ボタンがクリックされました。");
@@ -46,56 +46,58 @@ const RegisterFaceButton = () => {
           let qrString = await window.QRInterface.get_QRInfo();
           console.log("[Register Face Button]:qrString value is:", qrString);
 
-          if (qrString !== "Scanner stopped") {
-            const extractedRawUserID = extractValue(qrString);
-            console.log("[Register Face Button]:extractedUserID value is:", extractedRawUserID);
-            // Return  { value: "09000000154", patternMatched: "pattern1" } OR { value: "maen.alaraj", patternMatched: "pattern2" }
-
-
-
-
-
-
-
-
-
-            //if (extractedUserID !== null && checkValueInQrstrList(extractedUserID)) {
-            if (extractedRawUserID.value !== null) {
-              console.log("[Register Face Button]: Extracted Value:", extractedRawUserID.value);
-              console.log("[Register Face Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
-              if (extractedRawUserID.patternMatched === "pattern1") {
-                console.log("[Register Face Button]:pattern1 has been detected");
-                extractedUserID = extractedRawUserID.value;
-                userID = `${prefix}${extractedUserID}`;
-                console.log("[Register Face Button]: The value of userID [pattern1]:", userID);
-              }else if (extractedRawUserID.patternMatched === "pattern2"){
-                console.log("[Register Face Button]:pattern2 has been detected");
-                extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
-                console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
-                userID = extractedUserID
-                console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
-              } 
-              let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
-              console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
-              if (addFaceInfo.includes(errorsSubstring)) {
-                setMessage("既に登録済みのユーザーのため、登録できませんでした。");
-                document.getElementById('transitContainer').style.display = 'none';
-                document.getElementById('authContainer').style.display = 'block';
-              } else {
-                setMessage("顔が登録されました。");
-                setIsButtonDisabled(true); // Disable the button here
+          if (qrString !== "Scanner stopped") 
+            {
+              const extractedRawUserID = extractValue(qrString);
+              console.log("[Register Face Button]:extractedUserID value is:", extractedRawUserID);
+              // Return  { value: "09000000154", patternMatched: "pattern1" } OR { value: "maen.alaraj", patternMatched: "pattern2" }
+              if (extractedRawUserID.value !== null)
+                {
+                  console.log("[Register Face Button]: Extracted Value:", extractedRawUserID.value);
+                  console.log("[Register Face Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
+                  if (extractedRawUserID.patternMatched === "pattern1")
+                    {
+                      console.log("[Register Face Button]:pattern1-based block has been excuted.");
+                      extractedUserID = extractedRawUserID.value;
+                      userID = `${prefix}${extractedUserID}`;
+                      console.log("[Register Face Button]: The value of userID [pattern1]:", userID);
+                    }
+                    else if (extractedRawUserID.patternMatched === "pattern2")
+                    {
+                      console.log("[Register Face Button]:pattern2-based block has been excuted.");
+                      extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
+                      console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
+                      userID = extractedUserID
+                      console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
+                    } 
+                  let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                  console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
+                  if (addFaceInfo.includes(errorsSubstring)) 
+                    {
+                      setMessage("既に登録済みのユーザーのため、登録できませんでした。");
+                      document.getElementById('transitContainer').style.display = 'none';
+                      document.getElementById('authContainer').style.display = 'block';
+                    } 
+                  else
+                    {
+                      setMessage("顔が登録されました。");
+                      //setIsButtonDisabled(true); // Disable the button here
+                      document.getElementById("transitContainer").style.display = "none";
+                      document.getElementById("authContainer").style.display = "block";
+                    }
+                }
+              else
+                {
+                  setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
+                  document.getElementById("transitContainer").style.display = "none";
+                  document.getElementById("authContainer").style.display = "block";
+                }
+            }
+            else 
+              {
                 document.getElementById("transitContainer").style.display = "none";
                 document.getElementById("authContainer").style.display = "block";
               }
-            } else {
-              setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。");
-              document.getElementById("transitContainer").style.display = "none";
-              document.getElementById("authContainer").style.display = "block";
-            }
-          } else {
-            document.getElementById("transitContainer").style.display = "none";
-            document.getElementById("authContainer").style.display = "block";
-          }
         } else if (numberOfFaces > 1) {
           console.log("[Register Face Button]:Captured Nr. of Faces:", numberOfFaces);
           setMessage("複数の顔が検出されたため、顔を認証できませんでした。もう一度やり直してください。", "show_message");
@@ -112,7 +114,7 @@ const RegisterFaceButton = () => {
 
   return (
     <div>
-      <button id="registerFaceButton" onClick={handleRegisterFace} disabled={isButtonDisabled}>
+      <button id="registerFaceButton" onClick={handleRegisterFace} >
         顔認証登録
       </button>
       <div id="message"></div>
