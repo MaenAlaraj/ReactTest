@@ -1,28 +1,25 @@
-//import React from "react";
+import React from "react";
 import { setMessage } from "../utils"; // Import setMessage from utils.js
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
-import React, { useState } from "react";
-import useSetBalance from '../useSetBalance'; // Correct the import path
-//import useRemoveItemsFromList  from "../UtilitiesFunctions/removeItemsFromList"; // Adjust the path to removeItemsFromList
 
+import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const FaceButton = () => {
   const { errorsSubstring, sbuser, gckid } = useGlobalContext(); // Access necessary variables
-  const [showPopup, setShowPopup] = useState(false);
+  
   
   // Call the hook inside the component
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleFace = async () => {
-    console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
-    
+    //console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
 
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
-    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
+    console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
     // Show the transitContainer and hide authContainer
-    document.getElementById("authContainer").style.display = "none";
+    /*document.getElementById("authContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
 
     try {
@@ -70,12 +67,6 @@ const FaceButton = () => {
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID
-
-          setShowPopup(true);
-          setTimeout(() => setShowPopup(false), 30000);
-
-
-
         }
       } else if (numberOfFaces > 1) {
         setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");
@@ -86,34 +77,20 @@ const FaceButton = () => {
       setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
-    }
+    }*/
+
+
+
+
+
+
   };
 
   return (
-    <>
-     <button onClick={handleFace}>顔認証</button>
-
-     {showPopup &&
-        document.getElementById("mainContainer") && (
-          <div style={popupStyle}>
-            [FaceButton]:「顔認証」ボタンがクリックされました。
-          </div>
-        )}
-   </>
+    <button id="faceButton" onClick={handleFace}>
+      顔認証
+    </button>
   );
-};
-
-const popupStyle = {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  padding: "20px",
-  backgroundColor: "#000",
-  color: "#fff",
-  borderRadius: "5px",
-  zIndex: 1000,
-  textAlign: "center",
 };
 
 export default FaceButton;
