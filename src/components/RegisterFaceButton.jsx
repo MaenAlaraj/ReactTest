@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { setMessage } from "../utils"; // Adjust the path to where `utils.js` is located
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
-import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrList';
 
 
 
 const RegisterFaceButton = () => {
   const { errorsSubstring, sbuser, prefix,  extractValue, } = useGlobalContext(); // Access necessary variables
-  //const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleRegisterFace = async () => {
     console.log("[Register Face Button]:「顔認証登録」ボタンがクリックされました。");
@@ -77,7 +75,6 @@ const RegisterFaceButton = () => {
                   else
                     {
                       setMessage("顔が登録されました。");
-                      //setIsButtonDisabled(true); // Disable the button here
                       document.getElementById("transitContainer").style.display = "none";
                       document.getElementById("authContainer").style.display = "block";
                     }

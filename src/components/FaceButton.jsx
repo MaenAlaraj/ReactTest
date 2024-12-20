@@ -16,6 +16,8 @@ const FaceButton = () => {
 
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
+    setMessage("[FaceButton]:「顔認証」ボタンがクリックされました。", "show_message");
+    
     //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
@@ -65,10 +67,6 @@ const FaceButton = () => {
           // Transition to mainContainer
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("mainContainer").style.display = "block";
-
-
-           // Call removeItemsFromList after successful authentication
-          //removeItemsFromList(); // Call the custom hook to remove items and reset totals
 
           // Here, call the updateBalance function
           setBalance(userID);  // Call setBalance with the userID
