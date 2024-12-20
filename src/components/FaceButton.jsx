@@ -17,7 +17,7 @@ const FaceButton = () => {
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
     setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 3000);
+    setTimeout(() => setShowPopup(false), 30000);
 
     //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
@@ -85,7 +85,7 @@ const FaceButton = () => {
   };
 
   return (
-     <div>
+    <div style={{ position: "relative" }}>
      <button onClick={handleFace}>顔認証</button>
 
      {showPopup && (
