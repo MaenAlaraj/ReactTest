@@ -44,7 +44,7 @@ const QrButton = () => {
                 extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
                 console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
                 userID = extractedUserID
-                extractedUserID = userID.slice(0, 5); // Extracts the first 5 characters
+                extractedUserID = userID.replace(prefix, ""); // Removes the prefix from the string
                 console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
                 console.log("[Register Face Button]: The value of modified extractedUserID [pattern2]:", extractedUserID);
               }
