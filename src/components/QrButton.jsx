@@ -5,7 +5,7 @@ import { checkValueInQrstrList } from '../UtilitiesFunctions/checkValueInQrstrLi
 import useSetBalance from '../useSetBalance'; // Correct the import path
 
 const QrButton = () => {
-  const { prefix, startTimer } = useGlobalContext(); // Access the global context as needed
+  const { prefix, startTimer,extractValue } = useGlobalContext(); // Access the global context as needed
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleQr = async () => {
@@ -13,6 +13,8 @@ const QrButton = () => {
     //setIsButtonDisabled(true); // Disable the button while processing
 
     try {
+      let userID = "";
+      let extractedUserID = "";
       // Show transitContainer and hide authContainer
       document.getElementById("authContainer").style.display = "none";
       document.getElementById("transitContainer").style.display = "block";
@@ -21,8 +23,79 @@ const QrButton = () => {
       const qrString = await window.QRInterface.get_QRInfo();
       console.log("[QR Auth. Button]:QR Code Data:", qrString);
       setMessage(" ");
+      if (qrString !== "Scanner stopped") 
+        {
+          const extractedRawUserID = extractValue(qrString);
+          console.log("[QR Auth. Button]:extractedUserID value is:", extractedRawUserID);
+          if (extractedRawUserID.value !== null)
+            {
+              console.log("[QR Auth. Button]: Extracted Value:", extractedRawUserID.value);
+              console.log("[QR Auth. Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
+              if (extractedRawUserID.patternMatched === "pattern1")
+              {
+                console.log("[QR Auth. Button]:pattern1-based block has been executed.");
+                extractedUserID = extractedRawUserID.value;
+                userID = `${prefix}${extractedUserID}`;
+                console.log("[QR Auth. Button]: The value of userID [pattern1]:", userID);
+              }
+              else if (extractedRawUserID.patternMatched === "pattern2")
+              {
+                console.log("[Register Face Button]:pattern2-based block has been executed.");
+                extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
+                console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
+                userID = extractedUserID
+                console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
+              }
 
-      if (qrString !== "Scanner stopped") {
+
+              setMessage(`GCユーザー: ${userID}`, "user");
+
+              // Transition to the main container
+              document.getElementById("transitContainer").style.display = "none";
+              document.getElementById("mainContainer").style.display = "block";
+              
+              setBalance(extractedUserID);
+              startTimer();
+            }else
+            {
+              console.log("[QR Auth. Button]:Invalid QR Code.");
+              setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message");
+    
+              // Transition back to the auth container
+              document.getElementById("transitContainer").style.display = "none";
+              document.getElementById("authContainer").style.display = "block";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /*if (qrString !== "Scanner stopped") {
         const match = qrString.match(/,(.*?),/);
         const extractedUserID = match ? match[1] : null;
 
@@ -47,7 +120,8 @@ const QrButton = () => {
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("authContainer").style.display = "block";
         }
-      } else {
+      }*/ 
+      else {
         console.log("[QR Auth. Button]:Scanner was stopped.");
         setMessage("QRコードスキャナーが停止しました。", "show_message");
 

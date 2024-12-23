@@ -81,6 +81,7 @@ const RegisterFaceButton = () => {
                 }
               else
                 {
+                  console.log("[Register Face Button]:Invalid QR Code.");
                   setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。", "show_message");
                   document.getElementById("transitContainer").style.display = "none";
                   document.getElementById("authContainer").style.display = "block";
@@ -88,6 +89,8 @@ const RegisterFaceButton = () => {
             }
             else 
               {
+                console.log("[Register Face Button]:Scanner was stopped.");
+                setMessage("QRコードスキャナーが停止しました。", "show_message");
                 document.getElementById("transitContainer").style.display = "none";
                 document.getElementById("authContainer").style.display = "block";
               }
