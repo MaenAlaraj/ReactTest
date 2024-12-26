@@ -99,7 +99,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             }            
           }
           enableButtonById("loadProduct");
-          startTimer(); 
+          //startTimer(); 
           removeRow(firstRowIndex); // Call removeRow with the index of the first row
           document.getElementById("mainContainer").style.display = "block";
           document.getElementById("transitContainer").style.display = "none";
