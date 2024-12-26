@@ -13,7 +13,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
     removeRow(rowIndex);
   };
 
-  const handlePaymentClick = async () => { // Mark the function as async
+  const handlePaymentClick =  () => { // Mark the function as async
     console.log("[Pay Button]: Payment initiated.");
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
@@ -52,7 +52,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const sellerCodeE = `${prefix}${sellerCode}`;
         console.log("[Pay Button] sellerCodeE:", sellerCodeE);
         console.log("[Pay Button] payment_terminalID:", payment_terminalID);
-        const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
+        const sellerNameRet =  window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
         console.log("[Pay Button] sellerNameRet:", sellerNameRet);
         const sellerNameTokens = sellerNameRet.split(":");
         console.log("[Pay Button] sellerNameTokens:", sellerNameTokens);
@@ -63,7 +63,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const formattedDate = date.replace(/\//g, ".");
         const message1 = `${header_prefix}${sellerCode} ${productName} ${catValue} ${category} ${formattedDate} ${sellerName}`;
         console.log("[Pay Button] message1:", message1);
-        const result = await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
+        const result =  window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
         console.log("[Pay Button] result:", result);  
         if (result.includes(errorsSubstring)) 
           {
@@ -77,7 +77,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
           else
           {
             console.log("Substring not found!");
-            const Balance_STR = await window.CCWalletInterface.Balance(user1, payment_terminalID);
+            const Balance_STR =  window.CCWalletInterface.Balance(user1, payment_terminalID);
             console.log("[setBalance] Raw Balance String:", Balance_STR);
             const Balance_LIST = Balance_STR.split(" ");
             console.log("[setBalance] Split Balance String:", Balance_LIST);
