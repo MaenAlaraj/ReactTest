@@ -82,7 +82,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         startTime = performance.now();
         const result =  window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
         endTime = performance.now();
-        console.log(`Processing time[**window.CCWalletInterface.Name]: ${(endTime - startTime)/ 1000}seconds`);
+        console.log(`Processing time[**window.CCWalletInterface.doPointPayment]: ${(endTime - startTime)/ 1000}seconds`);
 
 
 
