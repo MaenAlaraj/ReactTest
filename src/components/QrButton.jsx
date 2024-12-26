@@ -31,14 +31,14 @@ const QrButton = () => {
             {
               console.log("[QR Auth. Button]: Extracted Value:", extractedRawUserID.value);
               console.log("[QR Auth. Button]: Pattern Matched  Value:", extractedRawUserID.patternMatched);
-              if (extractedRawUserID.patternMatched === "pattern1")
+              if (extractedRawUserID.patternMatched === "pattern1")    // ,09000000154,,000184,0,20/04/23
               {
                 console.log("[QR Auth. Button]:pattern1-based block has been executed.");
                 extractedUserID = extractedRawUserID.value;
                 userID = `${prefix}${extractedUserID}`;
                 console.log("[QR Auth. Button]: The value of userID [pattern1]:", userID);
               }
-              else if (extractedRawUserID.patternMatched === "pattern2")
+              else if (extractedRawUserID.patternMatched === "pattern2")  //USER::maen.alaraj
               {
                 console.log("[Register Face Button]:pattern2-based block has been executed.");
                 extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);

@@ -123,8 +123,8 @@ export const GlobalProvider = ({ children }) => {
       }
   
       const patterns = [
-        { regex: /,([^,]*?),/, name: "pattern1" }, // Match pattern for IDs
-        { regex: /USER::(.*)/, name: "pattern2" }, // Match pattern for usernames
+        { regex: /^,([^,]*?),/, name: "pattern1" }, // Match pattern for IDs             // ,09000000154,,000184,0,20/04/23
+        { regex: /^USER::(.*)$/, name: "pattern2" }, // Match pattern for usernames      //USER::maen.alaraj
       ];
   
       for (const { regex, name } of patterns) {
