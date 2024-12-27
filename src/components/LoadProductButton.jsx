@@ -41,15 +41,15 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             setTotalAmount((prevTotal) => prevTotal + item.price);
             const sellerCode = qrstr_list[0]
             console.log("[Load Product Button] Seller Code:", sellerCode);
-            /*const sellerCodeE = `${prefix}${sellerCode}`;
+            const sellerCodeE = `${prefix}${sellerCode}`;
             console.log("[Load Product Button] sellerCodeE:", sellerCodeE);
             console.log("[Load Product Button] payment_terminalID:", payment_terminalID);
             const sellerNm = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
             
-            // Update the lower limit
+            // Update the sellerNameRet
             setSellerNameRet(sellerNm)
             console.log("[Load Product Button] sellerNm is :", sellerNm);
-            console.log("[Load Product Button] sellerNameRet is :", sellerNameRet);*/
+            console.log("[Load Product Button] sellerNameRet is :", sellerNameRet);
 
 
             console.log("[Load Product Button]: Product successfully added.");
