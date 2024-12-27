@@ -13,7 +13,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
     removeRow(rowIndex);
   };
 
-  const handlePaymentClick =  () => { // Mark the function as async
+  const handlePaymentClick = async () => { // Mark the function as async
     console.log("[Pay Button]: Payment initiated.");
     let startTime, endTime;
     document.getElementById("mainContainer").style.display = "none";
@@ -57,7 +57,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
 
 
         startTime = performance.now();
-        const sellerNameRet =  window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
+        const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
         endTime = performance.now();
         console.log(`Processing time[**window.CCWalletInterface.Name]: ${(endTime - startTime)/ 1000}seconds`);
 
@@ -80,7 +80,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
 
 
         startTime = performance.now();
-        const result =  window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
+        const result =  await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
         endTime = performance.now();
         console.log(`Processing time[**window.CCWalletInterface.doPointPayment]: ${(endTime - startTime)/ 1000}seconds`);
 
@@ -102,7 +102,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             console.log("Substring not found!");
 
             startTime = performance.now();
-            const Balance_STR =  window.CCWalletInterface.Balance(user1, payment_terminalID);
+            const Balance_STR =  await window.CCWalletInterface.Balance(user1, payment_terminalID);
             endTime = performance.now();
             console.log(`Processing time[**window.CCWalletInterface.Balance]: ${(endTime - startTime)/ 1000}seconds`);
 
