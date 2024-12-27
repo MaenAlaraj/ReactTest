@@ -5,8 +5,10 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, errorRetSubstring, lowerLimit, sellerNameRet, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
-   // Call the hook inside the component
+  //const { errorsSubstring, errorRetSubstring, lowerLimit, sellerNameRet, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, errorRetSubstring, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
+ 
+  // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 
    const handleRemoveRow = (rowIndex) => {
@@ -16,6 +18,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
   const handlePaymentClick = async () => { // Mark the function as async
     console.log("[Pay Button]: Payment initiated.");
     let startTime, endTime;
+    startTime = performance.now();
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
     console.log("[Pay Button]: totalAmount:", totalAmount);
@@ -50,16 +53,15 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const date = firstRow.date
         const catValue = getValueFromCatList(category);
         console.log("[Pay Button] catValue:", catValue);
-        //const sellerCodeE = `${prefix}${sellerCode}`;
-        //console.log("[Pay Button] sellerCodeE:", sellerCodeE);
-        //console.log("[Pay Button] payment_terminalID:", payment_terminalID);
+        const sellerCodeE = `${prefix}${sellerCode}`;
+        console.log("[Pay Button] sellerCodeE:", sellerCodeE);
+        console.log("[Pay Button] payment_terminalID:", payment_terminalID);
 
 
 
         //startTime = performance.now();
-        //const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
-        //endTime = performance.now();
-        //console.log(`Processing time[**window.CCWalletInterface.Name]: ${(endTime - startTime)/ 1000}seconds`);
+        const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
+       // endTime = performance.now();
 
 
 
@@ -79,10 +81,9 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
 
 
 
-        startTime = performance.now();
+        //startTime = performance.now();
         const result =  await window.CCWalletInterface.doPointPayment(user1, amount, user2, message1, message2, "");
-        endTime = performance.now();
-        console.log(`Processing time[**window.CCWalletInterface.doPointPayment]: ${(endTime - startTime)/ 1000}seconds`);
+        //endTime = performance.now();
 
 
 
@@ -101,17 +102,17 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
           {
             console.log("Substring not found!");
 
-            /*startTime = performance.now();
+            //startTime = performance.now();
             const Balance_STR =  await window.CCWalletInterface.Balance(user1, payment_terminalID);
-            endTime = performance.now();
-            console.log(`Processing time[**window.CCWalletInterface.Balance]: ${(endTime - startTime)/ 1000}seconds`);
+            //endTime = performance.now();
+           // console.log(`Processing time[**window.CCWalletInterface.Balance]: ${(endTime - startTime)/ 1000}seconds`);
 
 
 
             console.log("[setBalance] Raw Balance String:", Balance_STR);
             const Balance_LIST = Balance_STR.split(" ");
             console.log("[setBalance] Split Balance String:", Balance_LIST);
-            const lowerLimit = Balance_LIST[1].split(":")[1]*/
+            const lowerLimit = Balance_LIST[1].split(":")[1]
             console.log("[setBalance] Lower Limit Balance is :", lowerLimit);
 
 
@@ -125,6 +126,8 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             if (isValid === true){
               document.getElementById("loadProduct").disabled = false;            
               setMessage("ご購入ありがとうございます！", "show_message");
+              endTime = performance.now();
+              console.log(`Processing time[**Pay Button]: ${(endTime - startTime)/ 1000}seconds`);
             }
             else
             {
