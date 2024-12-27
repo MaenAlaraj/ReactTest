@@ -5,7 +5,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, errorRetSubstring, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, errorRetSubstring, lowerLimit, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 
@@ -101,7 +101,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
           {
             console.log("Substring not found!");
 
-            startTime = performance.now();
+            /*startTime = performance.now();
             const Balance_STR =  await window.CCWalletInterface.Balance(user1, payment_terminalID);
             endTime = performance.now();
             console.log(`Processing time[**window.CCWalletInterface.Balance]: ${(endTime - startTime)/ 1000}seconds`);
@@ -111,7 +111,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             console.log("[setBalance] Raw Balance String:", Balance_STR);
             const Balance_LIST = Balance_STR.split(" ");
             console.log("[setBalance] Split Balance String:", Balance_LIST);
-            const lowerLimit = Balance_LIST[1].split(":")[1]
+            const lowerLimit = Balance_LIST[1].split(":")[1]*/
             console.log("[setBalance] Lower Limit Balance is :", lowerLimit);
 
 
@@ -119,11 +119,8 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
 
 
 
-            startTime = performance.now();
+           
             const isValid = validateBalance(result, lowerLimit);
-            endTime = performance.now();
-            console.log(`Processing time[**validateBalance]: ${(endTime - startTime)/ 1000}seconds`);
-
             console.log(isValid ? "Balance is valid" : "Balance is invalid");
             if (isValid === true){
               document.getElementById("loadProduct").disabled = false;            

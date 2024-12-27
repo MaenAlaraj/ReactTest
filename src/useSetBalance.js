@@ -2,7 +2,7 @@
 import { useGlobalContext } from './GlobalContext';
 
 const useSetBalance = () => {
-  const { prefix, payment_terminalID, setUserBeforePrefix, setBalanceMessage } = useGlobalContext();
+  const { prefix, payment_terminalID, setUserBeforePrefix, setBalanceMessage,lowerLimit } = useGlobalContext();
 
   const setBalance = (userID) => {
    // setUserBeforePrefix(userID);
@@ -19,6 +19,16 @@ const useSetBalance = () => {
 
     const Balance_LIST = Balance_STR.split(" ");
     console.log("[setBalance] Split Balance String:", Balance_LIST);
+
+
+
+
+
+    lowerLimit = Balance_LIST[1].split(":")[1]
+    console.log("[setBalance] Lower Limit Balance is :", lowerLimit);
+
+
+
 
     // Format the message
     const balanceMessage = `pt残高:${Balance_LIST[0].split(":")[1]}pt(残高の下限:${Balance_LIST[1].split(":")[1]}pt)`;
