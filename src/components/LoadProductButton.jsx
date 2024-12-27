@@ -39,18 +39,18 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           if (totalAmount + item.price <= extractedBalance) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
-            const firstRow = productList[0]; 
+            /*const firstRow = productList[0]; 
             const sellerCode = firstRow.seller
-            console.log("[Pay Button] Seller:", sellerCode);
+            console.log("[Load Product Button] Seller:", sellerCode);
             const sellerCodeE = `${prefix}${sellerCode}`;
-            console.log("[Pay Button] sellerCodeE:", sellerCodeE);
-            console.log("[Pay Button] payment_terminalID:", payment_terminalID);
+            console.log("[Load Product Button] sellerCodeE:", sellerCodeE);
+            console.log("[Load Product Button] payment_terminalID:", payment_terminalID);
             const sellerNm = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
             
             // Update the lower limit
             setSellerNameRet(sellerNm)
             console.log("[Load Product Button] sellerNm is :", sellerNm);
-            console.log("[Load Product Button] sellerNameRet is :", sellerNameRet);
+            console.log("[Load Product Button] sellerNameRet is :", sellerNameRet);*/
 
 
             console.log("[Load Product Button]: Product successfully added.");
