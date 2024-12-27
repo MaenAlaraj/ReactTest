@@ -3,7 +3,7 @@ import { useGlobalContext } from "../GlobalContext";
 import { setMessage } from '../utils'; // Adjust the relative path based on your project structure
 
 const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalAmount }) => {
-  const { balanceMessage, disableButtonById, stopTimer } = useGlobalContext();
+  const { balanceMessage, disableButtonById, stopTimer, payment_terminalID,prefix, sellerNameRet, setSellerNameRet } = useGlobalContext();
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
 
@@ -39,6 +39,20 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           if (totalAmount + item.price <= extractedBalance) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
+            const firstRow = productList[0]; 
+            const sellerCode = firstRow.seller
+            console.log("[Pay Button] Seller:", sellerCode);
+            const sellerCodeE = `${prefix}${sellerCode}`;
+            console.log("[Pay Button] sellerCodeE:", sellerCodeE);
+            console.log("[Pay Button] payment_terminalID:", payment_terminalID);
+            const sellerNm = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
+            
+            // Update the lower limit
+            setSellerNameRet(sellerNm)
+            console.log("[Load Product Button] sellerNm is :", sellerNm);
+            console.log("[Load Product Button] sellerNameRet is :", sellerNameRet);
+
+
             console.log("[Load Product Button]: Product successfully added.");
             disableButtonById("loadProduct");
           } else {

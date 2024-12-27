@@ -19,10 +19,10 @@ export const GlobalProvider = ({ children }) => {
   const [productList, setProductList] = useState([]); 
   const [totalAmount, setTotalAmount] = useState(0);
   const timerId = useRef(null);
-  const [lowerLimit, setLowerLimit] = useState(""); // Initialize lowerLimit as state
+  const [lowerLimit, setLowerLimit] = useState(""); 
+  const [sellerNameRet, setSellerNameRet] = useState(""); 
+
   
-
-
 
   const errorsSubstring = "エラー";
   const gcMall_code = "09000000015";
@@ -215,6 +215,8 @@ export const GlobalProvider = ({ children }) => {
         removeRow,
         lowerLimit,
         setLowerLimit,
+        sellerNameRet,
+        setSellerNameRet,
       }}
     >
       {children}

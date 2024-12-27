@@ -5,7 +5,7 @@ import useSetBalance from '../useSetBalance'; // Correct the import path
 
 
 const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
-  const { errorsSubstring, errorRetSubstring, lowerLimit, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
+  const { errorsSubstring, errorRetSubstring, lowerLimit, sellerNameRet, validateBalance ,prefix, userBeforePrefix, gcMall_code, payment_terminalID, header_prefix, setTotal, getValueFromCatList, enableButtonById, startTimer    } = useGlobalContext(); // Access necessary variables
    // Call the hook inside the component
    const setBalance = useSetBalance(); // Ensure it's a function
 
@@ -50,16 +50,16 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
         const date = firstRow.date
         const catValue = getValueFromCatList(category);
         console.log("[Pay Button] catValue:", catValue);
-        const sellerCodeE = `${prefix}${sellerCode}`;
-        console.log("[Pay Button] sellerCodeE:", sellerCodeE);
-        console.log("[Pay Button] payment_terminalID:", payment_terminalID);
+        //const sellerCodeE = `${prefix}${sellerCode}`;
+        //console.log("[Pay Button] sellerCodeE:", sellerCodeE);
+        //console.log("[Pay Button] payment_terminalID:", payment_terminalID);
 
 
 
-        startTime = performance.now();
-        const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
-        endTime = performance.now();
-        console.log(`Processing time[**window.CCWalletInterface.Name]: ${(endTime - startTime)/ 1000}seconds`);
+        //startTime = performance.now();
+        //const sellerNameRet = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
+        //endTime = performance.now();
+        //console.log(`Processing time[**window.CCWalletInterface.Name]: ${(endTime - startTime)/ 1000}seconds`);
 
 
 
