@@ -21,7 +21,7 @@ const useSetBalance = () => {
     console.log("[setBalance] Split Balance String:", Balance_LIST);
 
     const lowLim = Balance_LIST[1].split(":")[1]
-    
+    console.log("[setBalance] lowLim Balance is :", lowLim);
 
     setLowerLimit(lowLim)
     console.log("[setBalance] Lower Limit Balance is :", lowerLimit);
