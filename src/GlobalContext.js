@@ -19,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
   const [productList, setProductList] = useState([]); 
   const [totalAmount, setTotalAmount] = useState(0);
   const timerId = useRef(null);
-  let lowerLimit = "";
+  const [lowerLimit, setLowerLimit] = useState(""); // Initialize lowerLimit as state
   
 
 
@@ -214,6 +214,7 @@ export const GlobalProvider = ({ children }) => {
         validateBalance,
         removeRow,
         lowerLimit,
+        setLowerLimit,
       }}
     >
       {children}

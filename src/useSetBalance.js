@@ -2,7 +2,7 @@
 import { useGlobalContext } from './GlobalContext';
 
 const useSetBalance = () => {
-  const { prefix, payment_terminalID, setUserBeforePrefix, setBalanceMessage,lowerLimit } = useGlobalContext();
+  const { prefix, payment_terminalID, setUserBeforePrefix, setBalanceMessage,lowerLimit, setLowerLimit } = useGlobalContext();
 
   const setBalance = (userID) => {
    // setUserBeforePrefix(userID);
@@ -23,8 +23,7 @@ const useSetBalance = () => {
 
 
 
-
-    lowerLimit = Balance_LIST[1].split(":")[1]
+    setLowerLimit(Balance_LIST[1].split(":")[1])
     console.log("[setBalance] Lower Limit Balance is :", lowerLimit);
 
 
