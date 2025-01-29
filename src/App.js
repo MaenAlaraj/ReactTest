@@ -44,7 +44,7 @@ const App = () => {
         <div id="bottomLeftText">
           <span className="text-content"></span>
         </div>
-        <RegisterFaceButton />
+        <RegisterFaceButton id="RegisterFaceButton" />
       </div>
 
       {/* Transit Container */}
