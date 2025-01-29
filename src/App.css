@@ -50,17 +50,17 @@
 
 /* Increase the size of buttons in .button-container */
 .button-container button {
-  font-size: 18px; /* Larger text size for buttons */
+  font-size: 28px; /* Larger text size for buttons */
   padding: 12px 24px; /* Increase button padding for larger buttons */
   border-radius: 8px; /* Round the corners of buttons */
-  background-color: #61dafb; /* Add a background color for the buttons */
+  background-color: #0f3df7; /* Add a background color for the buttons */
   color: white; /* Set text color */
   cursor: pointer; /* Make the cursor a pointer on hover */
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 .button-container button:hover {
-  background-color: #4fa3f7; /* Darker blue when hovered */
+  background-color: #0f3df7; /* Darker blue when hovered */
 }
 
 /* Specific Button Styles */
