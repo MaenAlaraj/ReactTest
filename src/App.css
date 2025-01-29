@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(20px + 6vmin);
+  font-size: calc(10px + 2vmin);
   color: white;
 }
 
@@ -36,6 +36,63 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Increase font size for paragraphs in .auth-container */
+.auth-container p {
+  font-size: 24px; /* Adjust this value as needed */
+  font-weight: bold; /* Make the text bold if desired */
+  margin: 10px 0; /* Add some spacing between the paragraphs */
+}
+
+
+
+
+/* Increase the size of buttons in .button-container */
+.button-container button {
+  font-size: 18px; /* Larger text size for buttons */
+  padding: 12px 24px; /* Increase button padding for larger buttons */
+  border-radius: 8px; /* Round the corners of buttons */
+  background-color: #61dafb; /* Add a background color for the buttons */
+  color: white; /* Set text color */
+  cursor: pointer; /* Make the cursor a pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.button-container button:hover {
+  background-color: #4fa3f7; /* Darker blue when hovered */
+}
+
+/* Specific Button Styles */
+#RegisterFaceButton {
+  font-size: 20px; /* Larger font size */
+  padding: 14px 28px; /* Larger button */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #user-container {
   display: flex;
