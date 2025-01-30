@@ -53,13 +53,6 @@
 
 
 
-#mainContainer {
-  width: 130%; /* Default width */
-  height: 130%; /* Default height */
-  background-color: #f9f9f9;
-  transition: all 0.3s ease; /* Add smooth transition */
-}
-
 
 
 
@@ -92,10 +85,13 @@
   flex-direction: column;
   align-items: flex-end; /* Align elements to the right */
   width: 100%;
+  font-size: 1.2rem; /* Adjust this for desired font size */
+  gap: 1rem; /* Optional: adds spacing between WiFiStatus and LogoutButton */
 }
 
 .user-details-container > * {
   margin: 5px 0; /* Add spacing between WiFiStatus, LogoutButton, and message */
+  font-size: 1.5rem; /* Larger font size for elements inside */
 }
 
 #logoutButton {
