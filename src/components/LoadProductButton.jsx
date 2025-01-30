@@ -67,7 +67,18 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
 
   return (
     <div>
-      <button id="loadProduct" onClick={handleLoadProduct}>
+      <button id="loadProduct"
+      style={{
+        fontSize: "22px",
+        padding: "16px 40px",
+        borderRadius: "8px",
+        backgroundColor: "#0c08f1e8",
+        color: "white",
+        border: "none",
+        cursor: "pointer",
+        transition: "transform 0.2s ease, background-color 0.3s ease",
+      }}
+       onClick={handleLoadProduct}>
       商品の読み込み
       </button>
     </div>

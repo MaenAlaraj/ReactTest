@@ -151,7 +151,18 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
       };
       
       return (
-      <button id="payment" onClick={handlePaymentClick}>
+      <button id="payment"
+      style={{
+        fontSize: "22px",
+        padding: "16px 40px",
+        borderRadius: "8px",
+        backgroundColor: "#0c08f1e8",
+        color: "white",
+        border: "none",
+        cursor: "pointer",
+        transition: "transform 0.2s ease, background-color 0.3s ease",
+      }}
+       onClick={handlePaymentClick}>
         支払い
       </button>
       );
