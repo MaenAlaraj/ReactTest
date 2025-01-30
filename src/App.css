@@ -54,6 +54,13 @@
 
 
 
+#totalAmount {
+  font-size: 1.5rem;
+  font-weight: bold; /* Optional: Make it bold */
+  color: #000; /* Optional: Change the color */
+  text-align: center; /* Optional: Center align the text */
+  margin-top: 2rem; /* Optional: Add spacing above the element */
+}
 
 
 
