@@ -44,31 +44,37 @@
   font-weight: bold; /* Make the text bold if desired */
   margin: 10px 0; /* Add some spacing between the paragraphs */
 }
-
-
-
-
 /* Increase the size of buttons in .button-container */
 .button-container button {
-  font-size: 32px; /* Larger text size for buttons */
+  font-size: 18px; /* Larger text size for buttons */
   padding: 12px 24px; /* Increase button padding for larger buttons */
   border-radius: 8px; /* Round the corners of buttons */
-  background-color: #0f3df7; /* Add a background color for the buttons */
+  background-color: #61dafb; /* Add a background color for the buttons */
   color: white; /* Set text color */
   cursor: pointer; /* Make the cursor a pointer on hover */
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 .button-container button:hover {
-  background-color: #0f3df7; /* Darker blue when hovered */
+  background-color: #4fa3f7; /* Darker blue when hovered */
 }
 
 /* Specific Button Styles */
-#RegisterFaceButton {
-  font-size: 32px; /* Larger font size */
-  padding: 14px 28px; /* Larger button */
+#registerFaceButton {
+  font-size: 24px; /* Larger font size */
+  padding: 16px 40px; /* Increase padding for a bigger button */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #61dafb; /* Button background color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer on hover */
+  transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth hover effects */
 }
 
+#registerFaceButton:hover {
+  background-color: #4fa3f7; /* Slightly darker color on hover */
+  transform: scale(1.05); /* Scale effect on hover */
+}
 
 
 

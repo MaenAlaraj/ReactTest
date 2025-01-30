@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { setMessage } from "../utils"; // Adjust the path to where `utils.js` is located
 import { useGlobalContext } from "../GlobalContext"; // Adjust the path to your GlobalContext
+import "../App.css"; // Or the appropriate path to your CSS file
 
 
 
