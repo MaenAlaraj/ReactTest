@@ -135,7 +135,7 @@ const RegisterFaceButton = () => {
       <button
         id="registerFaceButton"
         style={{
-          fontSize: "24px",
+          fontSize: "28px",
           padding: "16px 40px",
           borderRadius: "8px",
           backgroundColor: "#0c08f1e8",
