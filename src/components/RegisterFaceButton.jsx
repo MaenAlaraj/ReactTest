@@ -132,12 +132,29 @@ const RegisterFaceButton = () => {
 
   return (
     <div>
-      <button id="registerFaceButton" onClick={handleRegisterFace} >
+      <button
+        id="registerFaceButton"
+        style={{
+          fontSize: "24px",
+          padding: "16px 40px",
+          borderRadius: "8px",
+          backgroundColor: "#61dafb",
+          color: "white",
+          border: "none",
+          cursor: "pointer",
+          transition: "transform 0.2s ease, background-color 0.3s ease",
+        }}
+        onClick={handleRegisterFace}
+      >
         顔認証登録
       </button>
       <div id="message"></div>
     </div>
   );
+  
 };
+
+
+
 
 export default RegisterFaceButton;

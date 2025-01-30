@@ -60,21 +60,11 @@
 }
 
 /* Specific Button Styles */
-#registerFaceButton {
-  font-size: 24px; /* Larger font size */
-  padding: 16px 40px; /* Increase padding for a bigger button */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #61dafb; /* Button background color */
-  color: white; /* Text color */
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer on hover */
-  transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth hover effects */
+#RegisterFaceButton {
+  font-size: 20px; /* Larger font size */
+  padding: 14px 28px; /* Larger button */
 }
 
-#registerFaceButton:hover {
-  background-color: #4fa3f7; /* Slightly darker color on hover */
-  transform: scale(1.05); /* Scale effect on hover */
-}
 
 
 
