@@ -147,7 +147,7 @@ const QrButton = () => {
       fontSize: "24px",
       padding: "16px 40px",
       borderRadius: "8px",
-      backgroundColor: "#61dafb",
+      backgroundColor: "#0c08f1e8",
       color: "white",
       border: "none",
       cursor: "pointer",
