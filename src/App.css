@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #0c08f1e8;
+  color: #9461fb;
 }
 
 @keyframes App-logo-spin {
@@ -41,17 +41,12 @@
 
 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(26px + 14vmin); /* Increased font size */
-  color: white;
+/* Increase font size for the paragraphs in .auth-container */
+.auth-container p {
+  font-size: 24px; /* Adjust this value as needed */
+  font-weight: bold; /* Make the text bold if desired */
+  margin: 10px 0; /* Add some spacing between the paragraphs */
 }
-
 
 
 
