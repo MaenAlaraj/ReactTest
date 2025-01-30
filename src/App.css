@@ -75,6 +75,7 @@
 }
 
 #user {
+  font-size: 1.5rem;
   text-align: left;
   width: 100%;
   margin-bottom: 10px;
@@ -101,7 +102,6 @@
   font-size: 1.5rem; /* Adjust the value to your preference */
   margin-top: 15px;
   text-align: left;
-  font-weight: bold; /* Optional: Make the text bold */
 }
 
 
