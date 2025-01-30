@@ -106,9 +106,10 @@
 
 
 .product-table {
+  font-size: 1.5rem;
   width: 100%; /* Full width table */
   border-collapse: collapse; /* Remove spacing between table cells */
-  text-align: left; /* Align text to the left */
+  text-align: center; /* Align text to the center */
   margin-top: 10px; /* Add space above the table */
 }
 
