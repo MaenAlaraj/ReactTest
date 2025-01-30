@@ -86,7 +86,6 @@
   align-items: flex-end; /* Align elements to the right */
   width: 100%;
   font-size: 1.2rem; /* Adjust this for desired font size */
-  gap: 1rem; /* Optional: adds spacing between WiFiStatus and LogoutButton */
 }
 
 .user-details-container > * {

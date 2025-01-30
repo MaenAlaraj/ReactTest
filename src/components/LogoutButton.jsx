@@ -37,7 +37,7 @@ const LogoutButton = () => {
   return (
     <button id="logoutButton"
     style={{
-      fontSize: "28px",
+      fontSize: "22px",
       padding: "16px 40px",
       borderRadius: "8px",
       backgroundColor: "#0c08f1e8",
