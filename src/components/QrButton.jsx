@@ -142,7 +142,18 @@ const QrButton = () => {
   };
 
   return (
-    <button id="qrButton" onClick={handleQr}>
+    <button id="qrButton"
+    style={{
+      fontSize: "24px",
+      padding: "16px 40px",
+      borderRadius: "8px",
+      backgroundColor: "#61dafb",
+      color: "white",
+      border: "none",
+      cursor: "pointer",
+      transition: "transform 0.2s ease, background-color 0.3s ease",
+    }}
+     onClick={handleQr}>
       QR認証
     </button>
   );

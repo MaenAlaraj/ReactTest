@@ -83,7 +83,18 @@ const FaceButton = () => {
   };
 
   return (
-    <button id="faceButton" onClick={handleFace}>
+    <button id="faceButton"
+    style={{
+      fontSize: "24px",
+      padding: "16px 40px",
+      borderRadius: "8px",
+      backgroundColor: "#61dafb",
+      color: "white",
+      border: "none",
+      cursor: "pointer",
+      transition: "transform 0.2s ease, background-color 0.3s ease",
+    }}
+    onClick={handleFace}>
       顔認証
     </button>
   );
