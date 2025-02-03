@@ -19,7 +19,7 @@ const FaceButton = () => {
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
     // Show the transitContainer and hide authContainer
-    document.getElementById("authContainer").style.display = "none";
+    /*document.getElementById("authContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
 
     try {
@@ -79,7 +79,7 @@ const FaceButton = () => {
       setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
-    }
+    }*/
   };
 
   return (
