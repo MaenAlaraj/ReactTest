@@ -40,7 +40,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           const lowerLimitValue =  extractedBalance + low
           console.log("[Load Product Button] lowerLimitValue:", lowerLimitValue);
 
-          if (totalAmount + item.price < lowerLimitValue ) {
+          if (totalAmount + item.price > lowerLimitValue ) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
             const sellerCode = qrstr_list[0]
