@@ -12,6 +12,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
     console.log("[Load Product Button]: Starting product load...");
     stopTimer()
     const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    console.log("[Load Product Button] match:", match);
     const extractedBalance = match ? parseInt(match[1], 10) : null;
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
