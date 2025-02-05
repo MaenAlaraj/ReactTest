@@ -23,7 +23,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
 
     console.log("[Load Product Button] userBeforePrefix:", userBeforePrefix);
     const extractedBalance = setBalance(userBeforePrefix);
-    console.log("[Load Product Button] extractedBalance:", extractedBalance);
+    console.log("[Load Product Button] setBalance extractedBalance:", extractedBalance);
 
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
