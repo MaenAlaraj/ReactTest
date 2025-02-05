@@ -1,19 +1,30 @@
 import React from "react";
 import { useGlobalContext } from "../GlobalContext";
 import { setMessage } from '../utils'; // Adjust the relative path based on your project structure
+import useSetBalance from '../useSetBalance'; // Correct the import path
+
 
 const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalAmount }) => {
-  const { balanceMessage, disableButtonById, stopTimer, payment_terminalID,prefix, sellerNameRet, setSellerNameRet } = useGlobalContext();
+  const { balanceMessage, disableButtonById, stopTimer, payment_terminalID, prefix, sellerNameRet, setSellerNameRet, userBeforePrefix } = useGlobalContext();
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
   const lowerLimit  = -1000;
+  const setBalance = useSetBalance(); // Ensure it's a function
+
+
+
 
   const handleLoadProduct = async () => {
     console.log("[Load Product Button]: Starting product load...");
     stopTimer()
-    const match = balanceMessage.match(/pt残高:(\d+)pt/);
-    console.log("[Load Product Button] match:", match);
-    const extractedBalance = match ? parseInt(match[1], 10) : null;
+    //const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    //console.log("[Load Product Button] match:", match);
+    //const extractedBalance = match ? parseInt(match[1], 10) : null;
+
+    console.log("[Load Product Button] userBeforePrefix:", userBeforePrefix);
+    const extractedBalance =  setBalance(userBeforePrefix);
+    console.log("[Load Product Button] match:", extractedBalance);
+
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
 
