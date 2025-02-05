@@ -8,7 +8,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
   const { balanceMessage, disableButtonById, stopTimer, payment_terminalID, prefix, sellerNameRet, setSellerNameRet, userBeforePrefix } = useGlobalContext();
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
-  const lowerLimit  = -1000;
+  //const lowerLimit  = -1000;
   const setBalance = useSetBalance(); // Ensure it's a function
 
 
@@ -22,8 +22,8 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
     //const extractedBalance = match ? parseInt(match[1], 10) : null;
 
     console.log("[Load Product Button] userBeforePrefix:", userBeforePrefix);
-    const extractedBalance =  setBalance(userBeforePrefix);
-    console.log("[Load Product Button] match:", extractedBalance);
+    const extractedBalance = setBalance(userBeforePrefix);
+    console.log("[Load Product Button] extractedBalance:", extractedBalance);
 
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
@@ -49,10 +49,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             date: qrstr_list[4],
           };
           
-          const lowerLimitValue = (extractedBalance - lowerLimit);
-          console.log("[Load Product Button] lowerLimitValue:", lowerLimitValue);
-
-          if (totalAmount + item.price <= lowerLimitValue ) {
+          if (totalAmount + item.price < extractedBalance ) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
             const sellerCode = qrstr_list[0]
