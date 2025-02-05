@@ -10,10 +10,9 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
   const handleLoadProduct = async () => {
     console.log("[Load Product Button]: Starting product load...");
     stopTimer()
-    //const match = balanceMessage.match(/pt残高:(\d+)pt/);
-    const extractedBalance = balanceMessage.match(/残高の下限：(-?\d+)pt/);
-
-    //const extractedBalance = match ? parseInt(match[1], 10) : null;
+    const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    const extractedBalance = match ? parseInt(match[1], 10) : null;
+    extractedBalance = -1000
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
 
