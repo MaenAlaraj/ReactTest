@@ -6,13 +6,13 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
   const { balanceMessage, disableButtonById, stopTimer, payment_terminalID,prefix, sellerNameRet, setSellerNameRet } = useGlobalContext();
 
   const isPositiveInteger = (value) => /^[1-9]\d*$/.test(value);
+  const low = -1000;
 
   const handleLoadProduct = async () => {
     console.log("[Load Product Button]: Starting product load...");
     stopTimer()
     const match = balanceMessage.match(/pt残高:(\d+)pt/);
     const extractedBalance = match ? parseInt(match[1], 10) : null;
-    extractedBalance = -1000
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
 
@@ -39,7 +39,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
           
         
 
-          if (totalAmount + item.price <= extractedBalance) {
+          if (totalAmount + item.price < extractedBalance + low ) {
             setProductList((prevItems) => [...prevItems, item]);
             setTotalAmount((prevTotal) => prevTotal + item.price);
             const sellerCode = qrstr_list[0]
