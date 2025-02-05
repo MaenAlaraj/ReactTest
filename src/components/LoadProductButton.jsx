@@ -10,7 +10,8 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
   const handleLoadProduct = async () => {
     console.log("[Load Product Button]: Starting product load...");
     stopTimer()
-    const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    //const match = balanceMessage.match(/pt残高:(\d+)pt/);
+    const match = balanceMessage.match(/残高の下限:(\d+)pt/);
     const extractedBalance = match ? parseInt(match[1], 10) : null;
 
     console.log("[Load Product Button] Extracted Balance:", extractedBalance);
@@ -35,6 +36,8 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             category: qrstr_list[3],
             date: qrstr_list[4],
           };
+          
+        
 
           if (totalAmount + item.price <= extractedBalance) {
             setProductList((prevItems) => [...prevItems, item]);
