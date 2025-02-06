@@ -91,7 +91,7 @@ const FaceButton = () => {
       setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
-    }
+    }*/
   };
 
   return (
@@ -109,7 +109,7 @@ const FaceButton = () => {
     onClick={handleFace}>
       顔認証
     </button>
-  );*/
+  );
 };
 
 export default FaceButton;
