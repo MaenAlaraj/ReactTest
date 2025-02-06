@@ -19,8 +19,8 @@ const FaceButton = () => {
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
     
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990001"); //Event 1    
-    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990001"); //Event 1    
+    console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
 
     // Show the transitContainer and hide authContainer
