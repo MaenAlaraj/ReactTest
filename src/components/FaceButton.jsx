@@ -26,15 +26,15 @@ const FaceButton = () => {
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
 
-    var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990006"); //Event 6    
-    console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990006"); //Event 6    
+    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
 
 
     // Show the transitContainer and hide authContainer
     document.getElementById("authContainer").style.display = "none";
     document.getElementById("transitContainer").style.display = "block";
 
-    /*try {
+    try {
       const resultJsonString = await window.FaceCaptureInterface.getFace();
       console.log("[FaceButton]: Face data received:", resultJsonString);
 
@@ -91,7 +91,7 @@ const FaceButton = () => {
       setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "show_message");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
-    }*/
+    }
   };
 
   return (
