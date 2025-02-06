@@ -50,7 +50,7 @@ const QrButton = () => {
               }
 
 
-              setMessage(`GCユーザー: ${userID}`, "user");
+              setMessage(`GCユーザー: ${extractedUserID}`, "user");
 
               // Transition to the main container
               document.getElementById("transitContainer").style.display = "none";
