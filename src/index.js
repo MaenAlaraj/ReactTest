@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GlobalProvider } from './GlobalContext'; // Import GlobalProvider
+import { ToastProvider } from './Toast'; // Import ToastProvider
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalProvider> {/* Wrap the App with GlobalProvider */}
+    <ToastProvider> {/* Wrap App with ToastProvider */}
       <App />
+      </ToastProvider>
     </GlobalProvider>
   </React.StrictMode>
 );
