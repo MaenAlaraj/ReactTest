@@ -1,9 +1,12 @@
-import { useToast } from './ToastContext';
-
 // Define the setMessage function
-export function setMessage(str, showToast, id = "message") {
-  if (id === "show_message" && typeof showToast === "function") {
-    showToast(str); // Use the new toast system
+export function setMessage(str, id = "message") {
+  if (id === "show_message") {
+    // If you have a toast implementation
+    if (window.ToastInterface) {
+      window.ToastInterface.showToast(str);
+    } else {
+      console.warn("ToastInterface is not available.");
+    }
   } else {
     const messageElement = document.getElementById(id);
     if (messageElement) {
