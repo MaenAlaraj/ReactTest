@@ -13,7 +13,6 @@ const FaceButton = () => {
   const setBalance = useSetBalance(); // Ensure it's a function
 
   const handleFace = async () => {
-     setMessage("[FaceButton]:「顔認証」ボタンがクリックされました。。", "show_message");
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
 
     //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ    
