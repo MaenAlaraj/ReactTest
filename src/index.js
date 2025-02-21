@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GlobalProvider } from './GlobalContext'; // Import GlobalProvider
-import { ToastProvider } from './Toast'; // Import ToastProvider
+import { ToastProvider } from './ToastContext'; // Import ToastProvider
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
