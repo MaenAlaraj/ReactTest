@@ -3,7 +3,7 @@ export function setMessage(str, id = "message") {
     if (id === "show_message") {
       // If you have a toast implementation
       if (window.ToastInterface) {
-        window.ToastInterface.showToast(str,80);
+        window.ToastInterface.showToast(str);
       } else {
         console.warn("ToastInterface is not available.");
       }
