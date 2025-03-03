@@ -20,6 +20,7 @@ const QrButton = () => {
       document.getElementById("transitContainer").style.display = "block";
 
       // Simulate getting QR code data
+      console.log("[QR Auth. Button]:Before Calling get_QRInfo");
       const qrString = await window.QRInterface.get_QRInfo();
       console.log("[QR Auth. Button]:QR Code Data:", qrString);
       setMessage(" ");
