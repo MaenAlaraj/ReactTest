@@ -39,7 +39,7 @@ const FaceButton = () => {
       console.log("[FaceButton]: Face data received:", resultJsonString);
 
       if (!resultJsonString) {
-        setMessage("顔が検出されませんでした。もう一度試してください。", "show_message");
+        setMessage("顔が検出されませんでした。もう一度試してください。", "showDialog");
         document.getElementById("transitContainer").style.display = "none";
         document.getElementById("authContainer").style.display = "block";
         return;
@@ -50,7 +50,7 @@ const FaceButton = () => {
       const numberOfFaces = facesArray.length;
 
       if (numberOfFaces === 0) {
-        setMessage("顔を認証できませんでした。もう一度試してください。", "show_message");
+        setMessage("顔を認証できませんでした。もう一度試してください。", "showDialog");
         document.getElementById('authContainer').style.display = 'block';
         document.getElementById('transitContainer').style.display = 'none';
       } else if (numberOfFaces === 1) {
@@ -65,7 +65,7 @@ const FaceButton = () => {
         console.log("[FaceButton]: SearchFaces info:", info);
 
         if (info.includes(errorsSubstring)) {
-          setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "show_message");
+          setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "showDialog");
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("authContainer").style.display = "block";
         } else {
@@ -83,12 +83,12 @@ const FaceButton = () => {
           startTimer();
         }
       } else if (numberOfFaces > 1) {
-        setMessage("複数の顔が検出されました。もう一度試してください。", "show_message");
+        setMessage("複数の顔が検出されました。もう一度試してください。", "showDialog");
         document.getElementById("transitContainer").style.display = "none";
         document.getElementById("authContainer").style.display = "block";
       }
     } catch (error) {
-      setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "show_message");
+      setMessage(`[FaceButton]エラーが発生しました: ${error.message}`, "showDialog");
       document.getElementById("transitContainer").style.display = "none";
       document.getElementById("authContainer").style.display = "block";
     }

@@ -27,7 +27,7 @@ const RegisterFaceButton = () => {
 
         if (numberOfFaces === 0) {     
           console.log("[Register Face Button]:Captured Nr. of Faces:", numberOfFaces);
-          setMessage("顔を認証できませんでした。もう一度試してください。", "show_message");
+          setMessage("顔を認証できませんでした。もう一度試してください。", "showDialog");
           document.getElementById('authContainer').style.display = 'block';
           document.getElementById('transitContainer').style.display = 'none';
         } else if (numberOfFaces === 1) {
@@ -60,13 +60,13 @@ const RegisterFaceButton = () => {
                       console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
                       if (addFaceInfo.includes(errorsSubstring)) 
                         {
-                          setMessage("既に登録済みのユーザーのため、登録できませんでした。", "show_message");
+                          setMessage("既に登録済みのユーザーのため、登録できませんでした。", "showDialog");
                           document.getElementById('transitContainer').style.display = 'none';
                           document.getElementById('authContainer').style.display = 'block';
                         } 
                         else
                         {
-                          setMessage("顔が登録されました。", "show_message");
+                          setMessage("顔が登録されました。", "showDialog");
                           document.getElementById("transitContainer").style.display = "none";
                           document.getElementById("authContainer").style.display = "block";
                         }
@@ -82,13 +82,13 @@ const RegisterFaceButton = () => {
                           console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
                           if (addFaceInfo.includes(errorsSubstring)) 
                             {
-                              setMessage("既に登録済みのユーザーのため、登録できませんでした。", "show_message");
+                              setMessage("既に登録済みのユーザーのため、登録できませんでした。", "showDialog");
                               document.getElementById('transitContainer').style.display = 'none';
                               document.getElementById('authContainer').style.display = 'block';
                             } 
                              else
                              {
-                              setMessage("顔が登録されました。", "show_message");
+                              setMessage("顔が登録されました。", "showDialog");
                               document.getElementById("transitContainer").style.display = "none";
                               document.getElementById("authContainer").style.display = "block";
                             }
@@ -96,7 +96,7 @@ const RegisterFaceButton = () => {
                       else
                        {
                           console.log("[Register Face Button]:Invalid QR Code. Not [pattern1] neither [pattern2]");
-                          setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。", "show_message");
+                          setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。", "showDialog");
                           document.getElementById("transitContainer").style.display = "none";
                           document.getElementById("authContainer").style.display = "block";
                        }
@@ -104,7 +104,7 @@ const RegisterFaceButton = () => {
               else
                 {
                   console.log("[Register Face Button]:Invalid QR Code.");
-                  setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。", "show_message");
+                  setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。", "showDialog");
                   document.getElementById("transitContainer").style.display = "none";
                   document.getElementById("authContainer").style.display = "block";
                 }
@@ -112,19 +112,19 @@ const RegisterFaceButton = () => {
             else 
               {
                 console.log("[Register Face Button]:Scanner was stopped.");
-                setMessage("QRコードスキャナーが停止しました。", "show_message");
+                setMessage("QRコードスキャナーが停止しました。", "showDialog");
                 document.getElementById("transitContainer").style.display = "none";
                 document.getElementById("authContainer").style.display = "block";
               }
         } else if (numberOfFaces > 1) {
           console.log("[Register Face Button]:Captured Nr. of Faces:", numberOfFaces);
-          setMessage("複数の顔が検出されたため、顔を認証できませんでした。もう一度やり直してください。", "show_message");
+          setMessage("複数の顔が検出されたため、顔を認証できませんでした。もう一度やり直してください。", "showDialog");
           document.getElementById("transitContainer").style.display = "none";
           document.getElementById("authContainer").style.display = "block";
         }
       }
     } catch (error) {
-      setMessage(`[Register Face Button]エラーが発生しました: ${error.message}`, "show_message");
+      setMessage(`[Register Face Button]エラーが発生しました: ${error.message}`, "showDialog");
       document.getElementById('transitContainer').style.display = 'none';
       document.getElementById('authContainer').style.display = 'block';
     }

@@ -38,7 +38,7 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
       if (qrstr_list.length === 6) {
         if (!isPositiveInteger(qrstr_list[2])) {
           console.log("[Load Product Button]: Invalid QR Code detected, not a positive integer.");
-          setMessage("商品QRではないものが読み込まれました。","show_message");
+          setMessage("商品QRではないものが読み込まれました。","showDialog");
         } else {
           const item = {
             index: productList.length,
@@ -68,12 +68,12 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             console.log("[Load Product Button]: Product successfully added.");
             disableButtonById("loadProduct");
           } else {
-            setMessage("残高が足りません。","show_message");
+            setMessage("残高が足りません。","showDialog");
           }
         }
       } else {
         console.log("[Load Product Button]: Invalid Product QR Code format.");
-        setMessage("商品QRではないものが読み込まれました。","show_message");
+        setMessage("商品QRではないものが読み込まれました。","showDialog");
       }
     }
   };

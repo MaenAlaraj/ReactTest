@@ -61,7 +61,7 @@ const QrButton = () => {
             }else
             {
               console.log("[QR Auth. Button]:Invalid QR Code.");
-              setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","show_message");
+              setMessage("QRコードの読取りに失敗しました。GC MALL発行のQRコードをかざしてください。","showDialog");
     
               // Transition back to the auth container
               document.getElementById("transitContainer").style.display = "none";
@@ -125,7 +125,7 @@ const QrButton = () => {
       }*/ 
       else {
         console.log("[QR Auth. Button]:Scanner was stopped.");
-        setMessage("QRコードスキャナーが停止しました。", "show_message");
+        setMessage("QRコードスキャナーが停止しました。", "showDialog");
 
         // Transition back to the auth container
         document.getElementById("transitContainer").style.display = "none";
@@ -133,7 +133,7 @@ const QrButton = () => {
       }
     } catch (error) {
       console.error("[QR Auth. Button]:Error processing QR code:", error.message);
-      setMessage(`[QR Auth. Button]エラーが発生しました: ${error.message}`, "show_message");
+      setMessage(`[QR Auth. Button]エラーが発生しました: ${error.message}`, "showDialog");
 
       // Transition back to the auth container
       document.getElementById("transitContainer").style.display = "none";
