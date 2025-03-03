@@ -24,7 +24,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
     if (totalAmount === 0) {
       document.getElementById("mainContainer").style.display = "block";
       document.getElementById("transitContainer").style.display = "none";
-      setMessage("商品が読み込まれていません。商品を読み込んでください。", "show_message");
+      setMessage("商品が読み込まれていません。商品を読み込んでください。", "showDialog");
     } else 
     {
       if (productList.length > 0) {
@@ -96,7 +96,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             //console.log(errorMessage);
             document.getElementById("mainContainer").style.display = "block";
             document.getElementById("transitContainer").style.display = "none";
-            setMessage(errorMessage, "show_message");
+            setMessage(errorMessage, "showDialog");
           }
           else
           {
@@ -125,7 +125,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
             //console.log(isValid ? "Balance is valid" : "Balance is invalid");
             if (isValid === true){
               document.getElementById("loadProduct").disabled = false;            
-              setMessage("ご購入ありがとうございます！", "show_message");
+              setMessage("ご購入ありがとうございます！", "showDialog");
               endTime = performance.now();
               console.log(`Processing time[**Pay Button]: ${(endTime - startTime)/ 1000}seconds`);
             }
@@ -135,7 +135,7 @@ const PaymentButton = ({ totalAmount, productList, removeRow  }) => {
               console.log(errorMessage);
               document.getElementById("mainContainer").style.display = "block";
               document.getElementById("transitContainer").style.display = "none";
-              setMessage(errorMessage, "show_message");
+              setMessage(errorMessage, "showDialog");
             }            
           }
           enableButtonById("loadProduct");
