@@ -7,7 +7,14 @@ export function setMessage(str, id = "message") {
       } else {
         console.warn("ToastInterface is not available.");
       }
-    } else {
+    }else if (id === "showDialog"){
+      if (window.ToastInterface) {
+        window.ToastInterface.showDialogSound(str);
+      } else {
+        console.warn("ToastInterface[showDialogSound] is not available.");
+      }
+    }
+     else {
       const messageElement = document.getElementById(id);
       if (messageElement) {
         messageElement.innerText = str;
