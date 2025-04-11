@@ -15,19 +15,19 @@ const FaceButton = () => {
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
 
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000000154"); //アララジ    
-    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    //var info = await window.CCWalletInterface.DelFacesWithErrHandling(sbuser,"9392909000000154"); //アララジ    
+    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFacesWithErrHandling:", info);
 
     
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990001"); //Event 1    
-    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    //var info = await window.CCWalletInterface.DelFacesWithErrHandling(sbuser,"9392909000990001"); //Event 1    
+    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFacesWithErrHandling:", info);
 
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990002"); //Event 2    
-    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    //var info = await window.CCWalletInterface.DelFacesWithErrHandling(sbuser,"9392909000990002"); //Event 2    
+    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFacesWithErrHandling:", info);
 
 
-    //var info = await window.CCWalletInterface.DelFaces(sbuser,"9392909000990006"); //Event 6    
-    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFaces:", info);
+    //var info = await window.CCWalletInterface.DelFacesWithErrHandling(sbuser,"9392909000990006"); //Event 6    
+    //console.log("[Delete Button]:Responce of CCWalletInterface.DelFacesWithErrHandling:", info);
 
 
     // Show the transitContainer and hide authContainer
