@@ -3,12 +3,14 @@ export function setMessage(str, id = "message") {
     if (id === "show_message") {
       // If you have a toast implementation
       if (window.ToastInterface) {
+        console.log("ToastInterface[showToast].");
         window.ToastInterface.showToast(str);
       } else {
         console.warn("ToastInterface is not available.");
       }
     }else if (id === "showDialog"){
       if (window.ToastInterface) {
+        console.log("ToastInterface[showDialogSound].");
         window.ToastInterface.showDialogSound(str);
       } else {
         console.warn("ToastInterface[showDialogSound] is not available.");
