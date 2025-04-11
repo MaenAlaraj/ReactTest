@@ -15,7 +15,7 @@ const useSetBalance = () => {
     console.log("[setBalance] Retrieved payment_terminalID:", payment_terminalID);
 
     //const Balance_STR = window.CCWalletInterface.Balance(user1, payment_terminalID);
-    const Balance_STR = window.CCWalletInterface.BalanceDemo(user1, payment_terminalID);
+    const Balance_STR = window.CCWalletInterface.BalanceWithErrHandling(user1, payment_terminalID);
     console.log("[setBalance] Raw Balance String:", Balance_STR);
 
     const Balance_LIST = Balance_STR.split(" ");
