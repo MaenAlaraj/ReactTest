@@ -42,7 +42,9 @@ const QrButton = () => {
               else if (extractedRawUserID.patternMatched === "pattern2")  //USER::maen.alaraj
               {
                 console.log("[Register Face Button]:pattern2-based block has been executed.");
-                extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
+                //extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
+                extractedUserID = await window.CCWalletInterface.GetgckIDWithErrHandling(extractedRawUserID.value);
+
                 console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
                 userID = extractedUserID
                 extractedUserID = userID.replace(prefix, ""); // Removes the prefix from the string
