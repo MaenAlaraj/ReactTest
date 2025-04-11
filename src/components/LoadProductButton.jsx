@@ -57,8 +57,8 @@ const LoadProductButton = ({ productList, setProductList, totalAmount, setTotalA
             const sellerCodeE = `${prefix}${sellerCode}`;
             console.log("[Load Product Button] sellerCodeE:", sellerCodeE);
             console.log("[Load Product Button] payment_terminalID:", payment_terminalID);
-            //const sellerNm = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
-            const sellerNm = await window.CCWalletInterface.NameWithErrHandling(sellerCodeE, payment_terminalID);
+            const sellerNm = await window.CCWalletInterface.Name(sellerCodeE, payment_terminalID);
+            //const sellerNm = await window.CCWalletInterface.NameWithErrHandling(sellerCodeE, payment_terminalID);
 
             // Update the sellerNameRet
             setSellerNameRet(sellerNm)
