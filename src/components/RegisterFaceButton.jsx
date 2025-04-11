@@ -56,7 +56,8 @@ const RegisterFaceButton = () => {
                       extractedUserID = extractedRawUserID.value;
                       userID = `${prefix}${extractedUserID}`;
                       console.log("[Register Face Button]: The value of userID [pattern1]:", userID);
-                      let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                      //let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                      let addFaceInfo = await window.CCWalletInterface.AddFacesWithErrHandling(sbuser, userID, base64String);
                       console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
                       if (addFaceInfo.includes(errorsSubstring)) 
                         {
@@ -78,7 +79,9 @@ const RegisterFaceButton = () => {
                           console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
                           userID = extractedUserID
                           console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
-                          let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                          //let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                          let addFaceInfo = await window.CCWalletInterface.AddFacesWithErrHandling(sbuser, userID, base64String);
+
                           console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
                           if (addFaceInfo.includes(errorsSubstring)) 
                             {
