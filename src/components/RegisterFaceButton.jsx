@@ -56,8 +56,8 @@ const RegisterFaceButton = () => {
                       extractedUserID = extractedRawUserID.value;
                       userID = `${prefix}${extractedUserID}`;
                       console.log("[Register Face Button]: The value of userID [pattern1]:", userID);
-                      //let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
-                      let addFaceInfo = await window.CCWalletInterface.AddFacesWithErrHandling(sbuser, userID, base64String);
+                      let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                      //let addFaceInfo = await window.CCWalletInterface.AddFacesWithErrHandling(sbuser, userID, base64String);
                       console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
                       if (addFaceInfo.includes(errorsSubstring)) 
                         {
@@ -75,14 +75,14 @@ const RegisterFaceButton = () => {
                       else if (extractedRawUserID.patternMatched === "pattern2")
                         {
                           console.log("[Register Face Button]:pattern2-based block has been executed.");
-                          //extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
-                          extractedUserID = await window.CCWalletInterface.GetgckIDWithErrHandling(extractedRawUserID.value);
+                          extractedUserID = await window.CCWalletInterface.GetgckID(extractedRawUserID.value);
+                          //extractedUserID = await window.CCWalletInterface.GetgckIDWithErrHandling(extractedRawUserID.value);
 
                           console.log("[Register Face Button]: The value of extractedUserID:", extractedUserID);
                           userID = extractedUserID
                           console.log("[Register Face Button]: The value of userID [pattern2]:", userID);
-                          //let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
-                          let addFaceInfo = await window.CCWalletInterface.AddFacesWithErrHandling(sbuser, userID, base64String);
+                          let addFaceInfo = await window.CCWalletInterface.AddFaces(sbuser, userID, base64String);
+                          //let addFaceInfo = await window.CCWalletInterface.AddFacesWithErrHandling(sbuser, userID, base64String);
 
                           console.log("[Register Face Button]:addFaceInfo value is:", addFaceInfo);
                           if (addFaceInfo.includes(errorsSubstring)) 
