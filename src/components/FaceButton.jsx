@@ -14,7 +14,7 @@ const FaceButton = () => {
 
   const handleFace = async () => {
     console.log("[FaceButton]:「顔認証」ボタンがクリックされました。");
-    const info = await window.CCWalletInterface.GetIniTMS();
+   // const info = await window.CCWalletInterface.GetIniTMS();
     //var info = await window.CCWalletInterface.DelFacesWithErrHandling(sbuser,"9392909000000154"); //アララジ    
     //console.log("[Delete Button]:Responce of CCWalletInterface.DelFacesWithErrHandling:", info);
 
