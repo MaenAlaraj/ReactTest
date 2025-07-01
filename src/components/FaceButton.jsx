@@ -100,8 +100,8 @@ const FaceButton = () => {
         console.log(`[FaceButton]: CodeTblMnt execution time: ${duration2.toFixed(2)} milliseconds`);
         
         // Total execution time
-        //const totalDuration = duration1 + duration2;
-        //console.log(`Total Execution Time: ${totalDuration.toFixed(2)} ms`);
+        const totalDuration = duration1 + duration2;
+        console.log(`Total Execution Time: ${totalDuration.toFixed(2)} ms`);
 
         //console.log("The output of CodeTblMnt is:", strRet);
         
