@@ -72,8 +72,25 @@ const FaceButton = () => {
         const duration = endTime - startTime;
         console.log(`[FaceButton]: SearchFaces execution time: ${duration.toFixed(2)} milliseconds`);
 
-        
+
         console.log("[FaceButton]: SearchFaces info:", info);
+        const match = info.match(/結果：\s*(\d+)/);
+        const extractedNumber = match[1];
+        console.log("[FaceButton]: Extracted number=", extractedNumber); // Outputs: 09000000154
+
+        //ヘッダー
+        const prefix = window.CCWalletInterface.getPrefix();
+
+        //千葉通貨
+        let currencyID = window.CCWalletInterface.getCurrencyId();
+        
+        //GC企画
+        const sbUser = window.CCWalletInterface.getSBUser();
+
+        const result = `${prefix}:${currencyID}.${sbUser}.${extractedNumber}`;
+
+        console.log("Result:", result);
+
 
         if (info.includes(errorsSubstring)) {
           setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "showDialog");
