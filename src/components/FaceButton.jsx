@@ -93,7 +93,7 @@ const FaceButton = () => {
 
 
         startTime = performance.now();
-        let  strRet = window.CCWalletInterface.CodeTblMnt(key,"","S")
+         window.CCWalletInterface.CodeTblMnt(key,"","S")
          endTime = performance.now();
         const duration2 = endTime - startTime;
 
@@ -104,7 +104,7 @@ const FaceButton = () => {
         console.log(`Total Execution Time: ${totalDuration.toFixed(2)} ms`);
 
 
-        console.log("Return Value of CodeTblMnt is :", strRet);
+        
 
         if (info.includes(errorsSubstring)) {
           setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "showDialog");
