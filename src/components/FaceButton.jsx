@@ -92,10 +92,10 @@ const FaceButton = () => {
         console.log("Key:", key);
 
 
-        startTime = performance.now();
-         window.CCWalletInterface.CodeTblMnt(key,"","S")
-         endTime = performance.now();
-        const duration2 = endTime - startTime;
+        const startTime2 = performance.now();
+         const strRet = window.CCWalletInterface.CodeTblMnt(key,"","S")
+         const endTime2 = performance.now();
+        const duration2 = endTime2 - startTime2;
 
         console.log(`[FaceButton]: CodeTblMnt execution time: ${duration2.toFixed(2)} milliseconds`);
         
@@ -103,7 +103,7 @@ const FaceButton = () => {
         const totalDuration = duration1 + duration2;
         console.log(`Total Execution Time: ${totalDuration.toFixed(2)} ms`);
 
-
+        console.log("The output of CodeTblMnt is:", strRet);
         
 
         if (info.includes(errorsSubstring)) {
