@@ -69,8 +69,8 @@ const FaceButton = () => {
 
         // Log the end time and calculate duration
         const endTime = performance.now();
-        const duration = endTime - startTime;
-        console.log(`[FaceButton]: SearchFaces execution time: ${duration.toFixed(2)} milliseconds`);
+        const duration1 = endTime - startTime;
+        console.log(`[FaceButton]: SearchFaces execution time: ${duration1.toFixed(2)} milliseconds`);
 
 
         console.log("[FaceButton]: SearchFaces info:", info);
@@ -79,7 +79,7 @@ const FaceButton = () => {
         console.log("[FaceButton]: Extracted number=", extractedNumber); // Outputs: 09000000154
 
         //ヘッダー
-        const prefix = window.CCWalletInterface.getPrefix();
+        const header = window.CCWalletInterface.getHeader();
 
         //千葉通貨
         let currencyID = window.CCWalletInterface.getCurrencyId();
@@ -87,10 +87,24 @@ const FaceButton = () => {
         //GC企画
         const sbUser = window.CCWalletInterface.getSBUser();
 
-        const result = `${prefix}:${currencyID}.${sbUser}.${extractedNumber}`;
+        const key = `${header}:${currencyID}.${sbUser}.${extractedNumber}`;
 
-        console.log("Result:", result);
+        console.log("Key:", key);
 
+
+        startTime = performance.now();
+        const strRet = window.CCWalletInterface.CodeTblMnt(key,"","S")
+        endTime = performance.now();
+        const duration2 = endTime - startTime;
+
+        console.log(`[FaceButton]: CodeTblMnt execution time: ${duration2.toFixed(2)} milliseconds`);
+        
+        // Total execution time
+        const totalDuration = duration1 + duration2;
+        console.log(`Total Execution Time: ${totalDuration.toFixed(2)} ms`);
+
+
+        console.log("Return Value of CodeTblMnt is :", strRet);
 
         if (info.includes(errorsSubstring)) {
           setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "showDialog");
