@@ -61,8 +61,18 @@ const FaceButton = () => {
         console.log("[FaceButton]:gckid value is:", gckid);
         console.log("[FaceButton]:base64String value is:", base64String);
 
+        // Log the start time
+        const startTime = performance.now();
         const info = await window.CCWalletInterface.SearchFaces(sbuser, gckid, base64String);
         //const info = await window.CCWalletInterface.SearchFacesWithErrHandling(sbuser, gckid, base64String);
+
+
+        // Log the end time and calculate duration
+        const endTime = performance.now();
+        const duration = endTime - startTime;
+        console.log(`[FaceButton]: SearchFaces execution time: ${duration.toFixed(2)} milliseconds`);
+
+        
         console.log("[FaceButton]: SearchFaces info:", info);
 
         if (info.includes(errorsSubstring)) {
