@@ -93,7 +93,7 @@ const FaceButton = () => {
 
 
        const startTime2 = performance.now();
-         window.CCWalletInterface.CodeTblMnt(key,"","S")
+        const strRet= window.CCWalletInterface.CodeTblMnt(key,"","S")
         const endTime2 = performance.now();
        const duration2 = endTime2 - startTime2;
 
@@ -103,7 +103,7 @@ const FaceButton = () => {
         const totalDuration = duration1 + duration2;
         console.log(`Total Execution Time: ${totalDuration.toFixed(2)} ms`);
 
-        //console.log("The output of CodeTblMnt is:", strRet);
+        console.log("The output of CodeTblMnt is:", strRet);
         
 
         if (info.includes(errorsSubstring)) {
