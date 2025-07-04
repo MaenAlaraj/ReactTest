@@ -92,12 +92,12 @@ const FaceButton = () => {
         console.log("Key:", key);
 
 
-       //const startTime2 = performance.now();
-       //const strRet= window.CCWalletInterface.CodeTblMntWithErrHandling(key,"","S")
-        //const endTime2 = performance.now();
-       //const duration2 = endTime2 - startTime2;
+       const startTime2 = performance.now();
+       const strRet= window.CCWalletInterface.CodeTblMntWithErrHandling(key,"","S")
+      const endTime2 = performance.now();
+       const duration2 = endTime2 - startTime2;
 
-       // console.log(`[FaceButton]: CodeTblMntWithErrHandling execution time: ${duration2.toFixed(2)} milliseconds`);
+       console.log(`[FaceButton]: CodeTblMntWithErrHandling execution time: ${duration2.toFixed(2)} milliseconds`);
 
         if (info.includes(errorsSubstring)) {
           setMessage("顔認証に失敗しました。「顔認証登録」ボタンから顔を登録してください。", "showDialog");
